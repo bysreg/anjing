@@ -1,6 +1,7 @@
 #include "app/app.hpp"
 
 #include <cstdio>
+#include <cstdlib>
 
 using namespace std;
 using namespace anjing;
