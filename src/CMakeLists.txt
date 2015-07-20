@@ -9,13 +9,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
 find_package(SDL2 REQUIRED)
 find_package(OpenGL REQUIRED)
-#find_package(GLUT REQUIRED)
-
-# list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR})
-# find_package(GLEW)
-# if (NOT GLEW_FOUND)
-# 	add_subdirectory(glew)
-# endif()
+find_package(GLEW REQUIRED)
 
 add_subdirectory(app)
 add_subdirectory(myapp)
