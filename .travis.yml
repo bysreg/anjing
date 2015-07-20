@@ -14,7 +14,7 @@ before_script:
   - cd build
   - cmake ../src
 
-script: make install && cd.. && ./myapp
+script: make install && cd .. && ./myapp
 
 os:
   - linux
