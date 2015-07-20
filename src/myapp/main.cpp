@@ -10,14 +10,17 @@ static bool auto_close = false;
 
 static bool ParseArgs(int argc, char* argv[])
 {
-	for (int i = 2; i < argc; i++)
+	for (int i = 1; i < argc; i++)
 	{
-		switch (argv[i][1])
+		if (argv[i][0] == '-')
 		{
-		case 'y':
-			auto_close = true;
-			break;			
-		}
+			switch (argv[i][1])
+			{
+			case 'y':
+				auto_close = true;
+				break;
+			}
+		}		
 	}
 
 	return true;
