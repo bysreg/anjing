@@ -5,3 +5,6 @@ SDL 2.0.3
 
 for windows :
 for now, add folder /windows/bin to your path
+
+program's argument :
+y - automatically close the command line program after the main window close
