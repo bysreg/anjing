@@ -5,9 +5,11 @@ OpenGL 3.0
 GLEW 1.12.0
 SDL 2.0.3
 Doxygen 1.8.10 (for docs)
+CMake 3.1.0
+Google Test 1.7.0
 
 for windows :
-for now, add folder /windows/bin to your path
+add folder /windows/bin to your path
 
 program's argument :
 -y : automatically close the command line program after the main window close
