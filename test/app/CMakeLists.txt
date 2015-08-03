@@ -5,6 +5,6 @@ include_directories(
 
 add_executable(appTestExecutable app_test.cpp)
 
-target_link_libraries(appTestExecutable app ${SDL2_LIBRARY} ${GLEW_LIBRARY} ${GTEST_MAIN_LIBRARIES})
+target_link_libraries(appTestExecutable app ${GLEW_LIBRARY} ${GTEST_MAIN_LIBRARIES} ${GTEST_LIBRARIES} ${SDL2_LIBRARY} )
 
 add_test(appTest appTestExecutable)
