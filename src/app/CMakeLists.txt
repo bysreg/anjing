@@ -1,5 +1,5 @@
 include_directories(
-	${PROJECT_SOURCE_DIR}
+	${ANJING_INCLUDE_DIR}
 	${SDL2_INCLUDE_DIR}
 	${GLEW_INCLUDE_DIR}
 )

@@ -1,5 +1,5 @@
 include_directories(
-	${PROJECT_SOURCE_DIR}
+	${ANJING_INCLUDE_DIR}
 )
 
 add_executable(myapp main.cpp)
