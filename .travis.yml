@@ -6,9 +6,9 @@ compiler:
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository ppa:zoogie/sdl2-snapshots -y; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; sudo apt-get update -qq; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; sudo apt-get install -y libsdl2-dev; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; sudo apt-get install -y libglew-dev; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -qq; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libsdl2-dev; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libglew-dev; fi
 
 before_script:
   - cd build
