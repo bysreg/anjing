@@ -1,0 +1,13 @@
+before_build:
+  - cmd: cd C:\projects\anjing
+  - cmd: cd build
+  - cmd: cmake ..
+  
+configuration:
+  - Debug
+  - Release
+  
+build:
+  - parallel: true
+  - project: C:\projects\anjing\build\src\myapp\myapp.vcxproj
+  
