@@ -12,5 +12,22 @@
 ##For windows :##
 add folder /windows/bin to your path
 
+##How to build:##
+- go to folder build, and run this from terminal in linux/osx or cmd in windows: "cmake ..".
+- the previous step will make all necessary build files according to the platform.
+- if you're on linux/osx, do "make install", and then the program will be build in the project's root folder. 
+- if you're on windows, 
+  - open the visual studio .sln file, 
+  - set the myapp project as the startup project, and build that project. 
+
 ##Program's argument :##
 - -y : automatically close the command line program after the main window closes
+
+##Updating Doxygen Documentation :##
+
+
+##Building with GTest switched on:##
+- use "cmake -Dbuild_test=ON .."
+- if on windows, 
+  - instead of myapp project as the startup project, set the "appTestExecutable" as the startup project, and build that project
+  - use ctrl+F5, so that the program won't immediately quit so that you can see the test's results. 
