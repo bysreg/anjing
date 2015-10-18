@@ -27,7 +27,18 @@ add folder /windows/bin to your path
 
 
 ##Building with GTest switched on:##
+- if on linux, 
+  - you need to build gtest first, and put the libgtest.a nd libgtest-main.a to /usr/lib
 - use "cmake -Dbuild_test=ON .."
 - if on windows, 
   - instead of myapp project as the startup project, set the "appTestExecutable" as the startup project, and build that project
   - use ctrl+F5, so that the program won't immediately quit so that you can see the test's results. 
+- if on linux, 
+  - run "make" to build all executables, including the tests
+  - run "make test" to run all the tests
+  
+  
+  
+  
+  
+  
