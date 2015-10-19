@@ -30,5 +30,5 @@ env:
 script: 
   - make
   - make $MAKE_TARGET
-  - if ["$MAKE_TARGET" == "install"]; then cd ..; fi	
-  - if ["$MAKE_TARGET" == "install"]; then ./myapp -y; fi
+  - if [ "$MAKE_TARGET" == "install" ]; then cd ..; fi	
+  - if [ "$MAKE_TARGET" == "install" ]; then ./myapp -y; fi
