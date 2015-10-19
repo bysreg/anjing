@@ -1,23 +1,34 @@
+# Build matrix / environment variable are explained on:
+# http://about.travis-ci.org/docs/user/build-configuration/
+
 language: cpp
 
 compiler:
   - gcc
   - clang
 
+os:
+  - linux
+  - osx
+  
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository ppa:zoogie/sdl2-snapshots -y; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -qq; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libsdl2-dev; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libglew-dev; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install sdl2; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install glew; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install glew; fi  
   
 before_script:
   - cd build
-  - cmake ..
+  - cmake -Dbuild_test=ON ..
 
-script: make install && cd .. && ./myapp -y
-
-os:
-  - linux
-  - osx
+env:
+  - MAKE_TARGET=install
+  - MAKE_TARGET=test
+  
+script: 
+  - make
+  - make $MAKE_TARGET
+  - if ["MAKE_TARGET" == "install"]; then cd ..; fi	
+  - if ["MAKE_TARGET" == "install"]; then ./myapp -y; fi
