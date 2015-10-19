@@ -8,7 +8,7 @@ Windows: [![Build status](https://ci.appveyor.com/api/projects/status/qw871xxhxl
 - SDL 2.0.3
 - Doxygen 1.8.10 (for docs)
 - CMake 3.1.0
-- Google Test 1.7.0
+- Google Test 1.7.0 (included in source)
 
 ##For windows :##
 add folder /windows/bin to your path
