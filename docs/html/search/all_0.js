@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['anjing',['anjing',['../namespaceanjing.html',1,'']]],
-  ['app',['App',['../classanjing_1_1_app.html',1,'anjing']]],
-  ['app_2ecpp',['app.cpp',['../app_8cpp.html',1,'']]],
-  ['app_2ehpp',['app.hpp',['../app_8hpp.html',1,'']]]
+  ['unittest',['UnitTest',['../classtesting_1_1internal_1_1_unit_test_impl.html#a893404438388dec058dc5c02e8f9a014',1,'testing::internal::UnitTestImpl']]]
 ];
