@@ -16,10 +16,8 @@ sudo: required
 dist: trusty
   
 before_install:  
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -qq; fi
-  #- if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository ppa:zoogie/sdl2-snapshots -y; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libsdl2-dev; fi
-  #- if [ "$TRAVIS_OS_NAME" == "linux" ]; then bash libsdl2_for_travis.sh; fi  
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -qq; fi  
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libsdl2-dev; fi  
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libglew-dev; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install sdl2; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install glew; fi  

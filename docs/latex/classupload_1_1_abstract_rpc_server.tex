@@ -1,0 +1,121 @@
+\hypertarget{classupload_1_1_abstract_rpc_server}{}\section{upload.\+Abstract\+Rpc\+Server Class Reference}
+\label{classupload_1_1_abstract_rpc_server}\index{upload.\+Abstract\+Rpc\+Server@{upload.\+Abstract\+Rpc\+Server}}
+Inheritance diagram for upload.\+Abstract\+Rpc\+Server\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classupload_1_1_abstract_rpc_server}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classupload_1_1_abstract_rpc_server_a87618fdb401f36dd7aaf2196bb65d35e}{\+\_\+\+\_\+init\+\_\+\+\_\+}
+\item 
+def \hyperlink{classupload_1_1_abstract_rpc_server_ac1b913f8bd00da4741c47ab49ea94cb5}{Send} (self, request\+\_\+path, payload=None, content\+\_\+type=\char`\"{}application/octet-\/stream\char`\"{}, timeout=None, kwargs)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classupload_1_1_abstract_rpc_server_ab7188d827e2faddcf970f524f5856192}{host}
+\item 
+\hyperlink{classupload_1_1_abstract_rpc_server_a783a4a7e4ffb776a57a3f267300a213b}{host\+\_\+override}
+\item 
+\hyperlink{classupload_1_1_abstract_rpc_server_aee0090a3bcf07b913a7dd596a5dabb8f}{auth\+\_\+function}
+\item 
+\hyperlink{classupload_1_1_abstract_rpc_server_a692955750c802e461c6336d3000cd365}{authenticated}
+\item 
+\hyperlink{classupload_1_1_abstract_rpc_server_adbbf0109afc13d58d7815fa143cb779f}{extra\+\_\+headers}
+\item 
+\hyperlink{classupload_1_1_abstract_rpc_server_affe342205c4647d41b127f5a5634858b}{save\+\_\+cookies}
+\item 
+\hyperlink{classupload_1_1_abstract_rpc_server_aa931446476e0e86f3ade7fef0a0aea5a}{opener}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Provides a common interface for a simple RPC server.\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classupload_1_1_abstract_rpc_server_a87618fdb401f36dd7aaf2196bb65d35e}{}\index{upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}}
+\subsubsection[{\+\_\+\+\_\+init\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}def upload.\+Abstract\+Rpc\+Server.\+\_\+\+\_\+init\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{host, }
+\item[{}]{auth\+\_\+function, }
+\item[{}]{host\+\_\+override = {\ttfamily None}, }
+\item[{}]{extra\+\_\+headers = {\ttfamily \{\}}, }
+\item[{}]{save\+\_\+cookies = {\ttfamily False}}
+\end{DoxyParamCaption}
+)}\label{classupload_1_1_abstract_rpc_server_a87618fdb401f36dd7aaf2196bb65d35e}
+\begin{DoxyVerb}Creates a new HttpRpcServer.
+
+Args:
+  host: The host to send requests to.
+  auth_function: A function that takes no arguments and returns an
+(email, password) tuple when called. Will be called if authentication
+is required.
+  host_override: The host header to send to the server (defaults to host).
+  extra_headers: A dict of extra headers to append to every request.
+  save_cookies: If True, save the authentication cookies to local disk.
+If False, use an in-memory cookiejar instead.  Subclasses must
+implement this functionality.  Defaults to False.
+\end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\hypertarget{classupload_1_1_abstract_rpc_server_ac1b913f8bd00da4741c47ab49ea94cb5}{}\index{upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}!Send@{Send}}
+\index{Send@{Send}!upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}}
+\subsubsection[{Send(self, request\+\_\+path, payload=\+None, content\+\_\+type=""application/octet-\/stream"", timeout=\+None, kwargs)}]{\setlength{\rightskip}{0pt plus 5cm}def upload.\+Abstract\+Rpc\+Server.\+Send (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{request\+\_\+path, }
+\item[{}]{payload = {\ttfamily None}, }
+\item[{}]{content\+\_\+type = {\ttfamily \char`\"{}application/octet-\/stream\char`\"{}}, }
+\item[{}]{timeout = {\ttfamily None}, }
+\item[{}]{kwargs}
+\end{DoxyParamCaption}
+)}\label{classupload_1_1_abstract_rpc_server_ac1b913f8bd00da4741c47ab49ea94cb5}
+\begin{DoxyVerb}Sends an RPC and returns the response.
+
+Args:
+  request_path: The path to send the request to, eg /api/appversion/create.
+  payload: The body of the request, or None to send an empty request.
+  content_type: The Content-Type header to use.
+  timeout: timeout in seconds; default None i.e. no timeout.
+(Note: for large requests on OS X, the timeout doesn't work right.)
+  kwargs: Any keyword arguments are converted into query string parameters.
+
+Returns:
+  The response body, as a string.
+\end{DoxyVerb}
+ 
+
+\subsection{Member Data Documentation}
+\hypertarget{classupload_1_1_abstract_rpc_server_aee0090a3bcf07b913a7dd596a5dabb8f}{}\index{upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}!auth\+\_\+function@{auth\+\_\+function}}
+\index{auth\+\_\+function@{auth\+\_\+function}!upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}}
+\subsubsection[{auth\+\_\+function}]{\setlength{\rightskip}{0pt plus 5cm}upload.\+Abstract\+Rpc\+Server.\+auth\+\_\+function}\label{classupload_1_1_abstract_rpc_server_aee0090a3bcf07b913a7dd596a5dabb8f}
+\hypertarget{classupload_1_1_abstract_rpc_server_a692955750c802e461c6336d3000cd365}{}\index{upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}!authenticated@{authenticated}}
+\index{authenticated@{authenticated}!upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}}
+\subsubsection[{authenticated}]{\setlength{\rightskip}{0pt plus 5cm}upload.\+Abstract\+Rpc\+Server.\+authenticated}\label{classupload_1_1_abstract_rpc_server_a692955750c802e461c6336d3000cd365}
+\hypertarget{classupload_1_1_abstract_rpc_server_adbbf0109afc13d58d7815fa143cb779f}{}\index{upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}!extra\+\_\+headers@{extra\+\_\+headers}}
+\index{extra\+\_\+headers@{extra\+\_\+headers}!upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}}
+\subsubsection[{extra\+\_\+headers}]{\setlength{\rightskip}{0pt plus 5cm}upload.\+Abstract\+Rpc\+Server.\+extra\+\_\+headers}\label{classupload_1_1_abstract_rpc_server_adbbf0109afc13d58d7815fa143cb779f}
+\hypertarget{classupload_1_1_abstract_rpc_server_ab7188d827e2faddcf970f524f5856192}{}\index{upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}!host@{host}}
+\index{host@{host}!upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}}
+\subsubsection[{host}]{\setlength{\rightskip}{0pt plus 5cm}upload.\+Abstract\+Rpc\+Server.\+host}\label{classupload_1_1_abstract_rpc_server_ab7188d827e2faddcf970f524f5856192}
+\hypertarget{classupload_1_1_abstract_rpc_server_a783a4a7e4ffb776a57a3f267300a213b}{}\index{upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}!host\+\_\+override@{host\+\_\+override}}
+\index{host\+\_\+override@{host\+\_\+override}!upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}}
+\subsubsection[{host\+\_\+override}]{\setlength{\rightskip}{0pt plus 5cm}upload.\+Abstract\+Rpc\+Server.\+host\+\_\+override}\label{classupload_1_1_abstract_rpc_server_a783a4a7e4ffb776a57a3f267300a213b}
+\hypertarget{classupload_1_1_abstract_rpc_server_aa931446476e0e86f3ade7fef0a0aea5a}{}\index{upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}!opener@{opener}}
+\index{opener@{opener}!upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}}
+\subsubsection[{opener}]{\setlength{\rightskip}{0pt plus 5cm}upload.\+Abstract\+Rpc\+Server.\+opener}\label{classupload_1_1_abstract_rpc_server_aa931446476e0e86f3ade7fef0a0aea5a}
+\hypertarget{classupload_1_1_abstract_rpc_server_affe342205c4647d41b127f5a5634858b}{}\index{upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}!save\+\_\+cookies@{save\+\_\+cookies}}
+\index{save\+\_\+cookies@{save\+\_\+cookies}!upload\+::\+Abstract\+Rpc\+Server@{upload\+::\+Abstract\+Rpc\+Server}}
+\subsubsection[{save\+\_\+cookies}]{\setlength{\rightskip}{0pt plus 5cm}upload.\+Abstract\+Rpc\+Server.\+save\+\_\+cookies}\label{classupload_1_1_abstract_rpc_server_affe342205c4647d41b127f5a5634858b}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Hilman/\+Desktop/repo/anjing/src/third\+\_\+party/googletest/scripts/\hyperlink{upload_8py}{upload.\+py}\end{DoxyCompactItemize}
