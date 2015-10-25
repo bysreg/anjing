@@ -24,8 +24,16 @@ add folder /windows/bin to your path
 ##Program's argument :##
 - -y : automatically close the command line program after the main window closes
 
-##Updating Doxygen Documentation :##
 
+##Documentation :##
+http://bysreg.github.io/anjing/index.html
+
+##Updating Doxygen Documentation :##
+- go to /docs, and then run "doxygen" in terminal or cmd
+- to update the documentation on the anjing's github page : 
+  - switch to gh-pages branch
+  - go to /docs, and then run "doxygen" in terminal or cmd
+  - note that, HTML_OUTPUT in Doxyfile is set to the project root folder instead of /docs
 
 ##Building with GTest switched on:##
 - if on linux, 
