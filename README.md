@@ -9,6 +9,7 @@ Windows: [![Build status](https://ci.appveyor.com/api/projects/status/qw871xxhxl
 - Doxygen 1.8.10 (for docs)
 - CMake 3.1.0
 - Google Test 1.7.0 (included in source)
+- C++ 11 supported compiler
 
 ##For windows :##
 add folder /windows/bin to your path
@@ -47,7 +48,10 @@ http://bysreg.github.io/anjing/index.html
   - run "make test" to run all the tests
   
   
-  
+##C++ 11 features needed :##
+- Deleted functions, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2346.htm
+- Null pointer, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2431.pdf
+- Strongly typed enums, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2347.pdf  
   
   
   
