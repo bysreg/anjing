@@ -67,6 +67,12 @@ namespace anjing
 			/// \brief Removes all allocations. This will make MemoryManager state looks like it is just newly instantiated
 			///
 			void Clean();
+
+			///
+			/// \brief Returns total memory allocations. 
+			///
+			/// implementation detail : O(n) operation as this function iterates over all alocations.
+			size_t GetTotalMemoryAllocations();
 		};
 
 	}

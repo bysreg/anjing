@@ -73,30 +73,7 @@ void MemoryManager::Free(void* address)
 	AllocInfo* alloc_info = (AllocInfo*)((void**)(((char*)address) - sizeof(AllocInfo*)))[0];
 
 	free(alloc_info->mem);
-
-	// remove alloc_info from the used list
-	if (alloc_info->prev != nullptr)
-	{
-		alloc_info->prev->next = alloc_info->next;
-	}
-	else
-	{
-		used_list = used_list->next;
-	}	
-
-	reset_alloc_info(alloc_info);
-
-	// and attach it to the free list
-	if (free_list != nullptr)
-	{
-		free_list->prev = alloc_info;
-		alloc_info->next = free_list;
-		free_list = alloc_info;
-	}	
-	else
-	{
-		free_list = alloc_info;
-	}
+	RemoveUsedAllocInfo(alloc_info);
 }
 
 void MemoryManager::Dump()
@@ -122,8 +99,29 @@ void MemoryManager::Dump()
 
 void MemoryManager::Clean()
 {
-	// Remove all allocations in used_list	
-	// TODO : not implemented yet
+	// remove all allocations in used_list	
+	
+	AllocInfo* head = used_list;
+	AllocInfo* next;
+
+	if (head != nullptr)
+	{
+		next = head->next;
+		RemoveUsedAllocInfo(head);
+		head = next;
+	}
+
+	// used_list now should be empty, now we delete all AllocInfo from free_list
+	head = free_list;
+	if (head != nullptr)
+	{
+		next = head->next;
+		free(head);
+		head = next;
+	}
+
+	used_list = nullptr;
+	free_list = nullptr;
 }
 
 AllocInfo* MemoryManager::GetFreeAllocInfo()
@@ -147,7 +145,43 @@ AllocInfo* MemoryManager::GetFreeAllocInfo()
 
 void MemoryManager::RemoveUsedAllocInfo(AllocInfo* used_alloc_info)
 {
-	// TODO : not implemented yet
+	// remove alloc_info from the used list
+	if (used_alloc_info->prev != nullptr)
+	{
+		used_alloc_info->prev->next = used_alloc_info->next;
+	}
+	else
+	{
+		used_list = used_list->next;
+	}
+
+	reset_alloc_info(used_alloc_info);
+
+	// and attach it to the free list
+	if (free_list != nullptr)
+	{
+		free_list->prev = used_alloc_info;
+		used_alloc_info->next = free_list;
+		free_list = used_alloc_info;
+	}
+	else
+	{
+		free_list = used_alloc_info;
+	}
+}
+
+size_t MemoryManager::GetTotalMemoryAllocations()
+{
+	AllocInfo* head = used_list;
+	size_t ret = 0;
+
+	while (head != nullptr)
+	{
+		ret += head->mem_size;
+		head = head->next;
+	}
+
+	return ret;
 }
 
 #ifdef ANJING_OVERRIDE_GLOBAL_NEW
