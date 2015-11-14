@@ -8,11 +8,11 @@ namespace anjing
 		struct AllocInfo
 		{
 			AllocInfo* prev;
-			AllocInfo* next;
+			AllocInfo* next;						
 			void* mem;
 			char* filename;
-			unsigned int line;
-			size_t mem_size;
+			unsigned int line;			
+			size_t mem_size; // total memory allocated by MemoryManager for this allocation
 		};
 
 		class MemoryManager
@@ -47,13 +47,14 @@ namespace anjing
 			///
 			/// \brief Allocate memory with input of filename and line number of where the allocation is called
 			///
+			/// if \a ANJING_OVERRIDE_GLOBAL_NEW is defined, then operator new, and new[] will instead call this function
 			void* Alloc(unsigned int numbytes, char* filename, unsigned int line);
 
 			///
 			/// \brief Deallocate memory
 			///
 			/// if \a address is nullptr, the function does nothing
-			/// if \a address is not allocated using Alloc, it causes undefined behaviour
+			/// if \a address is not allocated using Alloc(or by global operator new overrided by MemoryManager), it causes undefined behaviour
 			/// this function does not change the value of \a address itself, hence it still points to the same (now invalid) location
 			///
 			void Free(void* address);
@@ -73,6 +74,13 @@ namespace anjing
 			///
 			/// implementation detail : O(n) operation as this function iterates over all alocations.
 			size_t GetTotalMemoryAllocations();
+
+			///
+			/// \brief Returns AllocInfo from the address. Adress is assumed to be allocated by MemoryManager
+			///
+			/// if \a address is nullptr, this function will return nullptr
+			/// if \a address is not allocated using MemoryManager::All(or by global operator new overrided by MemoryManager), it causes undefined behaviour
+			static AllocInfo* GetAllocInfo(void* address);
 		};
 
 	}

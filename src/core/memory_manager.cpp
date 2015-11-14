@@ -70,7 +70,7 @@ void MemoryManager::Free(void* address)
 	if (address == nullptr)
 		return;
 
-	AllocInfo* alloc_info = (AllocInfo*)((void**)(((char*)address) - sizeof(AllocInfo*)))[0];
+	AllocInfo* alloc_info = GetAllocInfo(address);
 
 	free(alloc_info->mem);
 	RemoveUsedAllocInfo(alloc_info);
@@ -131,6 +131,7 @@ AllocInfo* MemoryManager::GetFreeAllocInfo()
 	{
 		AllocInfo* ret = free_list;
 		free_list = free_list->next;
+		free_list->prev = nullptr;
 		ret->next = nullptr;
 		return ret;
 	}
@@ -149,10 +150,20 @@ void MemoryManager::RemoveUsedAllocInfo(AllocInfo* used_alloc_info)
 	if (used_alloc_info->prev != nullptr)
 	{
 		used_alloc_info->prev->next = used_alloc_info->next;
+		
+		if (used_alloc_info->next != nullptr)
+		{
+			used_alloc_info->next->prev = used_alloc_info->prev;
+		}
 	}
 	else
 	{
 		used_list = used_list->next;
+
+		if (used_list != nullptr)
+		{			
+			used_list->prev = nullptr;
+		}			
 	}
 
 	reset_alloc_info(used_alloc_info);
@@ -182,6 +193,16 @@ size_t MemoryManager::GetTotalMemoryAllocations()
 	}
 
 	return ret;
+}
+
+AllocInfo* MemoryManager::GetAllocInfo(void* address)
+{
+	if (address == nullptr)
+		return nullptr;
+
+	AllocInfo* alloc_info = (AllocInfo*)((void**)(((char*)address) - sizeof(AllocInfo*)))[0];
+
+	return alloc_info;
 }
 
 #ifdef ANJING_OVERRIDE_GLOBAL_NEW
