@@ -37,6 +37,11 @@ protected:
 
 		delete filename;
 	}	
+
+	void* DoAllocation()
+	{
+		return MemoryManager::GetInstance().Alloc(sizeof(TestClass), filename, line);
+	}
 };
 
 // test two call to MemoryManager::GetInstance() will both return the same object
@@ -53,7 +58,7 @@ TEST_F(MemoryManagerTest, AllocNormal)
 {
 	MemoryManager& mm = MemoryManager::GetInstance();	
 	
-	void* alloc_mem = mm.Alloc(sizeof(TestClass), filename, line);	
+	void* alloc_mem = DoAllocation();
 
 	EXPECT_NE(alloc_mem, nullptr);
 	
@@ -76,7 +81,7 @@ TEST_F(MemoryManagerTest, DeallocNormal)
 {
 	MemoryManager& mm = MemoryManager::GetInstance();	
 
-	void* alloc_mem = mm.Alloc(sizeof(TestClass), filename, line);
+	void* alloc_mem = DoAllocation();
 	AllocInfo* allocinfo = mm.GetAllocInfo(alloc_mem);
 
 	mm.Free(alloc_mem);
@@ -96,7 +101,7 @@ TEST_F(MemoryManagerTest, MultipleAlloc)
 	
 	for (int i = 0; i < 5; i++)
 	{
-		allocations[i] = mm.Alloc(sizeof(TestClass), filename, line);
+		allocations[i] = DoAllocation();
 	}
 
 	total_one_allocation_size = MemoryManager::GetAllocInfo(allocations[0])->mem_size;
@@ -114,13 +119,13 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc)
 	AllocInfo* allocinfos[5];
 	size_t total_one_allocation_size = 0;
 
-	allocations[0] = mm.Alloc(sizeof(TestClass), filename, line);
+	allocations[0] = DoAllocation();
 	allocinfos[0] = mm.GetAllocInfo(allocations[0]);
 	total_one_allocation_size = allocinfos[0]->mem_size;
 	
-	allocations[1] = mm.Alloc(sizeof(TestClass), filename, line);
+	allocations[1] = DoAllocation();
 	allocinfos[1] = mm.GetAllocInfo(allocations[1]);
-	allocations[2] = mm.Alloc(sizeof(TestClass), filename, line);
+	allocations[2] = DoAllocation();
 	allocinfos[2] = mm.GetAllocInfo(allocations[2]);
 
 	mm.Free(allocations[1]);
