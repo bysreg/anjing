@@ -28,7 +28,7 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then 
       brew update;
       brew tap homebrew/versions;
-      brew upgrade cmake31;
+      brew upgrade homebrew/versions/cmake31;
       brew install sdl2;
       brew install glew;
     fi
