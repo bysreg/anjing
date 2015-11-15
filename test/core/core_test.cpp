@@ -53,8 +53,27 @@ TEST_F(MemoryManagerTest, Singleton)
 	EXPECT_EQ(&mm2, &mm);	
 }
 
-// test one allocation with MemoryManager. 
+// test MemoryManager::Alloc
 TEST_F(MemoryManagerTest, AllocNormal)
+{
+	void* alloc_mem = DoAllocation();
+
+	EXPECT_NE(alloc_mem, nullptr);
+}
+
+// test MemoryManager::GetTotalMemoryAllocations
+TEST_F(MemoryManagerTest, GetTotalMemoryAllocations)
+{
+	EXPECT_EQ(MemoryManager::GetInstance().GetTotalMemoryAllocations(), 0);
+
+	void* alloc_mem = DoAllocation();
+
+	// the memory allocated must be at least the size of the TestClass
+	EXPECT_GE(MemoryManager::GetInstance().GetTotalMemoryAllocations(), sizeof(TestClass));
+}
+
+// test MemoryManager::GetAllocInfo
+TEST_F(MemoryManagerTest, GetAllocInfo)
 {
 	MemoryManager& mm = MemoryManager::GetInstance();	
 	
@@ -110,7 +129,15 @@ TEST_F(MemoryManagerTest, MultipleAlloc)
 	EXPECT_EQ(mm.GetTotalMemoryAllocations(), total_one_allocation_size * 5);
 }
 
-// test deallocation on secondly allocated memory address
+// test allocation & deallocation on this order : 
+// 1) alloc, we name this id 0
+// 2) alloc, we name this id 1
+// 3) alloc, we name this id 2
+// 4) free id 1
+// 5) free id 2
+// 6) alloc, we name this id 3
+// 7) free id 3
+// 8) free id 0
 // this will test deleting AllocInfo element in the middle of the used_list
 TEST_F(MemoryManagerTest, MultipleAllocDealloc)
 {
@@ -119,25 +146,74 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc)
 	AllocInfo* allocinfos[5];
 	size_t total_one_allocation_size = 0;
 
+	// allocate 3 memories
 	allocations[0] = DoAllocation();
 	allocinfos[0] = mm.GetAllocInfo(allocations[0]);
-	total_one_allocation_size = allocinfos[0]->mem_size;
-	
+	total_one_allocation_size = allocinfos[0]->mem_size;	
 	allocations[1] = DoAllocation();
 	allocinfos[1] = mm.GetAllocInfo(allocations[1]);
 	allocations[2] = DoAllocation();
 	allocinfos[2] = mm.GetAllocInfo(allocations[2]);
 
+	// remove (1)
 	mm.Free(allocations[1]);
 
 	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 2 * total_one_allocation_size);
 
-	// the third allocation should now be the first element of the used_list
-	EXPECT_EQ(mm.GetAllocInfo(allocations[2])->prev, nullptr);
-
-	// the third allocation should now be linked to the first allocation
-	EXPECT_EQ(allocinfos[2]->next, allocinfos[0]);
+	// used_list layout : (2)<->(0)
+	// free_list layout : (1)
 	EXPECT_EQ(allocinfos[0]->prev, allocinfos[2]);
-}
+	EXPECT_EQ(allocinfos[0]->next, nullptr);	
+	EXPECT_EQ(allocinfos[1]->prev, nullptr);
+	EXPECT_EQ(allocinfos[1]->next, nullptr);
+	EXPECT_EQ(allocinfos[2]->prev, nullptr);	
+	EXPECT_EQ(allocinfos[2]->next, allocinfos[0]);		
 
-//TEST_F()
+	// remove the third allocation
+	mm.Free(allocations[2]);
+	
+	// used_list layout : (0)
+	// free_list layout : (2)<->(1)
+	EXPECT_EQ(allocinfos[0]->prev, nullptr);
+	EXPECT_EQ(allocinfos[0]->next, nullptr);
+	EXPECT_EQ(allocinfos[1]->prev, allocinfos[2]);
+	EXPECT_EQ(allocinfos[1]->next, nullptr);	
+	EXPECT_EQ(allocinfos[2]->prev, nullptr);
+	EXPECT_EQ(allocinfos[2]->next, allocinfos[1]);
+
+	EXPECT_EQ(mm.GetTotalMemoryAllocations(),  total_one_allocation_size);
+
+	// allocate the 4th memory
+	allocations[3] = DoAllocation();
+	allocinfos[3] = mm.GetAllocInfo(allocations[3]);
+
+	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 2 * total_one_allocation_size);
+
+	// used_list layout : (2)<->(0)
+	// free_list layout : (1) 
+	// note: (2) equals to (3)
+	EXPECT_EQ(allocinfos[0]->prev, allocinfos[2]);
+	EXPECT_EQ(allocinfos[0]->next, nullptr);
+	EXPECT_EQ(allocinfos[1]->prev, nullptr);
+	EXPECT_EQ(allocinfos[1]->next, nullptr);
+	EXPECT_EQ(allocinfos[2]->prev, nullptr);
+	EXPECT_EQ(allocinfos[2]->next, allocinfos[0]);
+	EXPECT_EQ(allocinfos[3], allocinfos[2]);
+
+	// remove first & fourth allocation
+	mm.Free(allocations[0]);
+	mm.Free(allocations[3]);
+
+	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0);
+
+	// used_list layout : --
+	// free_list layout : (2)<->(0)<->(1) 
+	// note: (2) equals to (3)
+	EXPECT_EQ(allocinfos[0]->prev, allocinfos[2]);
+	EXPECT_EQ(allocinfos[0]->next, allocinfos[1]);
+	EXPECT_EQ(allocinfos[1]->prev, allocinfos[0]);
+	EXPECT_EQ(allocinfos[1]->next, nullptr);
+	EXPECT_EQ(allocinfos[2]->prev, nullptr);
+	EXPECT_EQ(allocinfos[2]->next, allocinfos[0]);
+	EXPECT_EQ(allocinfos[3], allocinfos[2]);
+}
