@@ -17,19 +17,19 @@ dist: trusty
   
 before_install:  
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then 
-		sudo apt-get update -qq;
-		sudo apt-get install -y libsdl2-dev;
-		sudo apt-get install -y libglew-dev;
-		export DISPLAY=:99.0;
-		sh -e /etc/init.d/xvfb start;
-		sleep 3;
-	fi    
+      sudo apt-get update -qq;
+      sudo apt-get install -y libsdl2-dev;
+      sudo apt-get install -y libglew-dev;
+      export DISPLAY=:99.0;
+      sh -e /etc/init.d/xvfb start;
+      sleep 3;
+    fi    
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then 
-		brew update;
-		brew upgrade cmake;
-		brew install sdl2;
-		brew install glew;
-	fi
+      brew update;
+      brew upgrade cmake;
+      brew install sdl2;
+      brew install glew;
+    fi
   
 before_script:
   - cd build
