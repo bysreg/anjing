@@ -16,7 +16,7 @@ sudo: required
 dist: trusty
   
 before_install:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then 
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       sudo apt-get update -qq;
       sudo apt-get install -y libsdl2-dev;
       sudo apt-get install -y libglew-dev;
@@ -27,7 +27,8 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then 
       brew update;
       brew tap homebrew/versions;
-      brew upgrade cmake31; # OSX travis' default cmake version is < 3.1.0
+      # OSX travis' default cmake version is < 3.1.0
+      brew upgrade cmake31;
       brew install sdl2;
       brew install glew;
     fi
