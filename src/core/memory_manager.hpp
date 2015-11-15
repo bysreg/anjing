@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstddef>
+
 namespace anjing
 {
 	namespace core
@@ -12,7 +14,7 @@ namespace anjing
 			void* mem;
 			char* filename;
 			unsigned int line;			
-			size_t mem_size; // total memory allocated by MemoryManager for this allocation
+			std::size_t mem_size; // total memory allocated by MemoryManager for this allocation
 		};
 
 		class MemoryManager
@@ -73,7 +75,7 @@ namespace anjing
 			/// \brief Returns total memory allocations. 
 			///
 			/// implementation detail : O(n) operation as this function iterates over all alocations.
-			size_t GetTotalMemoryAllocations();
+			std::size_t GetTotalMemoryAllocations();
 
 			///
 			/// \brief Returns AllocInfo from the address. Adress is assumed to be allocated by MemoryManager
