@@ -129,9 +129,13 @@ AllocInfo* MemoryManager::GetFreeAllocInfo()
 	// check if there is any free alloc info 
 	if (free_list != nullptr)
 	{
-		AllocInfo* ret = free_list;
+		// detach the first element of free_list
+		AllocInfo* ret = free_list;		
+
 		free_list = free_list->next;
-		free_list->prev = nullptr;
+		if(free_list != nullptr)
+			free_list->prev = nullptr;		
+
 		ret->next = nullptr;
 		return ret;
 	}
@@ -205,23 +209,24 @@ AllocInfo* MemoryManager::GetAllocInfo(void* address)
 	return alloc_info;
 }
 
+//#define ANJING_OVERRIDE_GLOBAL_NEW
 #ifdef ANJING_OVERRIDE_GLOBAL_NEW
 void * operator new(std::size_t n) throw(std::bad_alloc)
 {
-	return MemoryManager::GetInstance()->Alloc(n, __FILE__, __LINE__);
+	return MemoryManager::GetInstance().Alloc(n, __FILE__, __LINE__);
 }
 
 void operator delete(void * p) throw()
 {
-	MemoryManager::GetInstance()->Free(p);
+	MemoryManager::GetInstance().Free(p);
 }
 
 void *operator new[](std::size_t n) throw(std::bad_alloc)
 {
-	return MemoryManager::GetInstance()->Alloc(n, __FILE__, __LINE__);
+	return MemoryManager::GetInstance().Alloc(n, __FILE__, __LINE__);
 }
 void operator delete[](void *p) throw()
 {
-	MemoryManager::GetInstance()->Free(p);
+	MemoryManager::GetInstance().Free(p);
 }
 #endif

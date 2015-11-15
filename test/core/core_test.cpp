@@ -32,10 +32,10 @@ protected:
 	{
 		::testing::Test::TearDown();
 
+		delete filename; // this has to be called before MemoryManager cleans. Because operaetor new and delete might be override by MemoryManager
+
 		// we need to clean down memory manager
 		MemoryManager::GetInstance().Clean();
-
-		delete filename;
 	}	
 
 	void* DoAllocation()
@@ -138,8 +138,7 @@ TEST_F(MemoryManagerTest, MultipleAlloc)
 // 6) alloc, we name this id 3
 // 7) free id 3
 // 8) free id 0
-// this will test deleting AllocInfo element in the middle of the used_list
-TEST_F(MemoryManagerTest, MultipleAllocDealloc)
+TEST_F(MemoryManagerTest, MultipleAllocDealloc1)
 {
 	MemoryManager& mm = MemoryManager::GetInstance();	
 	void* allocations[5];
@@ -169,7 +168,7 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc)
 	EXPECT_EQ(allocinfos[2]->prev, nullptr);	
 	EXPECT_EQ(allocinfos[2]->next, allocinfos[0]);		
 
-	// remove the third allocation
+	// remove (2)
 	mm.Free(allocations[2]);
 	
 	// used_list layout : (0)
@@ -183,7 +182,7 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc)
 
 	EXPECT_EQ(mm.GetTotalMemoryAllocations(),  total_one_allocation_size);
 
-	// allocate the 4th memory
+	// allocate (3)
 	allocations[3] = DoAllocation();
 	allocinfos[3] = mm.GetAllocInfo(allocations[3]);
 
@@ -200,7 +199,7 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc)
 	EXPECT_EQ(allocinfos[2]->next, allocinfos[0]);
 	EXPECT_EQ(allocinfos[3], allocinfos[2]);
 
-	// remove first & fourth allocation
+	// remove (0) & (3) allocation
 	mm.Free(allocations[0]);
 	mm.Free(allocations[3]);
 
@@ -216,4 +215,53 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc)
 	EXPECT_EQ(allocinfos[2]->prev, nullptr);
 	EXPECT_EQ(allocinfos[2]->next, allocinfos[0]);
 	EXPECT_EQ(allocinfos[3], allocinfos[2]);
+}
+
+// test allocation & deallocation on this order : 
+// 1) alloc, we name this id 0
+// 2) alloc, we name this id 1
+// 3) free id 1
+// 4) free id 0
+// 5) alloc 2
+// 6) alloc 3
+TEST_F(MemoryManagerTest, MultipleAllocDealloc2)
+{
+	MemoryManager& mm = MemoryManager::GetInstance();
+	void* allocations[5];
+	AllocInfo* allocinfos[5];
+	size_t total_one_allocation_size = 0;
+
+	// allocate 2 memories
+	allocations[0] = DoAllocation();
+	allocinfos[0] = mm.GetAllocInfo(allocations[0]);
+	total_one_allocation_size = allocinfos[0]->mem_size;
+	allocations[1] = DoAllocation();
+	allocinfos[1] = mm.GetAllocInfo(allocations[1]);	
+
+	// remove (1)
+	mm.Free(allocations[1]);
+
+	EXPECT_EQ(mm.GetTotalMemoryAllocations(), total_one_allocation_size);
+
+	// used_list layout : (0)
+	// free_list layout : (1)
+	EXPECT_EQ(allocinfos[0]->prev, nullptr);
+	EXPECT_EQ(allocinfos[0]->next, nullptr);
+	EXPECT_EQ(allocinfos[1]->prev, nullptr);
+	EXPECT_EQ(allocinfos[1]->next, nullptr);	
+
+	// remove (0)
+	mm.Free(allocations[0]);
+
+	// used_list layout : --
+	// free_list layout : (0)<->(1)
+	EXPECT_EQ(allocinfos[0]->prev, nullptr);
+	EXPECT_EQ(allocinfos[0]->next, allocinfos[1]);
+	EXPECT_EQ(allocinfos[1]->prev, allocinfos[0]);
+	EXPECT_EQ(allocinfos[1]->next, nullptr);	
+
+	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0);
+
+	DoAllocation();
+	DoAllocation();
 }
