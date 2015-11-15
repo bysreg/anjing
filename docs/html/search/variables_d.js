@@ -6,5 +6,6 @@ var searchData=
   ['n4_5f',['n4_',['../class_predicate4_test.html#ae42e23ce11e3f1c6b813496d6180cc67',1,'Predicate4Test::n4_()'],['../class_predicate5_test.html#a5d66aa58badddc8d3d8070a93c0558d6',1,'Predicate5Test::n4_()']]],
   ['n5_5f',['n5_',['../class_predicate5_test.html#a96badba6366235a2771b27ea014bd9ce',1,'Predicate5Test']]],
   ['name_5f',['name_',['../gtest_8cc.html#a4d739cc5d335052eb9f5b2ca559b81d1',1,'gtest.cc']]],
+  ['next',['next',['../structanjing_1_1core_1_1_alloc_info.html#a48cec3163708f32e1ec497ee36e9fde4',1,'anjing::core::AllocInfo']]],
   ['no_5fcatch_5fexceptions_5fflag',['NO_CATCH_EXCEPTIONS_FLAG',['../namespacegtest__catch__exceptions__test.html#af3e2719448df6b24d78c870e5b586e8b',1,'gtest_catch_exceptions_test']]]
 ];

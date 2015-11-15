@@ -209,7 +209,6 @@ AllocInfo* MemoryManager::GetAllocInfo(void* address)
 	return alloc_info;
 }
 
-//#define ANJING_OVERRIDE_GLOBAL_NEW
 #ifdef ANJING_OVERRIDE_GLOBAL_NEW
 void * operator new(std::size_t n) throw(std::bad_alloc)
 {

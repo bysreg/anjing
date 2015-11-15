@@ -15,7 +15,7 @@ var searchData=
   ['checkflags',['CheckFlags',['../classtesting_1_1_init_google_test_test.html#aac37d5d592202bf6614b02fe0b4da9d2',1,'testing::InitGoogleTestTest']]],
   ['checkforunknownfiles',['CheckForUnknownFiles',['../classupload_1_1_version_control_system.html#ad2923d691a1b1047e9359c5b7c1c103f',1,'upload::VersionControlSystem']]],
   ['choplowbits',['ChopLowBits',['../namespacetesting_1_1internal.html#a2c54b453387aa8a18f2f3e09f10b5a7d',1,'testing::internal']]],
-  ['clean',['Clean',['../classanjing_1_1_app.html#abfa119eea6fe448f6c1328d66d86b2e5',1,'anjing::App']]],
+  ['clean',['Clean',['../classanjing_1_1_app.html#abfa119eea6fe448f6c1328d66d86b2e5',1,'anjing::App::Clean()'],['../classanjing_1_1core_1_1_memory_manager.html#ad4661403ae88cd27c19841062c1a2bfd',1,'anjing::core::MemoryManager::Clean()']]],
   ['clear',['Clear',['../class_queue.html#acfdd5f9f7e936ca30dcf877370ef9510',1,'Queue']]],
   ['clearadhoctestresult',['ClearAdHocTestResult',['../classtesting_1_1internal_1_1_unit_test_impl.html#ac44629cc4fa12b788779d4aa76939510',1,'testing::internal::UnitTestImpl']]],
   ['clearnonadhoctestresult',['ClearNonAdHocTestResult',['../classtesting_1_1internal_1_1_unit_test_impl.html#a96c2a5b23541ef01020c402644563ba1',1,'testing::internal::UnitTestImpl']]],

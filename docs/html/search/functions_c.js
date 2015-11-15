@@ -8,5 +8,6 @@ var searchData=
   ['listtests',['ListTests',['../structtesting_1_1_flags.html#a825a5d763a31fe6c28f543990bd336df',1,'testing::Flags']]],
   ['listtestsmatchingfilter',['ListTestsMatchingFilter',['../classtesting_1_1internal_1_1_unit_test_impl.html#ad2cfedef41d3d29aad23c2c64214e6f3',1,'testing::internal::UnitTestImpl']]],
   ['lock',['Lock',['../classtesting_1_1internal_1_1_mutex.html#ae7e2191886c00182176b23c4f4d049f8',1,'testing::internal::Mutex']]],
+  ['log',['Log',['../namespaceanjing.html#adc6233322069ed121c78b135d19ecad1',1,'anjing']]],
   ['logtostderr',['LogToStderr',['../namespacetesting_1_1internal.html#a06b1b20029fbd1dbeb59752f914fab84',1,'testing::internal']]]
 ];
