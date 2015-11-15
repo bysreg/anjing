@@ -29,5 +29,6 @@ var searchData=
   ['doublele',['DoubleLE',['../namespacetesting.html#ae10e2bb304b74abd1b06a2d912a8b43b',1,'testing']]],
   ['doublenearpredformat',['DoubleNearPredFormat',['../namespacetesting_1_1internal.html#a4f70b36c624b54c2362aeecc2f05ee8c',1,'testing::internal']]],
   ['downcast_5f',['DownCast_',['../namespacetesting_1_1internal.html#a1a1a1aed3fe00908b8a45d5ab4a33665',1,'testing::internal']]],
-  ['dummy_5f',['dummy_',['../classtesting_1_1internal_1_1_type_id_helper.html#a372268b1520d965d0bdf01ebad3d270e',1,'testing::internal::TypeIdHelper']]]
+  ['dummy_5f',['dummy_',['../classtesting_1_1internal_1_1_type_id_helper.html#a372268b1520d965d0bdf01ebad3d270e',1,'testing::internal::TypeIdHelper']]],
+  ['dump',['Dump',['../classanjing_1_1core_1_1_memory_manager.html#aeb53025d1f9122c5e1bcf8e80f327b2c',1,'anjing::core::MemoryManager']]]
 ];

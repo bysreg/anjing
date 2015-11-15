@@ -16,6 +16,8 @@ var searchData=
   ['adhoctest',['AdHocTest',['../gtest__output__test___8cc.html#a36cd4d21174efaa3066237d716028d49',1,'gtest_output_test_.cc']]],
   ['adjustforparameterizedtests',['AdjustForParameterizedTests',['../classgtest__filter__unittest_1_1_g_test_filter_unit_test.html#a11c48bf404bca6806b14a1a71d169ace',1,'gtest_filter_unittest::GTestFilterUnitTest']]],
   ['all_5ftests',['ALL_TESTS',['../namespacegtest__shuffle__test.html#aede96442ff7a7c9ac9a8baaaeb48e86c',1,'gtest_shuffle_test']]],
+  ['alloc',['Alloc',['../classanjing_1_1core_1_1_memory_manager.html#a0a93fe176d09f11b37ae3c532031af12',1,'anjing::core::MemoryManager']]],
+  ['allocinfo',['AllocInfo',['../structanjing_1_1core_1_1_alloc_info.html',1,'anjing::core']]],
   ['allowsgenericstreaming',['AllowsGenericStreaming',['../classtesting_1_1gtest__printers__test_1_1_allows_generic_streaming.html',1,'testing::gtest_printers_test']]],
   ['allowsgenericstreamingandimplicitconversiontemplate',['AllowsGenericStreamingAndImplicitConversionTemplate',['../classtesting_1_1gtest__printers__test_1_1_allows_generic_streaming_and_implicit_conversion_template.html',1,'testing::gtest_printers_test']]],
   ['allowsgenericstreamingtemplate',['AllowsGenericStreamingTemplate',['../classtesting_1_1gtest__printers__test_1_1_allows_generic_streaming_template.html',1,'testing::gtest_printers_test']]],
@@ -27,6 +29,12 @@ var searchData=
   ['alwaysfalse',['AlwaysFalse',['../namespacetesting_1_1internal.html#a4b24c851ab13569b1b15b3d259b60d2e',1,'testing::internal']]],
   ['alwaystrue',['AlwaysTrue',['../namespacetesting_1_1internal.html#a922c9da63cd4bf94fc473b9ecac76414',1,'testing::internal']]],
   ['anjing',['anjing',['../namespaceanjing.html',1,'']]],
+  ['anjing_5fenable_5flog',['ANJING_ENABLE_LOG',['../log_8hpp.html#a2aaad1198c1d704d8e059705f6a8eaf9',1,'log.hpp']]],
+  ['anjing_5flog',['ANJING_LOG',['../log_8hpp.html#a1f2ad34952dc65983d53dabd1b748803',1,'log.hpp']]],
+  ['anjing_5flog_5ftest',['ANJING_LOG_TEST',['../log_8hpp.html#ad61d22e502c65b85ee5792e2404da907',1,'log.hpp']]],
+  ['anjing_5flogf',['ANJING_LOGF',['../log_8hpp.html#ac44adba256523613429fcc6a306e6c8a',1,'log.hpp']]],
+  ['anjing_5flogw',['ANJING_LOGW',['../log_8hpp.html#a1998f5f8826f919a5f1d9cc5a30c00c8',1,'log.hpp']]],
+  ['anjing_5fshow_5flog_5finvoke_5flocation',['ANJING_SHOW_LOG_INVOKE_LOCATION',['../log_8hpp.html#aabc316e1f2fc5d5cdc514ed76f31be96',1,'log.hpp']]],
   ['anonymousenum',['AnonymousEnum',['../gtest-printers__test_8cc.html#a7a5ee9fe858568a85d80af1312aefb8b',1,'gtest-printers_test.cc']]],
   ['app',['App',['../classanjing_1_1_app.html',1,'anjing']]],
   ['app_2ecpp',['app.cpp',['../app_8cpp.html',1,'']]],
@@ -100,5 +108,6 @@ var searchData=
   ['assertstringarrayeq',['AssertStringArrayEq',['../classtesting_1_1_init_google_test_test.html#af32acd91b1185c6868072009dce55a7b',1,'testing::InitGoogleTestTest']]],
   ['atomic_5fcode',['atomic_code',['../classpump_1_1_code_node.html#ac7251110cc987c709e0e17d95521993e',1,'pump.CodeNode.atomic_code()'],['../classpump_1_1_var_node.html#ad6bef6a8577b994fbe9ccddf3c82d2fc',1,'pump.VarNode.atomic_code()']]],
   ['auth_5ffunction',['auth_function',['../classupload_1_1_abstract_rpc_server.html#aee0090a3bcf07b913a7dd596a5dabb8f',1,'upload::AbstractRpcServer']]],
-  ['authenticated',['authenticated',['../classupload_1_1_abstract_rpc_server.html#a692955750c802e461c6336d3000cd365',1,'upload.AbstractRpcServer.authenticated()'],['../classupload_1_1_http_rpc_server.html#aaa356e2491537dd0d4bfc5b1bb0fec96',1,'upload.HttpRpcServer.authenticated()']]]
+  ['authenticated',['authenticated',['../classupload_1_1_abstract_rpc_server.html#a692955750c802e461c6336d3000cd365',1,'upload.AbstractRpcServer.authenticated()'],['../classupload_1_1_http_rpc_server.html#aaa356e2491537dd0d4bfc5b1bb0fec96',1,'upload.HttpRpcServer.authenticated()']]],
+  ['core',['core',['../namespaceanjing_1_1core.html',1,'anjing']]]
 ];

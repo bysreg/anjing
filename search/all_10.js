@@ -40,7 +40,7 @@ var searchData=
   ['osstacktracegetterinterface',['OsStackTraceGetterInterface',['../classtesting_1_1internal_1_1_os_stack_trace_getter_interface.html',1,'testing::internal']]],
   ['osstacktracegetterinterface',['OsStackTraceGetterInterface',['../classtesting_1_1internal_1_1_os_stack_trace_getter_interface.html#afbe9eb0ca8775fbb98ff0720011b6708',1,'testing::internal::OsStackTraceGetterInterface']]],
   ['output',['Output',['../classpump_1_1_output.html',1,'pump']]],
-  ['output',['Output',['../structtesting_1_1_flags.html#a507916734a6d7ff2dd02891d7849f2d3',1,'testing::Flags::Output()'],['../classgtest__test__utils_1_1_subprocess.html#a170f722b867e51f3e97b5b60399988cf',1,'gtest_test_utils.Subprocess.output()'],['../structtesting_1_1_flags.html#a8c8289b3af9310744bc25280e3980e4b',1,'testing::Flags::output()'],['../namespacegtest__output__test.html#a7d428bb6e16eda248484d1428715858b',1,'gtest_output_test.output()']]],
+  ['output',['output',['../classgtest__test__utils_1_1_subprocess.html#a170f722b867e51f3e97b5b60399988cf',1,'gtest_test_utils.Subprocess.output()'],['../structtesting_1_1_flags.html#a8c8289b3af9310744bc25280e3980e4b',1,'testing::Flags::output()'],['../structtesting_1_1_flags.html#a507916734a6d7ff2dd02891d7849f2d3',1,'testing::Flags::Output(const char *output)'],['../namespacegtest__output__test.html#a7d428bb6e16eda248484d1428715858b',1,'gtest_output_test.output()']]],
   ['output_5fdir',['output_dir',['../namespaceversiongenerate.html#a66aeb3b9df50fe61aa16e436b75f5a9a',1,'versiongenerate']]],
   ['output_5fdir_5f',['output_dir_',['../classgtest__xml__outfiles__test_1_1_g_test_x_m_l_out_files_test.html#aa5c31cd97047bc1d3060f4d27bc956a4',1,'gtest_xml_outfiles_test::GTestXMLOutFilesTest']]]
 ];

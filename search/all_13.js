@@ -1,7 +1,7 @@
 var searchData=
 [
   ['random',['Random',['../classtesting_1_1internal_1_1_random.html',1,'testing::internal']]],
-  ['random',['random',['../classtesting_1_1internal_1_1_unit_test_impl.html#ab3b45b5eb4d583219a3602011ea44347',1,'testing::internal::UnitTestImpl::random()'],['../classtesting_1_1internal_1_1_random.html#a6e112be5e7cce00551f6383025f69460',1,'testing::internal::Random::Random()']]],
+  ['random',['Random',['../classtesting_1_1internal_1_1_random.html#a6e112be5e7cce00551f6383025f69460',1,'testing::internal::Random::Random()'],['../classtesting_1_1internal_1_1_unit_test_impl.html#ab3b45b5eb4d583219a3602011ea44347',1,'testing::internal::UnitTestImpl::random()']]],
   ['random_5fseed',['random_seed',['../structtesting_1_1_flags.html#a4728bce63433f711205fd7b427e57f1b',1,'testing::Flags::random_seed()'],['../classtesting_1_1_unit_test.html#a6fa3161a230329e07fc31a339b682a20',1,'testing::UnitTest::random_seed()'],['../classtesting_1_1internal_1_1_unit_test_impl.html#a8ec59a7ab3bad96bccde98ce85ffc864',1,'testing::internal::UnitTestImpl::random_seed()']]],
   ['randomseed',['RandomSeed',['../structtesting_1_1_flags.html#a695cd8b8ab44df5eaa371bacded78c05',1,'testing::Flags']]],
   ['randomseedflag',['RandomSeedFlag',['../namespacegtest__shuffle__test.html#aaf2a94c748f266c4267ac7e7bb3451fd',1,'gtest_shuffle_test']]],
@@ -48,6 +48,7 @@ var searchData=
   ['reporttestpartresult',['ReportTestPartResult',['../classtesting_1_1_scoped_fake_test_part_result_reporter.html#a82531434f51632d98ed7cdcdb10b8b92',1,'testing::ScopedFakeTestPartResultReporter::ReportTestPartResult()'],['../classtesting_1_1_test_part_result_reporter_interface.html#aa2f920e7a5a0a6d0faf19e3727928c22',1,'testing::TestPartResultReporterInterface::ReportTestPartResult()'],['../classtesting_1_1internal_1_1_has_new_fatal_failure_helper.html#a2d2e1faa1f3669b82810df97ac678a27',1,'testing::internal::HasNewFatalFailureHelper::ReportTestPartResult()'],['../classtesting_1_1internal_1_1_default_global_test_part_result_reporter.html#a6081576a23b964cfecab1e424d8044fc',1,'testing::internal::DefaultGlobalTestPartResultReporter::ReportTestPartResult()'],['../classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter.html#ac6dc08eadc4e5a2a64a91d0b6c6b3aad',1,'testing::internal::DefaultPerThreadTestPartResultReporter::ReportTestPartResult()']]],
   ['reseed',['Reseed',['../classtesting_1_1internal_1_1_random.html#adf2f24199318a46f885c78f50d89a69e',1,'testing::internal::Random']]],
   ['reset',['reset',['../classtesting_1_1internal_1_1linked__ptr.html#a95ba3b7b66ed0193c779976c6e126ab6',1,'testing::internal::linked_ptr::reset()'],['../classtesting_1_1internal_1_1scoped__ptr.html#acac03266a43359801aff0de5c990bec0',1,'testing::internal::scoped_ptr::reset()']]],
+  ['reset_5falloc_5finfo',['reset_alloc_info',['../memory__manager_8cpp.html#a396987334c3a91d394f34c6bda15f813',1,'memory_manager.cpp']]],
   ['rest_5fof_5fline_5fregex',['REST_OF_LINE_REGEX',['../namespacepump.html#a9d83d0ef3310ed836f08fadd37b4409d',1,'pump']]],
   ['result',['result',['../classtesting_1_1_test_info.html#addea8766df3b8abe4cc4103218a49a65',1,'testing::TestInfo']]],
   ['rev_5fend',['rev_end',['../classupload_1_1_subversion_v_c_s.html#ac0bb07a099c722b7f8622de4b225904f',1,'upload::SubversionVCS']]],

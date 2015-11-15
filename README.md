@@ -33,6 +33,7 @@ http://bysreg.github.io/anjing/index.html
 - go to /docs, and then run "doxygen" in terminal or cmd
 - to update the documentation on the anjing's github page : 
   - switch to gh-pages branch
+  - merge with the origin's master branch
   - go to /docs, and then run "doxygen" in terminal or cmd
   - note that, HTML_OUTPUT in Doxyfile is set to the project root folder instead of /docs
 
