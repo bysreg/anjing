@@ -14,17 +14,24 @@ os:
 # enable using trusty beta ubuntu
 sudo: required
 dist: trusty
-  
+
+# install build requirements
 before_install:  
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -qq; fi  
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libsdl2-dev; fi  
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libglew-dev; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install sdl2; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install glew; fi  
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then export DISPLAY=:99.0; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sh -e /etc/init.d/xvfb start; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sleep 3; fi
-  
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then 
+      sudo apt-get update -qq;
+      sudo apt-get install -y libsdl2-dev;
+      sudo apt-get install -y libglew-dev;
+      export DISPLAY=:99.0;
+      sh -e /etc/init.d/xvfb start;
+      sleep 3;
+    fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then 
+      brew update;
+      brew upgrade cmake;
+      brew install sdl2;
+      brew install glew;
+    fi
+
 before_script:
   - cd build
   - cmake -Dbuild_test=ON ..
@@ -32,9 +39,11 @@ before_script:
 env:
   - MAKE_TARGET=install
   - MAKE_TARGET=test
-  
+
 script: 
   - make
   - make $MAKE_TARGET
-  - if [ "$MAKE_TARGET" == "install" ]; then cd ..; fi	
-  - if [ "$MAKE_TARGET" == "install" ]; then ./myapp -y; fi
+  - if [ "$MAKE_TARGET" == "install" ]; then
+      cd ..; 
+      ./myapp -y;
+    fi

@@ -9,6 +9,7 @@ Windows: [![Build status](https://ci.appveyor.com/api/projects/status/qw871xxhxl
 - Doxygen 1.8.10 (for docs)
 - CMake 3.1.0
 - Google Test 1.7.0 (included in source)
+- C++ 11 supported compiler
 
 ##For windows :##
 add folder /windows/bin to your path
@@ -24,8 +25,16 @@ add folder /windows/bin to your path
 ##Program's argument :##
 - -y : automatically close the command line program after the main window closes
 
-##Updating Doxygen Documentation :##
 
+##Documentation :##
+http://bysreg.github.io/anjing/index.html
+
+##Updating Doxygen Documentation :##
+- go to /docs, and then run "doxygen" in terminal or cmd
+- to update the documentation on the anjing's github page : 
+  - switch to gh-pages branch
+  - go to /docs, and then run "doxygen" in terminal or cmd
+  - note that, HTML_OUTPUT in Doxyfile is set to the project root folder instead of /docs
 
 ##Building with GTest switched on:##
 - if on linux, 
@@ -39,7 +48,10 @@ add folder /windows/bin to your path
   - run "make test" to run all the tests
   
   
-  
+##C++ 11 features needed :##
+- Deleted functions, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2346.htm
+- Null pointer, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2431.pdf
+- Strongly typed enums, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2347.pdf  
   
   
   

@@ -2,6 +2,12 @@ var searchData=
 [
   ['add_5ffailure',['ADD_FAILURE',['../gtest_8h.html#adc16b5b0a740c39084ea5c9e960e3063',1,'gtest.h']]],
   ['add_5ffailure_5fat',['ADD_FAILURE_AT',['../gtest_8h.html#a448d7e5105b640e892fd8153fbee0b7f',1,'gtest.h']]],
+  ['anjing_5fenable_5flog',['ANJING_ENABLE_LOG',['../log_8hpp.html#a2aaad1198c1d704d8e059705f6a8eaf9',1,'log.hpp']]],
+  ['anjing_5flog',['ANJING_LOG',['../log_8hpp.html#a1f2ad34952dc65983d53dabd1b748803',1,'log.hpp']]],
+  ['anjing_5flog_5ftest',['ANJING_LOG_TEST',['../log_8hpp.html#ad61d22e502c65b85ee5792e2404da907',1,'log.hpp']]],
+  ['anjing_5flogf',['ANJING_LOGF',['../log_8hpp.html#ac44adba256523613429fcc6a306e6c8a',1,'log.hpp']]],
+  ['anjing_5flogw',['ANJING_LOGW',['../log_8hpp.html#a1998f5f8826f919a5f1d9cc5a30c00c8',1,'log.hpp']]],
+  ['anjing_5fshow_5flog_5finvoke_5flocation',['ANJING_SHOW_LOG_INVOKE_LOCATION',['../log_8hpp.html#aabc316e1f2fc5d5cdc514ed76f31be96',1,'log.hpp']]],
   ['assert_5fany_5fthrow',['ASSERT_ANY_THROW',['../gtest_8h.html#affadeef9379fe5aabf6f28d9eab9d3c0',1,'gtest.h']]],
   ['assert_5fdeath_5fif_5fsupported',['ASSERT_DEATH_IF_SUPPORTED',['../gtest-death-test_8h.html#ab2f0f25b46353767179a49ebd15b7345',1,'gtest-death-test.h']]],
   ['assert_5fdouble_5feq',['ASSERT_DOUBLE_EQ',['../gtest_8h.html#a360ed28a372738adca9ac2fa9522e562',1,'gtest.h']]],
