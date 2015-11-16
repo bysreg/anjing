@@ -1,7 +1,6 @@
 #include "core/memory_manager.hpp"
 
 #include <gtest/gtest.h>
-//#include <string>
 
 using namespace anjing;
 using namespace anjing::core;
@@ -43,6 +42,21 @@ protected:
 		return MemoryManager::GetInstance().Alloc(sizeof(TestClass), filename, line);
 	}
 };
+
+// test whether MemoryManager is using ANJING_OVERRIDE_GLOBAL_NEW macro
+// we can't use that macro in unit testing. Because it will mess up allocations done by googletest
+// because in TearDown, MemoryManager will get cleaned.
+TEST_F(MemoryManagerTest, DefinesCheck)
+{
+	MemoryManager& mm = MemoryManager::GetInstance();
+
+	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0);
+	
+	int* a = new int;
+
+	// total allocation will still be zero, if the operator new is not overridden by MemoryManager
+	ASSERT_EQ(mm.GetTotalMemoryAllocations(), 0);
+}
 
 // test two call to MemoryManager::GetInstance() will both return the same object
 TEST_F(MemoryManagerTest, Singleton)
