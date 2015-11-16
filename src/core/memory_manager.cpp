@@ -30,7 +30,7 @@ MemoryManager::MemoryManager() : free_list(nullptr), used_list(nullptr)
 MemoryManager::~MemoryManager()
 {}
 
-void* MemoryManager::Alloc(unsigned int numbytes, char* filename, unsigned int line)
+void* MemoryManager::Alloc(unsigned int numbytes, const char* filename, unsigned int line)
 {
 	AllocInfo* alloc_info = GetFreeAllocInfo();
 	
@@ -92,6 +92,7 @@ void MemoryManager::Dump()
 			head->filename, head->line);
 
 		head = head->next;
+		++index;
 	}
 
 	ANJING_LOG("---------------------------\n");
@@ -209,23 +210,81 @@ AllocInfo* MemoryManager::GetAllocInfo(void* address)
 	return alloc_info;
 }
 
-#ifdef ANJING_OVERRIDE_GLOBAL_NEW
-void * operator new(std::size_t n)
+#ifdef ANJING_REPLACE_GLOBAL_NEW_DELETE
+void* operator new(std::size_t n)
 {
 	return MemoryManager::GetInstance().Alloc(n, __FILE__, __LINE__);
 }
 
-void operator delete(void * p)
+void* operator new[](std::size_t n)
+{
+	return MemoryManager::GetInstance().Alloc(n, __FILE__, __LINE__);
+}
+
+void* operator new(std::size_t n, const std::nothrow_t& tag)
+{
+	return MemoryManager::GetInstance().Alloc(n, __FILE__, __LINE__);
+}
+
+void* operator new[](std::size_t n, const std::nothrow_t& tag)
+{
+	return MemoryManager::GetInstance().Alloc(n, __FILE__, __LINE__);
+}
+
+void operator delete(void* p)
+{
+	MemoryManager::GetInstance().Free(p);
+}
+void operator delete[](void* p)
 {
 	MemoryManager::GetInstance().Free(p);
 }
 
-void *operator new[](std::size_t n)
-{
-	return MemoryManager::GetInstance().Alloc(n, __FILE__, __LINE__);
-}
-void operator delete[](void *p)
+void operator delete(void* p, const std::nothrow_t& tag)
 {
 	MemoryManager::GetInstance().Free(p);
 }
+
+void operator delete[](void* p, const std::nothrow_t& tag)
+{
+	MemoryManager::GetInstance().Free(p);
+}
+#endif
+
+#ifdef ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE
+void* operator new (std::size_t size, const char* file, int line)
+{
+	return MemoryManager::GetInstance().Alloc(size, file, line);
+}
+
+void* operator new[](std::size_t size, const char* file, int line)
+{
+	return MemoryManager::GetInstance().Alloc(size, file, line);
+}
+
+// matching delete needs to be defined eventhough we never call this explicitly
+// from : https://en.wikipedia.org/wiki/Placement_syntax
+// As noted above, there is no placement delete expression. It is not possible 
+// to call any placement operator delete function using a delete expression.[7][15]
+//
+// The placement delete functions are called from placement new expressions.In 
+// particular, they are called if the constructor of the object throws an 
+// exception.In such a circumstance, in order to ensure that the program does 
+// not incur a memory leak, the placement delete functions are called. 
+// A placement new expression first calls the placement operator new function, 
+// then calls the constructor of the object upon the raw storage returned from
+// the allocator function.If the constructor throws an exception, it is 
+// necessary to deallocate that storage before propagating the exception back 
+// to the code that executed the placement new expression, and that is the 
+// purpose of the placement delete functions.
+void operator delete (void* p, const char* file, int line)
+{
+	MemoryManager::GetInstance().Free(p);
+}
+
+void operator delete[](void* p, const char* file, int line)
+{
+	MemoryManager::GetInstance().Free(p);
+}
+
 #endif

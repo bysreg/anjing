@@ -15,6 +15,19 @@ find_package(GLEW REQUIRED)
 
 set(ANJING_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/src")
 
+##### project-wide compile flags #####
+set(ANJING_COMPILE_FLAGS "")
+
+# custom compile flags : 
+set(MYAPP_FORCED_INCLUDE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/myapp/defines.hpp")
+if(WIN32)
+	set(ANJING_COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} /FI\"${MYAPP_FORCED_INCLUDE_FILE}\" ")
+else()
+	set(ANJING_COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} -include\"${MYAPP_FORCED_INCLUDE_FILE}\" ")
+endif()
+
+######################################
+
 add_subdirectory(src)
 
 option(build_test "build_test" OFF)

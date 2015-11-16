@@ -12,7 +12,7 @@ namespace anjing
 			AllocInfo* prev;
 			AllocInfo* next;						
 			void* mem;
-			char* filename;
+			const char* filename;
 			unsigned int line;			
 			std::size_t mem_size; // total memory allocated by MemoryManager for this allocation
 		};
@@ -50,7 +50,7 @@ namespace anjing
 			/// \brief Allocate memory with input of filename and line number of where the allocation is called
 			///
 			/// if \a ANJING_OVERRIDE_GLOBAL_NEW is defined, then operator new, and new[] will instead call this function
-			void* Alloc(unsigned int numbytes, char* filename, unsigned int line);
+			void* Alloc(unsigned int numbytes, const char* filename, unsigned int line);
 
 			///
 			/// \brief Deallocate memory
@@ -62,13 +62,15 @@ namespace anjing
 			void Free(void* address);
 
 			///
-			/// \brief List all the allocated memories that haven't deleted yet 
+			/// \brief List all the allocated memories by MemoryManager that haven't been deleted yet 
 			///
 			void Dump();			
 
 			///
 			/// \brief Removes all allocations. This will make MemoryManager state looks like it is just newly instantiated
 			///
+			/// Be careful to use this function. This will wipe out all allocations. We must make sure no other code has
+			/// ownership of any of the allocations before performing this function. 
 			void Clean();
 
 			///
