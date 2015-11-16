@@ -210,21 +210,21 @@ AllocInfo* MemoryManager::GetAllocInfo(void* address)
 }
 
 #ifdef ANJING_OVERRIDE_GLOBAL_NEW
-void * operator new(std::size_t n) throw(std::bad_alloc)
+void * operator new(std::size_t n)
 {
 	return MemoryManager::GetInstance().Alloc(n, __FILE__, __LINE__);
 }
 
-void operator delete(void * p) throw()
+void operator delete(void * p)
 {
 	MemoryManager::GetInstance().Free(p);
 }
 
-void *operator new[](std::size_t n) throw(std::bad_alloc)
+void *operator new[](std::size_t n)
 {
 	return MemoryManager::GetInstance().Alloc(n, __FILE__, __LINE__);
 }
-void operator delete[](void *p) throw()
+void operator delete[](void *p)
 {
 	MemoryManager::GetInstance().Free(p);
 }
