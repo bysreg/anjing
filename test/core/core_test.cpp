@@ -31,7 +31,7 @@ protected:
 	{
 		::testing::Test::TearDown();
 
-		delete filename; // this has to be called before MemoryManager cleans. Because operaetor new and delete might be override by MemoryManager
+		delete filename; // this has to be called before MemoryManager cleans. Because operator new and delete might be override by MemoryManager
 
 		// we need to clean down memory manager
 		MemoryManager::GetInstance().Clean();
