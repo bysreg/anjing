@@ -10,11 +10,13 @@
 
 	#define Anew new(__FILE__, __LINE__)
 	#define Adelete(M) operator delete(M, __FILE__, __LINE__);
-	
+	#define AdeleteArr(M) operator delete[](M, __FILE__, __LINE__);
+
 #else
 	
 	#define Anew new
-	#define Adelete delete
+	#define Adelete(M) delete M
+	#define AdeleteArr(M) delete[] M
 
 #endif
 

@@ -61,7 +61,7 @@ TEST_F(MemoryOperatorTest, NewDeleteArrCheck)
 
 	EXPECT_GT(MemoryManager::GetInstance().GetTotalMemoryAllocations(), 0);
 
-	Adelete(a);
+	AdeleteArr(a);
 
 	EXPECT_EQ(MemoryManager::GetInstance().GetTotalMemoryAllocations(), 0);
 }
