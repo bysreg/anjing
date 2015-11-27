@@ -4,11 +4,12 @@ project(anjing)
 set(CMAKE_CXX_STANDARD 11) # use c++11
 
 ########## DEBUG CONFIGURATION ########
-## This will add _DEBUG macro if debug configuration is on
-## To switch on debug configuration, supply cmake with
+## This will add some debugging macro if debug configuration is on
+## To switch on debug configuration in linux, supply cmake with
 ##  -DCMAKE_BUILD_TYPE=Debug
+## For Windows, change to Debug mode in Visual Studio
 
-set(CMAKE_CXX_FLAGS_DEBUG "-D_DEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG "-DANJING_DEBUG")
 ######################################
 
 if(WIN32)

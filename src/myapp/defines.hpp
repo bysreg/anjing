@@ -1,7 +1,6 @@
 #pragma once
 
-// for MSVC
-#ifdef _DEBUG
+#ifdef ANJING_DEBUG
 	#define MYAPP_DEBUG
 #endif 
 
