@@ -3,6 +3,14 @@ project(anjing)
 
 set(CMAKE_CXX_STANDARD 11) # use c++11
 
+########## DEBUG CONFIGURATION ########
+## This will add _DEBUG macro if debug configuration is on
+## To switch on debug configuration, supply cmake with
+##  -DCMAKE_BUILD_TYPE=Debug
+
+set(CMAKE_CXX_FLAGS_DEBUG "-D_DEBUG")
+######################################
+
 if(WIN32)
 	set(CMAKE_PREFIX_PATH ${PROJECT_SOURCE_DIR}/windows)
 endif()
@@ -30,6 +38,7 @@ endif()
 
 add_subdirectory(src)
 
+############## TESTS #################
 option(build_test "build_test" OFF)
 if(build_test)
 	
@@ -51,3 +60,4 @@ if(build_test)
 	#find_package(GTest REQUIRED)
 	add_subdirectory(test)
 endif()
+######################################
