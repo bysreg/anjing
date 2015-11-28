@@ -1,9 +1,6 @@
 [![Build Status](https://travis-ci.org/bysreg/anjing.svg?branch=master)](https://travis-ci.org/bysreg/anjing)
 [![Build status](https://ci.appveyor.com/api/projects/status/qw871xxhxlhd0j3a?svg=true)](https://ci.appveyor.com/project/bysreg/anjing)
 
-##Support:##
-- OS : Windows (msvc), Linux (gcc & clang), OSX (gcc & clang)
-
 ##Dependency :##
 - OpenGL 3.0 
 - GLEW 1.12.0
@@ -11,7 +8,7 @@
 - Doxygen 1.8.10 (for docs)
 - CMake 3.1.0
 - Google Test 1.7.0 (included in source)
-- C++ 11 supported compiler
+- C++ 11 supported compiler (msvc for windows, and gcc & clang for linux/osx)
 
 ##For windows :##
 add folder /windows/bin to your path
