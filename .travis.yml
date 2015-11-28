@@ -32,13 +32,15 @@ before_install:
       brew install glew;
     fi
 
-before_script:
-  - cd build
-  - cmake -Dbuild_test=ON ..
-
 env:
   - MAKE_TARGET=install
   - MAKE_TARGET=test
+  - CMAKE_BUILD_TYPE=Debug
+  - CMAKE_BUILD_TYPE=Release
+
+before_script:
+  - cd build
+  - cmake -Dbuild_test=ON -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ..
 
 script: 
   - make
