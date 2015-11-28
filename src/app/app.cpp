@@ -18,7 +18,8 @@ int App::StartApplication(App* app, int width, int height, int fps, const string
 		return -1;
 	}
 
-	SDL_Window *window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
+	string win_title = title + " (" + std::to_string(fps) + " fps) ";
+	SDL_Window *window = SDL_CreateWindow(win_title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 	if (window == NULL)
 	{
 		cerr << "SDL_CreateWindow error : " << SDL_GetError() << endl;
