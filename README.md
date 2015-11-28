@@ -1,6 +1,8 @@
-Linux + OSX (GCC & CLang): [![Build Status](https://travis-ci.org/bysreg/anjing.svg?branch=master)](https://travis-ci.org/bysreg/anjing)
+[![Build Status](https://travis-ci.org/bysreg/anjing.svg?branch=master)](https://travis-ci.org/bysreg/anjing)
+[![Build status](https://ci.appveyor.com/api/projects/status/qw871xxhxlhd0j3a?svg=true)](https://ci.appveyor.com/project/bysreg/anjing)
 
-Windows: [![Build status](https://ci.appveyor.com/api/projects/status/qw871xxhxlhd0j3a?svg=true)](https://ci.appveyor.com/project/bysreg/anjing)
+##Support:##
+- OS : Windows (msvc), Linux (gcc & clang), OSX (gcc & clang)
 
 ##Dependency :##
 - OpenGL 3.0 
