@@ -24,12 +24,19 @@ namespace anjing {
 #define ANJING_MULTI_LINE_MACRO_BEGIN do {
 
 #ifdef _MSC_VER
-#define ANJING_MULTI_LINE_MACRO_END \
-	__pragma(warning(push)) \
-	__pragma(warning(disable:4127)) \
-	} while(0) \
-	__pragma(warning(pop))
+
+	#define ANJING_DISABLE_MSVC_4127_WARNING __pragma(warning(push)) __pragma(warning(disable:4127))
+	#define ANJING_MSVC_WARNING_POP __pragma(warning(pop))
+
+	#define ANJING_MULTI_LINE_MACRO_END \
+		ANJING_DISABLE_MSVC_4127_WARNING\
+		} while(0) \
+		ANJING_MSVC_WARNING_POP
 #else
+	
+	#define ANJING_DISABLE_MSVC_4127_WARNING	
+	#define ANJING_MSVC_WARNING_POP
+
 	#define ANJING_MULTI_LINE_MACRO_END }while(0)
 #endif
 
@@ -39,8 +46,7 @@ namespace anjing {
 // more info here : http://stackoverflow.com/questions/1644868/c-define-macro-for-debug-printing/1644898#1644898
 #define ANJING_LOG(message)\
 	ANJING_MULTI_LINE_MACRO_BEGIN\
-		__pragma(warning(push)) \
-		__pragma(warning(disable:4127)) \
+		ANJING_DISABLE_MSVC_4127_WARNING\
 		if (ANJING_LOG_TEST == 1){\
 			if(ANJING_SHOW_LOG_INVOKE_LOCATION == 1)\
 			{\
@@ -51,24 +57,22 @@ namespace anjing {
 				std::cout << message << std::endl;\
 			}\
 		}\
-		__pragma(warning(pop))\
+		ANJING_MSVC_WARNING_POP\
 	ANJING_MULTI_LINE_MACRO_END
 
 #define ANJING_LOGF(format, ...)\
 	ANJING_MULTI_LINE_MACRO_BEGIN\
-		__pragma(warning(push)) \
-		__pragma(warning(disable:4127)) \
+		ANJING_DISABLE_MSVC_4127_WARNING\
 		if (ANJING_LOG_TEST == 1){\
 			anjing::Log(__FILE__, __LINE__, format, ## __VA_ARGS__);\
 		}\
-		__pragma(warning(pop))\
+		ANJING_MSVC_WARNING_POP\
 	ANJING_MULTI_LINE_MACRO_END
 
 //in wide char
 #define ANJING_LOGW(message)\
 	ANJING_MULTI_LINE_MACRO_BEGIN\
-		__pragma(warning(push)) \
-		__pragma(warning(disable:4127)) \
+		ANJING_DISABLE_MSVC_4127_WARNING\
 		if (ANJING_LOG_TEST == 1)\
 		{\
 			if (ANJING_SHOW_LOG_INVOKE_LOCATION == 1)\
@@ -80,5 +84,5 @@ namespace anjing {
 				std::wcout << message << " (log invoked from : " << __FILE__ << ":" << __LINE__ << ")" << std::endl;\
 			}\
 		}\
-		__pragma(warning(pop))\
+		ANJING_MSVC_WARNING_POP\
 	ANJING_MULTI_LINE_MACRO_END
