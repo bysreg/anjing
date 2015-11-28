@@ -9,7 +9,15 @@ set(CMAKE_CXX_STANDARD 11) # use c++11
 ##  -DCMAKE_BUILD_TYPE=Debug
 ## For Windows, change to Debug mode in Visual Studio
 
-set(CMAKE_CXX_FLAGS_DEBUG "-DANJING_DEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DANJING_DEBUG")
+
+## turn on warning flags
+if(WIN32)
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /W4")
+else()
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
+endif()
+
 ######################################
 
 if(WIN32)
@@ -27,7 +35,8 @@ set(ANJING_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/src")
 ##### project-wide compile flags #####
 set(ANJING_COMPILE_FLAGS "")
 
-# custom compile flags : 
+## custom compile flags : 
+# force include defines.hpp
 set(MYAPP_FORCED_INCLUDE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/myapp/defines.hpp")
 if(WIN32)
 	set(ANJING_COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} /FI\"${MYAPP_FORCED_INCLUDE_FILE}\" ")
