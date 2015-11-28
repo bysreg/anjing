@@ -1,4 +1,5 @@
 #include "app/app.hpp"
+#include "core/memory_manager.hpp"
 
 #include <cstdio>
 #include <cstdlib>
@@ -36,11 +37,12 @@ int main(int argc, char* argv[])
 		return EXIT_FAILURE;
 	}
 
+	anjing::core::MemoryManager::GetInstance().Dump();
+
 	if (!auto_close)
 	{
 		printf("Press any key to close...\n");
-		char c;
-		scanf("%c", &c);
+		getchar();
 	}
 
 	return 0;
