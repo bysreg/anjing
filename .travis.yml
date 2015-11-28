@@ -33,10 +33,10 @@ before_install:
     fi
 
 env:
-  - MAKE_TARGET=install
-  - MAKE_TARGET=test
-  - CMAKE_BUILD_TYPE=Debug
-  - CMAKE_BUILD_TYPE=Release
+  - MAKE_TARGET=install CMAKE_BUILD_TYPE=Debug
+  - MAKE_TARGET=test CMAKE_BUILD_TYPE=Debug
+  - MAKE_TARGET=install CMAKE_BUILD_TYPE=Release
+  - MAKE_TARGET=test CMAKE_BUILD_TYPE=Release
 
 before_script:
   - cd build
