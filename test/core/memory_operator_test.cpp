@@ -4,7 +4,10 @@
 // we get the definitions of overloaded operator of new,
 // new[], delete, and delete[]
 
+#ifndef ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE
 #define ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE
+#endif
+
 #include "core/memory_operator.hpp"
 #include "core/memory_manager.hpp"
 
