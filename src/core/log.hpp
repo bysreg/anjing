@@ -21,33 +21,57 @@ namespace anjing {
 #define ANJING_SHOW_LOG_INVOKE_LOCATION 0
 #endif
 
+#define ANJING_MULTI_LINE_MACRO_BEGIN do {
+
+#ifdef _MSC_VER
+#define ANJING_MULTI_LINE_MACRO_END \
+	__pragma(warning(push)) \
+	__pragma(warning(disable:4127)) \
+	} while(0) \
+	__pragma(warning(pop))
+#else
+	#define ANJING_MULTI_LINE_MACRO_END }while(0)
+#endif
+
 // the following log macro has runtime check in it. why ? so that the compiler will always check that 
 // the logging code is valid. Optimizer will remove it anyway when ANJING_LOG_TEST is 0.
 // the do-while code ensure that this is a full statement so that it could be safely used in if else without curly braces.
 // more info here : http://stackoverflow.com/questions/1644868/c-define-macro-for-debug-printing/1644898#1644898
 #define ANJING_LOG(message)\
-	do {\
-		if (ANJING_LOG_TEST){\
-			if(ANJING_SHOW_LOG_INVOKE_LOCATION)\
+	ANJING_MULTI_LINE_MACRO_BEGIN\
+		__pragma(warning(push)) \
+		__pragma(warning(disable:4127)) \
+		if (ANJING_LOG_TEST == 1){\
+			if(ANJING_SHOW_LOG_INVOKE_LOCATION == 1)\
 			{\
 				std::cout << message << " (log invoked from : " << __FILE__ << ":" << __LINE__ <<  ")" << std::endl;\
 			}\
 			else\
 			{\
-					std::cout << message << std::endl;\
+				std::cout << message << std::endl;\
 			}\
 		}\
-	} while (0)
+		__pragma(warning(pop))\
+	ANJING_MULTI_LINE_MACRO_END
 
 #define ANJING_LOGF(format, ...)\
-	do { if (ANJING_LOG_TEST) anjing::Log(__FILE__, __LINE__, format, ## __VA_ARGS__); } while (0)
+	ANJING_MULTI_LINE_MACRO_BEGIN\
+		__pragma(warning(push)) \
+		__pragma(warning(disable:4127)) \
+		if (ANJING_LOG_TEST == 1){\
+			anjing::Log(__FILE__, __LINE__, format, ## __VA_ARGS__);\
+		}\
+		__pragma(warning(pop))\
+	ANJING_MULTI_LINE_MACRO_END
 
 //in wide char
 #define ANJING_LOGW(message)\
-	do {\
-		if (ANJING_LOG_TEST)\
+	ANJING_MULTI_LINE_MACRO_BEGIN\
+		__pragma(warning(push)) \
+		__pragma(warning(disable:4127)) \
+		if (ANJING_LOG_TEST == 1)\
 		{\
-			if (ANJING_SHOW_LOG_INVOKE_LOCATION)\
+			if (ANJING_SHOW_LOG_INVOKE_LOCATION == 1)\
 			{\
 				std::wcout << message << " (log invoked from : " << __FILE__ << ":" << __LINE__ << ")" << std::endl;\
 			}\
@@ -56,4 +80,5 @@ namespace anjing {
 				std::wcout << message << " (log invoked from : " << __FILE__ << ":" << __LINE__ << ")" << std::endl;\
 			}\
 		}\
-	} while (0)
+		__pragma(warning(pop))\
+	ANJING_MULTI_LINE_MACRO_END
