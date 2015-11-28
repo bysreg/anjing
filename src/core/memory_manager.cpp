@@ -1,5 +1,6 @@
 #include "core/memory_manager.hpp"
-#include "log.hpp"
+#include "core/log.hpp"
+#include "core/util.hpp"
 
 #include <cstdlib>
 #include <cstring>
@@ -81,7 +82,6 @@ void MemoryManager::Dump()
 	// walk over the used list
 	AllocInfo* head = used_list;
 
-	size_t totalbytes = 0;
 	int index = 0;
 
 	ANJING_LOG("\nStarting memory dump\n");
@@ -95,6 +95,8 @@ void MemoryManager::Dump()
 		++index;
 	}
 
+	size_t total_memory_left = GetTotalMemoryAllocations();
+	ANJING_LOGF("\nTotal memory not deleted : %d\n", total_memory_left);
 	ANJING_LOG("---------------------------\n");
 }
 
@@ -264,11 +266,17 @@ void* operator new[](std::size_t size, const char* file, int line)
 
 void operator delete (void* p, const char* file, int line)
 {
+	ANJING_UNUSED(file);
+	ANJING_UNUSED(line);
+
 	MemoryManager::GetInstance().Free(p);
 }
 
 void operator delete[](void* p, const char* file, int line)
 {
+	ANJING_UNUSED(file);
+	ANJING_UNUSED(line);
+
 	MemoryManager::GetInstance().Free(p);
 }
 
