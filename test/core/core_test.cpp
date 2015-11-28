@@ -1,4 +1,5 @@
 #include "core/memory_manager.hpp"
+#include "core/util.hpp"
 
 #include <gtest/gtest.h>
 
@@ -53,6 +54,7 @@ TEST_F(MemoryManagerTest, DefinesCheck)
 	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0);
 	
 	int* a = new int;
+	ANJING_UNUSED(a);
 
 	// total allocation will still be zero, if the operator new is not overridden by MemoryManager
 	ASSERT_EQ(mm.GetTotalMemoryAllocations(), 0);
@@ -81,6 +83,7 @@ TEST_F(MemoryManagerTest, GetTotalMemoryAllocations)
 	EXPECT_EQ(MemoryManager::GetInstance().GetTotalMemoryAllocations(), 0);
 
 	void* alloc_mem = DoAllocation();
+	ANJING_UNUSED(alloc_mem);
 
 	// the memory allocated must be at least the size of the TestClass
 	EXPECT_GE(MemoryManager::GetInstance().GetTotalMemoryAllocations(), sizeof(TestClass));
