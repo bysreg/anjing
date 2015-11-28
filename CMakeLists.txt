@@ -20,6 +20,20 @@ endif()
 
 ######################################
 
+######### RELEASE CONFIGURATION ######
+## To switch on release configuration in linux, supply cmake with
+##  -DCMAKE_BUILD_TYPE=Release
+## For Windows, change to Release mode in Visual Studio
+
+## turn on optimization flags
+if(WIN32)
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2")
+else()
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
+endif()
+
+######################################
+
 if(WIN32)
 	set(CMAKE_PREFIX_PATH ${PROJECT_SOURCE_DIR}/windows)
 endif()
