@@ -4,10 +4,11 @@
 
 #include <cstdlib>
 #include <cstring>
+#include <string>
 
 using namespace anjing::core;
 
-const unsigned int CHECK_CODE = 0x12345678;
+const unsigned int SENTINEL_CODE = 0x12345678;
 
 void reset_alloc_info(AllocInfo* alloc_info)
 {
@@ -48,7 +49,7 @@ void* MemoryManager::Alloc(unsigned int numbytes, const char* filename, unsigned
 	}
 
 	// allocate the actual requested memory. we are going to request more than the numbytes
-	size_t allocated_mem_size = sizeof(AllocInfo*) + numbytes + sizeof(CHECK_CODE);
+	size_t allocated_mem_size = sizeof(AllocInfo*) + numbytes + sizeof(SENTINEL_CODE);
 	void* allocated_mem = malloc(allocated_mem_size);
 	void* actual_mem = ((char*)allocated_mem) + sizeof(AllocInfo*);
 	
@@ -56,7 +57,7 @@ void* MemoryManager::Alloc(unsigned int numbytes, const char* filename, unsigned
 	memcpy(allocated_mem, &alloc_info, sizeof(AllocInfo*));
 
 	// put check code in the last bytes of the allocated_mem
-	memcpy(((char*)actual_mem) + numbytes, &CHECK_CODE, sizeof(CHECK_CODE));
+	memcpy(((char*)actual_mem) + numbytes, &SENTINEL_CODE, sizeof(SENTINEL_CODE));
 
 	alloc_info->mem = allocated_mem;
 	alloc_info->filename = filename;
@@ -66,15 +67,29 @@ void* MemoryManager::Alloc(unsigned int numbytes, const char* filename, unsigned
 	return actual_mem;
 }
 
-void MemoryManager::Free(void* address)
+int MemoryManager::Free(void* address, const char* filename, unsigned int line)
 {
 	if (address == nullptr)
-		return;
+		return 2;
 
-	AllocInfo* alloc_info = GetAllocInfo(address);
+	AllocInfo* alloc_info = GetAllocInfo(address);	
+	int ret_code = 1;
+
+	// before free, check whether the sentinel value is still intact
+	bool is_memory_overrun = CheckSentinel(alloc_info) == false;
+	if (is_memory_overrun)
+	{
+		std::string err_msg = "Memory overrun detected!! Allocated in " +
+			std::string(alloc_info->filename) + " line " + std::to_string(alloc_info->line) +
+			" and deleted in " + std::string(filename) + " line " + std::to_string(line);
+
+		ANJING_LOGE(err_msg);
+		ret_code = 3;
+	}
 
 	free(alloc_info->mem);
 	RemoveUsedAllocInfo(alloc_info);
+	return ret_code;
 }
 
 void MemoryManager::Dump()
@@ -151,6 +166,15 @@ AllocInfo* MemoryManager::GetFreeAllocInfo()
 	}
 }
 
+bool MemoryManager::CheckSentinel(const AllocInfo* alloc_info) const
+{	
+	char* cmem = static_cast<char*>(alloc_info->mem);
+	cmem = cmem + alloc_info->mem_size - sizeof(SENTINEL_CODE);
+	int diff = memcmp(cmem, &SENTINEL_CODE, sizeof(SENTINEL_CODE));
+
+	return diff == 0;
+}
+
 void MemoryManager::RemoveUsedAllocInfo(AllocInfo* used_alloc_info)
 {
 	// remove alloc_info from the used list
@@ -188,7 +212,7 @@ void MemoryManager::RemoveUsedAllocInfo(AllocInfo* used_alloc_info)
 	}
 }
 
-size_t MemoryManager::GetTotalMemoryAllocations()
+size_t MemoryManager::GetTotalMemoryAllocations() const
 {
 	AllocInfo* head = used_list;
 	size_t ret = 0;
@@ -212,47 +236,6 @@ AllocInfo* MemoryManager::GetAllocInfo(void* address)
 	return alloc_info;
 }
 
-#ifdef ANJING_REPLACE_GLOBAL_NEW_DELETE
-void* operator new(std::size_t n)
-{
-	return MemoryManager::GetInstance().Alloc(n, __FILE__, __LINE__);
-}
-
-void* operator new[](std::size_t n)
-{
-	return MemoryManager::GetInstance().Alloc(n, __FILE__, __LINE__);
-}
-
-void* operator new(std::size_t n, const std::nothrow_t& tag)
-{
-	return MemoryManager::GetInstance().Alloc(n, __FILE__, __LINE__);
-}
-
-void* operator new[](std::size_t n, const std::nothrow_t& tag)
-{
-	return MemoryManager::GetInstance().Alloc(n, __FILE__, __LINE__);
-}
-
-void operator delete(void* p)
-{
-	MemoryManager::GetInstance().Free(p);
-}
-void operator delete[](void* p)
-{
-	MemoryManager::GetInstance().Free(p);
-}
-
-void operator delete(void* p, const std::nothrow_t& tag)
-{
-	MemoryManager::GetInstance().Free(p);
-}
-
-void operator delete[](void* p, const std::nothrow_t& tag)
-{
-	MemoryManager::GetInstance().Free(p);
-}
-#endif
-
 #ifdef ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE
 void* operator new (std::size_t size, const char* file, int line)
 {
@@ -269,7 +252,7 @@ void operator delete (void* p, const char* file, int line)
 	ANJING_UNUSED(file);
 	ANJING_UNUSED(line);
 
-	MemoryManager::GetInstance().Free(p);
+	MemoryManager::GetInstance().Free(p, file, line);
 }
 
 void operator delete[](void* p, const char* file, int line)
@@ -277,7 +260,7 @@ void operator delete[](void* p, const char* file, int line)
 	ANJING_UNUSED(file);
 	ANJING_UNUSED(line);
 
-	MemoryManager::GetInstance().Free(p);
+	MemoryManager::GetInstance().Free(p, file, line);
 }
 
 #endif

@@ -10,11 +10,16 @@ namespace anjing
 		struct AllocInfo
 		{
 			AllocInfo* prev;
-			AllocInfo* next;						
+			AllocInfo* next;
+			
+			// memory address returned from malloc
 			void* mem;
+
 			const char* filename;
-			unsigned int line;			
-			std::size_t mem_size; // total memory allocated by MemoryManager for this allocation
+			unsigned int line;
+
+			// total memory allocated by MemoryManager for this allocation
+			std::size_t mem_size; 
 		};
 
 		class MemoryManager
@@ -40,6 +45,12 @@ namespace anjing
 			/// \a used_alloc_info is assumed to be in used_list
 			void RemoveUsedAllocInfo(AllocInfo* used_alloc_info);
 
+			///
+			/// \brief Returns true if sentinel code in \a alloc_info memory layout is still intact
+			///
+			///
+			bool CheckSentinel(const AllocInfo* alloc_info) const;
+
 		public:
 			///
 			/// \brief Return singleton instance of MemoryManager. 
@@ -53,13 +64,14 @@ namespace anjing
 			void* Alloc(unsigned int numbytes, const char* filename, unsigned int line);
 
 			///
-			/// \brief Deallocate memory
+			/// \brief Deallocate memory. Returns 1 if address is successfully deallocated
 			///
-			/// if \a address is nullptr, the function does nothing
+			/// if \a address is nullptr, the function does nothing and returns 2
 			/// if \a address is not allocated using Alloc(or by global operator new overrided by MemoryManager), it causes undefined behaviour
 			/// this function does not change the value of \a address itself, hence it still points to the same (now invalid) location
 			///
-			void Free(void* address);
+			/// Returns 3 if sentinel code in address is not intact, indicating that there is memory overrun. Address is still deallocated.
+			int Free(void* address, const char* filename, unsigned int line);
 
 			///
 			/// \brief List all the allocated memories by MemoryManager that haven't been deleted yet 
@@ -77,7 +89,7 @@ namespace anjing
 			/// \brief Returns total memory allocations. 
 			///
 			/// implementation detail : O(n) operation as this function iterates over all alocations.
-			std::size_t GetTotalMemoryAllocations();
+			std::size_t GetTotalMemoryAllocations() const;
 
 			///
 			/// \brief Returns AllocInfo from the address. Adress is assumed to be allocated by MemoryManager

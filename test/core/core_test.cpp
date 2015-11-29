@@ -42,6 +42,11 @@ protected:
 	{
 		return MemoryManager::GetInstance().Alloc(sizeof(TestClass), filename, line);
 	}
+
+	int DoFree(void* address)
+	{
+		return MemoryManager::GetInstance().Free(address, filename, line);
+	}
 };
 
 // test whether MemoryManager is using ANJING_OVERRIDE_GLOBAL_NEW macro
@@ -120,12 +125,30 @@ TEST_F(MemoryManagerTest, DeallocNormal)
 	void* alloc_mem = DoAllocation();
 	AllocInfo* allocinfo = mm.GetAllocInfo(alloc_mem);
 
-	mm.Free(alloc_mem);
+	int free_ret_code = DoFree(alloc_mem);
 
 	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0);
 
 	EXPECT_EQ(allocinfo->prev, nullptr);
 	EXPECT_EQ(allocinfo->next, nullptr);
+	EXPECT_EQ(free_ret_code, 1);
+}
+
+// test whether sentinel value could detect buffer overrun
+TEST_F(MemoryManagerTest, SentinelCheck)
+{
+	MemoryManager& mm = MemoryManager::GetInstance();
+	void* alloc1 = DoAllocation();
+	AllocInfo* allocinfo = mm.GetAllocInfo(alloc1);
+
+	// mess around with the sentinel value intentionally	
+	char* sentinel = static_cast<char*>(allocinfo->mem) + sizeof(AllocInfo*) + sizeof(TestClass);
+
+	// invert the first byte
+	sentinel[0] = !sentinel[0];
+
+	int free_ret_code = DoFree(alloc1);
+	EXPECT_EQ(3, free_ret_code);
 }
 
 // test five allocations with MemoryManager
@@ -171,8 +194,8 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc1)
 	allocations[2] = DoAllocation();
 	allocinfos[2] = mm.GetAllocInfo(allocations[2]);
 
-	// remove (1)
-	mm.Free(allocations[1]);
+	// remove (1)	
+	DoFree(allocations[1]);
 
 	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 2 * total_one_allocation_size);
 
@@ -186,7 +209,7 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc1)
 	EXPECT_EQ(allocinfos[2]->next, allocinfos[0]);		
 
 	// remove (2)
-	mm.Free(allocations[2]);
+	DoFree(allocations[2]);
 	
 	// used_list layout : (0)
 	// free_list layout : (2)<->(1)
@@ -217,8 +240,8 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc1)
 	EXPECT_EQ(allocinfos[3], allocinfos[2]);
 
 	// remove (0) & (3) allocation
-	mm.Free(allocations[0]);
-	mm.Free(allocations[3]);
+	DoFree(allocations[0]);
+	DoFree(allocations[3]);
 
 	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0);
 
@@ -256,7 +279,7 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc2)
 	allocinfos[1] = mm.GetAllocInfo(allocations[1]);	
 
 	// remove (1)
-	mm.Free(allocations[1]);
+	DoFree(allocations[1]);
 
 	EXPECT_EQ(mm.GetTotalMemoryAllocations(), total_one_allocation_size);
 
@@ -268,7 +291,7 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc2)
 	EXPECT_EQ(allocinfos[1]->next, nullptr);	
 
 	// remove (0)
-	mm.Free(allocations[0]);
+	DoFree(allocations[0]);
 
 	// used_list layout : --
 	// free_list layout : (0)<->(1)
