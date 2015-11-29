@@ -110,12 +110,22 @@ Macros</h2></td></tr>
 <tr class="separator:ad61d22e502c65b85ee5792e2404da907"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabc316e1f2fc5d5cdc514ed76f31be96"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#aabc316e1f2fc5d5cdc514ed76f31be96">ANJING_SHOW_LOG_INVOKE_LOCATION</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:aabc316e1f2fc5d5cdc514ed76f31be96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f2ad34952dc65983d53dabd1b748803"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#a1f2ad34952dc65983d53dabd1b748803">ANJING_LOG</a>(message)</td></tr>
+<tr class="memitem:a4aae050606860dc52738512f385d3d72"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#a4aae050606860dc52738512f385d3d72">ANJING_MULTI_LINE_MACRO_BEGIN</a>&#160;&#160;&#160;do {</td></tr>
+<tr class="separator:a4aae050606860dc52738512f385d3d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56fed44390b03fb09223e3fcb96398f2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#a56fed44390b03fb09223e3fcb96398f2">ANJING_DISABLE_MSVC_4127_WARNING</a></td></tr>
+<tr class="separator:a56fed44390b03fb09223e3fcb96398f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60a56bc4b358bd393f2fbfd6f2f1d3bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#a60a56bc4b358bd393f2fbfd6f2f1d3bd">ANJING_MSVC_WARNING_POP</a></td></tr>
+<tr class="separator:a60a56bc4b358bd393f2fbfd6f2f1d3bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52865dfdd14bf467bc790cdfd1127f70"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#a52865dfdd14bf467bc790cdfd1127f70">ANJING_MULTI_LINE_MACRO_END</a>&#160;&#160;&#160;}while(0)</td></tr>
+<tr class="separator:a52865dfdd14bf467bc790cdfd1127f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af66779c64790ed4eef18fab34aa7121d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#af66779c64790ed4eef18fab34aa7121d">ANJING_LOG_TO_OUT</a>(message,  out)</td></tr>
+<tr class="separator:af66779c64790ed4eef18fab34aa7121d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f2ad34952dc65983d53dabd1b748803"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#a1f2ad34952dc65983d53dabd1b748803">ANJING_LOG</a>(message)&#160;&#160;&#160;<a class="el" href="log_8hpp.html#af66779c64790ed4eef18fab34aa7121d">ANJING_LOG_TO_OUT</a>(message, std::cout)</td></tr>
 <tr class="separator:a1f2ad34952dc65983d53dabd1b748803"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac44adba256523613429fcc6a306e6c8a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#ac44adba256523613429fcc6a306e6c8a">ANJING_LOGF</a>(format, ...)&#160;&#160;&#160;do { if (<a class="el" href="log_8hpp.html#ad61d22e502c65b85ee5792e2404da907">ANJING_LOG_TEST</a>) <a class="el" href="namespaceanjing.html#adc6233322069ed121c78b135d19ecad1">anjing::Log</a>(__FILE__, __LINE__, format, ## __VA_ARGS__); } while (0)</td></tr>
+<tr class="memitem:ac4237267fe01b43bd659e4c4e751433a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#ac4237267fe01b43bd659e4c4e751433a">ANJING_LOGE</a>(message)&#160;&#160;&#160;<a class="el" href="log_8hpp.html#af66779c64790ed4eef18fab34aa7121d">ANJING_LOG_TO_OUT</a>(message, std::cerr)</td></tr>
+<tr class="separator:ac4237267fe01b43bd659e4c4e751433a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac44adba256523613429fcc6a306e6c8a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#ac44adba256523613429fcc6a306e6c8a">ANJING_LOGF</a>(format, ...)</td></tr>
 <tr class="separator:ac44adba256523613429fcc6a306e6c8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1998f5f8826f919a5f1d9cc5a30c00c8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#a1998f5f8826f919a5f1d9cc5a30c00c8">ANJING_LOGW</a>(message)</td></tr>
-<tr class="separator:a1998f5f8826f919a5f1d9cc5a30c00c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -123,6 +133,18 @@ Functions</h2></td></tr>
 <tr class="separator:adc6233322069ed121c78b135d19ecad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a56fed44390b03fb09223e3fcb96398f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ANJING_DISABLE_MSVC_4127_WARNING</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a2aaad1198c1d704d8e059705f6a8eaf9"></a>
 <div class="memitem">
 <div class="memproto">
@@ -144,26 +166,11 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">message</td><td>)</td>
-          <td></td>
+          <td>&#160;&#160;&#160;<a class="el" href="log_8hpp.html#af66779c64790ed4eef18fab34aa7121d">ANJING_LOG_TO_OUT</a>(message, std::cout)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {\</div>
-<div class="line">        if (<a class="code" href="log_8hpp.html#ad61d22e502c65b85ee5792e2404da907">ANJING_LOG_TEST</a>){\</div>
-<div class="line">            if(<a class="code" href="log_8hpp.html#aabc316e1f2fc5d5cdc514ed76f31be96">ANJING_SHOW_LOG_INVOKE_LOCATION</a>)\</div>
-<div class="line">            {\</div>
-<div class="line">                std::cout &lt;&lt; <a class="code" href="namespacegtest__output__test.html#ac696d0798ad7d08cb2e61070824750e2">message</a> &lt;&lt; <span class="stringliteral">&quot; (log invoked from : &quot;</span> &lt;&lt; __FILE__ &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; __LINE__ &lt;&lt;  <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;\</div>
-<div class="line">            }\</div>
-<div class="line">            else\</div>
-<div class="line">            {\</div>
-<div class="line">                    std::cout &lt;&lt; <a class="code" href="namespacegtest__output__test.html#ac696d0798ad7d08cb2e61070824750e2">message</a> &lt;&lt; std::endl;\</div>
-<div class="line">            }\</div>
-<div class="line">        }\</div>
-<div class="line">    } <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="log_8hpp_html_ad61d22e502c65b85ee5792e2404da907"><div class="ttname"><a href="log_8hpp.html#ad61d22e502c65b85ee5792e2404da907">ANJING_LOG_TEST</a></div><div class="ttdeci">#define ANJING_LOG_TEST</div><div class="ttdef"><b>Definition:</b> log.hpp:17</div></div>
-<div class="ttc" id="namespacegtest__output__test_html_ac696d0798ad7d08cb2e61070824750e2"><div class="ttname"><a href="namespacegtest__output__test.html#ac696d0798ad7d08cb2e61070824750e2">gtest_output_test.message</a></div><div class="ttdeci">tuple message</div><div class="ttdef"><b>Definition:</b> gtest_output_test.py:326</div></div>
-<div class="ttc" id="log_8hpp_html_aabc316e1f2fc5d5cdc514ed76f31be96"><div class="ttname"><a href="log_8hpp.html#aabc316e1f2fc5d5cdc514ed76f31be96">ANJING_SHOW_LOG_INVOKE_LOCATION</a></div><div class="ttdeci">#define ANJING_SHOW_LOG_INVOKE_LOCATION</div><div class="ttdef"><b>Definition:</b> log.hpp:18</div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="ad61d22e502c65b85ee5792e2404da907"></a>
@@ -172,6 +179,66 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define ANJING_LOG_TEST&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af66779c64790ed4eef18fab34aa7121d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ANJING_LOG_TO_OUT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">message, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">out&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">ANJING_MULTI_LINE_MACRO_BEGIN\</div>
+<div class="line">        ANJING_DISABLE_MSVC_4127_WARNING\</div>
+<div class="line">        if (<a class="code" href="log_8hpp.html#ad61d22e502c65b85ee5792e2404da907">ANJING_LOG_TEST</a> == 1){\</div>
+<div class="line">            if(<a class="code" href="log_8hpp.html#aabc316e1f2fc5d5cdc514ed76f31be96">ANJING_SHOW_LOG_INVOKE_LOCATION</a> == 1)\</div>
+<div class="line">            {\</div>
+<div class="line">                out &lt;&lt; <a class="code" href="namespacegtest__output__test.html#ac696d0798ad7d08cb2e61070824750e2">message</a> &lt;&lt; <span class="stringliteral">&quot; (log invoked from : &quot;</span> &lt;&lt; __FILE__ &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; __LINE__ &lt;&lt;  <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;\</div>
+<div class="line">            }\</div>
+<div class="line">            else\</div>
+<div class="line">            {\</div>
+<div class="line">                out &lt;&lt; <a class="code" href="namespacegtest__output__test.html#ac696d0798ad7d08cb2e61070824750e2">message</a> &lt;&lt; std::endl;\</div>
+<div class="line">            }\</div>
+<div class="line">        }<a class="code" href="log_8hpp.html#a52865dfdd14bf467bc790cdfd1127f70">\</a></div>
+<div class="line"><a class="code" href="log_8hpp.html#a52865dfdd14bf467bc790cdfd1127f70">		ANJING_MSVC_WARNING_POP\</a></div>
+<div class="line"><a class="code" href="log_8hpp.html#a52865dfdd14bf467bc790cdfd1127f70">	ANJING_MULTI_LINE_MACRO_END</a></div>
+<div class="ttc" id="log_8hpp_html_a52865dfdd14bf467bc790cdfd1127f70"><div class="ttname"><a href="log_8hpp.html#a52865dfdd14bf467bc790cdfd1127f70">ANJING_MULTI_LINE_MACRO_END</a></div><div class="ttdeci">#define ANJING_MULTI_LINE_MACRO_END</div><div class="ttdef"><b>Definition:</b> log.hpp:40</div></div>
+<div class="ttc" id="log_8hpp_html_ad61d22e502c65b85ee5792e2404da907"><div class="ttname"><a href="log_8hpp.html#ad61d22e502c65b85ee5792e2404da907">ANJING_LOG_TEST</a></div><div class="ttdeci">#define ANJING_LOG_TEST</div><div class="ttdef"><b>Definition:</b> log.hpp:17</div></div>
+<div class="ttc" id="namespacegtest__output__test_html_ac696d0798ad7d08cb2e61070824750e2"><div class="ttname"><a href="namespacegtest__output__test.html#ac696d0798ad7d08cb2e61070824750e2">gtest_output_test.message</a></div><div class="ttdeci">tuple message</div><div class="ttdef"><b>Definition:</b> gtest_output_test.py:326</div></div>
+<div class="ttc" id="log_8hpp_html_aabc316e1f2fc5d5cdc514ed76f31be96"><div class="ttname"><a href="log_8hpp.html#aabc316e1f2fc5d5cdc514ed76f31be96">ANJING_SHOW_LOG_INVOKE_LOCATION</a></div><div class="ttdeci">#define ANJING_SHOW_LOG_INVOKE_LOCATION</div><div class="ttdef"><b>Definition:</b> log.hpp:18</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ac4237267fe01b43bd659e4c4e751433a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ANJING_LOGE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">message</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="log_8hpp.html#af66779c64790ed4eef18fab34aa7121d">ANJING_LOG_TO_OUT</a>(message, std::cerr)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -197,43 +264,57 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;do { if (<a class="el" href="log_8hpp.html#ad61d22e502c65b85ee5792e2404da907">ANJING_LOG_TEST</a>) <a class="el" href="namespaceanjing.html#adc6233322069ed121c78b135d19ecad1">anjing::Log</a>(__FILE__, __LINE__, format, ## __VA_ARGS__); } while (0)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">ANJING_MULTI_LINE_MACRO_BEGIN\</div>
+<div class="line">        ANJING_DISABLE_MSVC_4127_WARNING\</div>
+<div class="line">        if (<a class="code" href="log_8hpp.html#ad61d22e502c65b85ee5792e2404da907">ANJING_LOG_TEST</a> == 1){<a class="code" href="namespaceanjing.html#adc6233322069ed121c78b135d19ecad1">\</a></div>
+<div class="line"><a class="code" href="namespaceanjing.html#adc6233322069ed121c78b135d19ecad1">			anjing::Log</a>(__FILE__, __LINE__, format, ## __VA_ARGS__);\</div>
+<div class="line">        }<a class="code" href="log_8hpp.html#a52865dfdd14bf467bc790cdfd1127f70">\</a></div>
+<div class="line"><a class="code" href="log_8hpp.html#a52865dfdd14bf467bc790cdfd1127f70">		ANJING_MSVC_WARNING_POP\</a></div>
+<div class="line"><a class="code" href="log_8hpp.html#a52865dfdd14bf467bc790cdfd1127f70">	ANJING_MULTI_LINE_MACRO_END</a></div>
+<div class="ttc" id="log_8hpp_html_a52865dfdd14bf467bc790cdfd1127f70"><div class="ttname"><a href="log_8hpp.html#a52865dfdd14bf467bc790cdfd1127f70">ANJING_MULTI_LINE_MACRO_END</a></div><div class="ttdeci">#define ANJING_MULTI_LINE_MACRO_END</div><div class="ttdef"><b>Definition:</b> log.hpp:40</div></div>
+<div class="ttc" id="namespaceanjing_html_adc6233322069ed121c78b135d19ecad1"><div class="ttname"><a href="namespaceanjing.html#adc6233322069ed121c78b135d19ecad1">anjing::Log</a></div><div class="ttdeci">void Log(const char *filename, int line, const char *format,...)</div><div class="ttdef"><b>Definition:</b> log.cpp:7</div></div>
+<div class="ttc" id="log_8hpp_html_ad61d22e502c65b85ee5792e2404da907"><div class="ttname"><a href="log_8hpp.html#ad61d22e502c65b85ee5792e2404da907">ANJING_LOG_TEST</a></div><div class="ttdeci">#define ANJING_LOG_TEST</div><div class="ttdef"><b>Definition:</b> log.hpp:17</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a60a56bc4b358bd393f2fbfd6f2f1d3bd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ANJING_MSVC_WARNING_POP</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a1998f5f8826f919a5f1d9cc5a30c00c8"></a>
+<a class="anchor" id="a4aae050606860dc52738512f385d3d72"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ANJING_LOGW</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">message</td><td>)</td>
-          <td></td>
+          <td class="memname">#define ANJING_MULTI_LINE_MACRO_BEGIN&#160;&#160;&#160;do {</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {\</div>
-<div class="line">        if (<a class="code" href="log_8hpp.html#ad61d22e502c65b85ee5792e2404da907">ANJING_LOG_TEST</a>)\</div>
-<div class="line">        {\</div>
-<div class="line">            if (<a class="code" href="log_8hpp.html#aabc316e1f2fc5d5cdc514ed76f31be96">ANJING_SHOW_LOG_INVOKE_LOCATION</a>)\</div>
-<div class="line">            {\</div>
-<div class="line">                std::wcout &lt;&lt; <a class="code" href="namespacegtest__output__test.html#ac696d0798ad7d08cb2e61070824750e2">message</a> &lt;&lt; <span class="stringliteral">&quot; (log invoked from : &quot;</span> &lt;&lt; __FILE__ &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; __LINE__ &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;\</div>
-<div class="line">            }\</div>
-<div class="line">            else\</div>
-<div class="line">            {\</div>
-<div class="line">                std::wcout &lt;&lt; <a class="code" href="namespacegtest__output__test.html#ac696d0798ad7d08cb2e61070824750e2">message</a> &lt;&lt; <span class="stringliteral">&quot; (log invoked from : &quot;</span> &lt;&lt; __FILE__ &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; __LINE__ &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;\</div>
-<div class="line">            }\</div>
-<div class="line">        }\</div>
-<div class="line">    } <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="log_8hpp_html_ad61d22e502c65b85ee5792e2404da907"><div class="ttname"><a href="log_8hpp.html#ad61d22e502c65b85ee5792e2404da907">ANJING_LOG_TEST</a></div><div class="ttdeci">#define ANJING_LOG_TEST</div><div class="ttdef"><b>Definition:</b> log.hpp:17</div></div>
-<div class="ttc" id="namespacegtest__output__test_html_ac696d0798ad7d08cb2e61070824750e2"><div class="ttname"><a href="namespacegtest__output__test.html#ac696d0798ad7d08cb2e61070824750e2">gtest_output_test.message</a></div><div class="ttdeci">tuple message</div><div class="ttdef"><b>Definition:</b> gtest_output_test.py:326</div></div>
-<div class="ttc" id="log_8hpp_html_aabc316e1f2fc5d5cdc514ed76f31be96"><div class="ttname"><a href="log_8hpp.html#aabc316e1f2fc5d5cdc514ed76f31be96">ANJING_SHOW_LOG_INVOKE_LOCATION</a></div><div class="ttdeci">#define ANJING_SHOW_LOG_INVOKE_LOCATION</div><div class="ttdef"><b>Definition:</b> log.hpp:18</div></div>
-</div><!-- fragment -->
+
+</div>
+</div>
+<a class="anchor" id="a52865dfdd14bf467bc790cdfd1127f70"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ANJING_MULTI_LINE_MACRO_END&#160;&#160;&#160;}while(0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a class="anchor" id="aabc316e1f2fc5d5cdc514ed76f31be96"></a>

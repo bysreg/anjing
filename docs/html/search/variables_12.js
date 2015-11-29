@@ -2,6 +2,7 @@ var searchData=
 [
   ['save_5fcookies',['save_cookies',['../classupload_1_1_abstract_rpc_server.html#affe342205c4647d41b127f5a5634858b',1,'upload::AbstractRpcServer']]],
   ['script_5fdir',['SCRIPT_DIR',['../namespacegen__gtest__pred__impl.html#a60983047285657dc05c7df4189780580',1,'gen_gtest_pred_impl']]],
+  ['sentinel_5fcode',['SENTINEL_CODE',['../memory__manager_8cpp.html#a148cf805be137f7b367ca8affa39ade4',1,'memory_manager.cpp']]],
   ['sep',['sep',['../classpump_1_1_for_node.html#a06b493278b3c1ad53363a2bcc3b8efb3',1,'pump::ForNode']]],
   ['setenvvar',['SetEnvVar',['../namespacegtest__break__on__failure__unittest.html#a6d10069714f75f3f755c1d2c9c0ddd15',1,'gtest_break_on_failure_unittest.SetEnvVar()'],['../namespacegtest__catch__exceptions__test.html#a60be14c2b88aafb689ba4d3d2578449e',1,'gtest_catch_exceptions_test.SetEnvVar()']]],
   ['shard_5findex_5fenv_5fvar',['SHARD_INDEX_ENV_VAR',['../namespacegtest__filter__unittest.html#a082d5120f29f56d497db94401d773ca7',1,'gtest_filter_unittest.SHARD_INDEX_ENV_VAR()'],['../namespacegtest__shuffle__test.html#ab3215c444f0e35ae2764f862194fe743',1,'gtest_shuffle_test.SHARD_INDEX_ENV_VAR()']]],
