@@ -40,25 +40,32 @@ namespace anjing {
 	#define ANJING_MULTI_LINE_MACRO_END }while(0)
 #endif
 
-// the following log macro has runtime check in it. why ? so that the compiler will always check that 
+// The following log macro has runtime check in it. why ? so that the compiler will always check that 
 // the logging code is valid. Optimizer will remove it anyway when ANJING_LOG_TEST is 0.
 // the do-while code ensure that this is a full statement so that it could be safely used in if else without curly braces.
 // more info here : http://stackoverflow.com/questions/1644868/c-define-macro-for-debug-printing/1644898#1644898
-#define ANJING_LOG(message)\
+// You also need to include <iostream> to use these functions
+#define ANJING_LOG_TO_OUT(message, out)\
 	ANJING_MULTI_LINE_MACRO_BEGIN\
 		ANJING_DISABLE_MSVC_4127_WARNING\
 		if (ANJING_LOG_TEST == 1){\
 			if(ANJING_SHOW_LOG_INVOKE_LOCATION == 1)\
 			{\
-				std::cout << message << " (log invoked from : " << __FILE__ << ":" << __LINE__ <<  ")" << std::endl;\
+				out << message << " (log invoked from : " << __FILE__ << ":" << __LINE__ <<  ")" << std::endl;\
 			}\
 			else\
 			{\
-				std::cout << message << std::endl;\
+				out << message << std::endl;\
 			}\
 		}\
 		ANJING_MSVC_WARNING_POP\
 	ANJING_MULTI_LINE_MACRO_END
+
+#define ANJING_LOG(message)\
+	ANJING_LOG_TO_OUT(message, std::cout)
+
+#define ANJING_LOGE(message)\
+	ANJING_LOG_TO_OUT(message, std::cerr)
 
 #define ANJING_LOGF(format, ...)\
 	ANJING_MULTI_LINE_MACRO_BEGIN\
@@ -71,18 +78,4 @@ namespace anjing {
 
 //in wide char
 #define ANJING_LOGW(message)\
-	ANJING_MULTI_LINE_MACRO_BEGIN\
-		ANJING_DISABLE_MSVC_4127_WARNING\
-		if (ANJING_LOG_TEST == 1)\
-		{\
-			if (ANJING_SHOW_LOG_INVOKE_LOCATION == 1)\
-			{\
-				std::wcout << message << " (log invoked from : " << __FILE__ << ":" << __LINE__ << ")" << std::endl;\
-			}\
-			else\
-			{\
-				std::wcout << message << " (log invoked from : " << __FILE__ << ":" << __LINE__ << ")" << std::endl;\
-			}\
-		}\
-		ANJING_MSVC_WARNING_POP\
-	ANJING_MULTI_LINE_MACRO_END
+	ANJING_LOG_TO_OUT(message, std::wcout)
