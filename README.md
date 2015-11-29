@@ -48,7 +48,7 @@ http://bysreg.github.io/anjing/index.html
   
 ##Building Debug or Release:##
 - this only matters for linux or osx because in windows, you can switch the build mode inside Visual Studio
-- supply argumen CMAKE_BUILD_TYPE=Debug or CMAKE_BUILD_TYPE=Release to build respective configuration
+- supply argument CMAKE_BUILD_TYPE=Debug or CMAKE_BUILD_TYPE=Release to cmake to build respective configuration
 - example (run inside build folder) :  cmake -DCMAKE_BUILD_TYPE=Debug ..
   
 ##C++ 11 features needed :##
