@@ -46,6 +46,10 @@ http://bysreg.github.io/anjing/index.html
   - run "make" to build all executables, including the tests
   - run "make test" to run all the tests
   
+##Building Debug or Release:##
+- this only matters for linux or osx because in windows, you can switch the build mode inside Visual Studio
+- supply argumen CMAKE_BUILD_TYPE=Debug or CMAKE_BUILD_TYPE=Release to build respective configuration
+- example (run inside build folder) :  cmake -DCMAKE_BUILD_TYPE=Debug ..
   
 ##C++ 11 features needed :##
 - Deleted functions, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2346.htm
