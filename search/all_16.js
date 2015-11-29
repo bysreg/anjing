@@ -44,5 +44,6 @@ var searchData=
   ['uploadseparatepatches',['UploadSeparatePatches',['../namespaceupload.html#ac5434675f0e62750ef604dc2395868e6',1,'upload']]],
   ['uponleavinggtest',['UponLeavingGTest',['../classtesting_1_1internal_1_1_os_stack_trace_getter_interface.html#a791bd120428b5a53d5eeba1b27296a39',1,'testing::internal::OsStackTraceGetterInterface::UponLeavingGTest()'],['../classtesting_1_1internal_1_1_os_stack_trace_getter.html#abdfefeba8ffb0f1031491e4bd1a7fad9',1,'testing::internal::OsStackTraceGetter::UponLeavingGTest()']]],
   ['use_5fshell',['use_shell',['../namespaceupload.html#a9e2d52f1f1f7d80f35bbdf032e04893c',1,'upload']]],
-  ['usescolor',['UsesColor',['../namespacegtest__color__test.html#a96a2e5fa77bff1cba4a791ad1e5bdafa',1,'gtest_color_test']]]
+  ['usescolor',['UsesColor',['../namespacegtest__color__test.html#a96a2e5fa77bff1cba4a791ad1e5bdafa',1,'gtest_color_test']]],
+  ['util_2ehpp',['util.hpp',['../util_8hpp.html',1,'']]]
 ];

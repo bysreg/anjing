@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.10"/>
-<title>anjing: C:/Users/Hilman/Desktop/repo/anjing/src/core/log.cpp File Reference</title>
+<title>anjing: C:/Users/Hilman/Desktop/repo/anjing/src/core/memory_operator.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -88,25 +88,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">log.cpp File Reference</div>  </div>
+<div class="title">memory_operator.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="log_8hpp_source.html">core/log.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="util_8hpp_source.html">core/util.hpp</a>&quot;</code><br />
-<code>#include &lt;cstdarg&gt;</code><br />
-</div><table class="memberdecls">
+
+<p><a href="memory__operator_8hpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:aad89aab614acbf1589f4fdc4c14fa76e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8cpp.html#aad89aab614acbf1589f4fdc4c14fa76e">ANJING_LOG_BUFFER_SIZE</a>&#160;&#160;&#160;2048</td></tr>
-<tr class="separator:aad89aab614acbf1589f4fdc4c14fa76e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acadd9f9c34a36524cb3ff35f6ba7375b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory__operator_8hpp.html#acadd9f9c34a36524cb3ff35f6ba7375b">Anew</a>&#160;&#160;&#160;new</td></tr>
+<tr class="separator:acadd9f9c34a36524cb3ff35f6ba7375b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee4617fc8438508699665b739bfcc7ee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory__operator_8hpp.html#aee4617fc8438508699665b739bfcc7ee">Adelete</a>(M)&#160;&#160;&#160;delete M</td></tr>
+<tr class="separator:aee4617fc8438508699665b739bfcc7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03b7279178500915991a8f96f9f62314"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory__operator_8hpp.html#a03b7279178500915991a8f96f9f62314">AdeleteArr</a>(M)&#160;&#160;&#160;delete[] M</td></tr>
+<tr class="separator:a03b7279178500915991a8f96f9f62314"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="aad89aab614acbf1589f4fdc4c14fa76e"></a>
+<a class="anchor" id="aee4617fc8438508699665b739bfcc7ee"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ANJING_LOG_BUFFER_SIZE&#160;&#160;&#160;2048</td>
+          <td class="memname">#define Adelete</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">M</td><td>)</td>
+          <td>&#160;&#160;&#160;delete M</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a03b7279178500915991a8f96f9f62314"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AdeleteArr</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">M</td><td>)</td>
+          <td>&#160;&#160;&#160;delete[] M</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acadd9f9c34a36524cb3ff35f6ba7375b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Anew&#160;&#160;&#160;new</td>
         </tr>
       </table>
 </div><div class="memdoc">

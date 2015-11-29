@@ -8,7 +8,6 @@ var searchData=
   ['catch_5fexceptions_5fenv_5fvar',['CATCH_EXCEPTIONS_ENV_VAR',['../namespacegtest__break__on__failure__unittest.html#a0c1cd8079b97c6924156075c6c9733c3',1,'gtest_break_on_failure_unittest']]],
   ['catch_5fexceptions_5fenv_5fvar_5fname',['CATCH_EXCEPTIONS_ENV_VAR_NAME',['../namespacegtest__output__test.html#a3b2d61497a354f214b5a086dcff420ee',1,'gtest_output_test']]],
   ['cc_5fflag',['CC_FLAG',['../namespaceupload__gtest.html#a83f0946f9ee3731253fc622acd581fc2',1,'upload_gtest']]],
-  ['check_5fcode',['CHECK_CODE',['../memory__manager_8cpp.html#a8ec7040a8241d08bcc51ca31c5da0912',1,'memory_manager.cpp']]],
   ['child',['child',['../namespacegtest__filter__unittest.html#a158829096400f19be6d8a3ef8ca8b76a',1,'gtest_filter_unittest']]],
   ['code',['code',['../classpump_1_1_for_node.html#afdb5f4f2a3bc772bbc6ea777dfde898e',1,'pump::ForNode']]],
   ['color_5fenv_5fvar',['COLOR_ENV_VAR',['../namespacegtest__color__test.html#aa6deaa7da27bcc115fe666abad13419c',1,'gtest_color_test']]],

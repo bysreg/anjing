@@ -40,7 +40,7 @@ var searchData=
   ['formattimeinmillisasseconds',['FormatTimeInMillisAsSeconds',['../namespacetesting_1_1internal.html#a904485f27a54be8a5a92856e2d838797',1,'testing::internal']]],
   ['forwarding_5fenabled',['forwarding_enabled',['../classtesting_1_1internal_1_1_test_event_repeater.html#a65c4a855a505ff74c843cf50ad56b4c1',1,'testing::internal::TestEventRepeater']]],
   ['fraction_5fbits',['fraction_bits',['../classtesting_1_1internal_1_1_floating_point.html#aa0167b7b10a934b743ba3c1f47421e63',1,'testing::internal::FloatingPoint']]],
-  ['free',['Free',['../classanjing_1_1core_1_1_memory_manager.html#a1904eb8efe991520495ff6ccefeaef91',1,'anjing::core::MemoryManager']]],
+  ['free',['Free',['../classanjing_1_1core_1_1_memory_manager.html#a95bfaeecd579dce617efee95e081821e',1,'anjing::core::MemoryManager']]],
   ['freopen',['FReopen',['../namespacetesting_1_1internal_1_1posix.html#a9ef6d089cdae03f9d9e0e6d379c40703',1,'testing::internal::posix']]],
   ['friend_5ftest',['FRIEND_TEST',['../class_private_code.html#a9a74a333501232539ab1636f0928d8f2',1,'PrivateCode::FRIEND_TEST(PrivateCodeTest, CanAccessPrivateMembers)'],['../class_private_code.html#a29b6823300f68d78691476eeeaed8a7c',1,'PrivateCode::FRIEND_TEST(PrivateCodeFixtureTest, CanAccessPrivateMembers)']]],
   ['fullmatch',['FullMatch',['../classtesting_1_1internal_1_1_r_e.html#aa79a950758d0f1d62f7762d1e9cefe86',1,'testing::internal::RE::FullMatch(const ::std::string &amp;str, const RE &amp;re)'],['../classtesting_1_1internal_1_1_r_e.html#a2b13ec1f6ccd6c32f7efa01e21588f0b',1,'testing::internal::RE::FullMatch(const char *str, const RE &amp;re)']]],

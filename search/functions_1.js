@@ -7,7 +7,7 @@ var searchData=
   ['addtestinfo',['AddTestInfo',['../classtesting_1_1internal_1_1_unit_test_impl.html#a1cc87dfc91377ebec4a3ff4192dfcba9',1,'testing::internal::UnitTestImpl']]],
   ['adhoctest',['AdHocTest',['../gtest__output__test___8cc.html#a36cd4d21174efaa3066237d716028d49',1,'gtest_output_test_.cc']]],
   ['adjustforparameterizedtests',['AdjustForParameterizedTests',['../classgtest__filter__unittest_1_1_g_test_filter_unit_test.html#a11c48bf404bca6806b14a1a71d169ace',1,'gtest_filter_unittest::GTestFilterUnitTest']]],
-  ['alloc',['Alloc',['../classanjing_1_1core_1_1_memory_manager.html#a0a93fe176d09f11b37ae3c532031af12',1,'anjing::core::MemoryManager']]],
+  ['alloc',['Alloc',['../classanjing_1_1core_1_1_memory_manager.html#a86d89d9f5117d51cce783815d08c057b',1,'anjing::core::MemoryManager']]],
   ['almostequals',['AlmostEquals',['../classtesting_1_1internal_1_1_floating_point.html#adb0fe9ab1d9e5288f8e5550234211166',1,'testing::internal::FloatingPoint']]],
   ['alsorundisabledtests',['AlsoRunDisabledTests',['../structtesting_1_1_flags.html#a8bee2b5f94d8248b6791d6b005db146f',1,'testing::Flags']]],
   ['alsorundisabledtestsflag',['AlsoRunDisabledTestsFlag',['../namespacegtest__shuffle__test.html#a91033ae962b37f040a95fb90062aacb3',1,'gtest_shuffle_test']]],
