@@ -112,43 +112,65 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define ANJING_SHOW_LOG_INVOKE_LOCATION 0</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// the following log macro has runtime check in it. why ? so that the compiler will always check that </span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// the logging code is valid. Optimizer will remove it anyway when ANJING_LOG_TEST is 0.</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// the do-while code ensure that this is a full statement so that it could be safely used in if else without curly braces.</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// more info here : http://stackoverflow.com/questions/1644868/c-define-macro-for-debug-printing/1644898#1644898</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="log_8hpp.html#a1f2ad34952dc65983d53dabd1b748803">   28</a></span>&#160;<span class="preprocessor">#define ANJING_LOG(message)\</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">    do {\</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">        if (ANJING_LOG_TEST){\</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">            if(ANJING_SHOW_LOG_INVOKE_LOCATION)\</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">            {\</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">                std::cout &lt;&lt; message &lt;&lt; &quot; (log invoked from : &quot; &lt;&lt; __FILE__ &lt;&lt; &quot;:&quot; &lt;&lt; __LINE__ &lt;&lt;  &quot;)&quot; &lt;&lt; std::endl;\</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">            }\</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">            else\</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">            {\</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">                    std::cout &lt;&lt; message &lt;&lt; std::endl;\</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">            }\</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">        }\</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">    } while (0)</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="log_8hpp.html#ac44adba256523613429fcc6a306e6c8a">   42</a></span>&#160;<span class="preprocessor">#define ANJING_LOGF(format, ...)\</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">    do { if (ANJING_LOG_TEST) anjing::Log(__FILE__, __LINE__, format, ## __VA_ARGS__); } while (0)</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">//in wide char</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="log_8hpp.html#a1998f5f8826f919a5f1d9cc5a30c00c8">   46</a></span>&#160;<span class="preprocessor">#define ANJING_LOGW(message)\</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">    do {\</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">        if (ANJING_LOG_TEST)\</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">        {\</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">            if (ANJING_SHOW_LOG_INVOKE_LOCATION)\</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">            {\</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">                std::wcout &lt;&lt; message &lt;&lt; &quot; (log invoked from : &quot; &lt;&lt; __FILE__ &lt;&lt; &quot;:&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;)&quot; &lt;&lt; std::endl;\</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">            }\</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">            else\</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">            {\</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">                std::wcout &lt;&lt; message &lt;&lt; &quot; (log invoked from : &quot; &lt;&lt; __FILE__ &lt;&lt; &quot;:&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;)&quot; &lt;&lt; std::endl;\</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">            }\</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">        }\</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">    } while (0)</span></div>
-<div class="ttc" id="namespaceanjing_html_adc6233322069ed121c78b135d19ecad1"><div class="ttname"><a href="namespaceanjing.html#adc6233322069ed121c78b135d19ecad1">anjing::Log</a></div><div class="ttdeci">void Log(const char *filename, int line, const char *format,...)</div><div class="ttdef"><b>Definition:</b> log.cpp:4</div></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="log_8hpp.html#a4aae050606860dc52738512f385d3d72">   24</a></span>&#160;<span class="preprocessor">#define ANJING_MULTI_LINE_MACRO_BEGIN do {</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#ifdef _MSC_VER</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">    #define ANJING_DISABLE_MSVC_4127_WARNING __pragma(warning(push)) __pragma(warning(disable:4127))</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">    #define ANJING_MSVC_WARNING_POP __pragma(warning(pop))</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">    #define ANJING_MULTI_LINE_MACRO_END \</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">        ANJING_DISABLE_MSVC_4127_WARNING\</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">        } while(0) \</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">        ANJING_MSVC_WARNING_POP</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="log_8hpp.html#a56fed44390b03fb09223e3fcb96398f2">   37</a></span>&#160;<span class="preprocessor">    #define ANJING_DISABLE_MSVC_4127_WARNING    </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="log_8hpp.html#a60a56bc4b358bd393f2fbfd6f2f1d3bd">   38</a></span>&#160;<span class="preprocessor">    #define ANJING_MSVC_WARNING_POP</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="log_8hpp.html#a52865dfdd14bf467bc790cdfd1127f70">   40</a></span>&#160;<span class="preprocessor">    #define ANJING_MULTI_LINE_MACRO_END }while(0)</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">// The following log macro has runtime check in it. why ? so that the compiler will always check that </span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">// the logging code is valid. Optimizer will remove it anyway when ANJING_LOG_TEST is 0.</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">// the do-while code ensure that this is a full statement so that it could be safely used in if else without curly braces.</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">// more info here : http://stackoverflow.com/questions/1644868/c-define-macro-for-debug-printing/1644898#1644898</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">// You also need to include &lt;iostream&gt; to use these functions</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="log_8hpp.html#af66779c64790ed4eef18fab34aa7121d">   48</a></span>&#160;<span class="preprocessor">#define ANJING_LOG_TO_OUT(message, out)\</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">    ANJING_MULTI_LINE_MACRO_BEGIN\</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">        ANJING_DISABLE_MSVC_4127_WARNING\</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">        if (ANJING_LOG_TEST == 1){\</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">            if(ANJING_SHOW_LOG_INVOKE_LOCATION == 1)\</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">            {\</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">                out &lt;&lt; message &lt;&lt; &quot; (log invoked from : &quot; &lt;&lt; __FILE__ &lt;&lt; &quot;:&quot; &lt;&lt; __LINE__ &lt;&lt;  &quot;)&quot; &lt;&lt; std::endl;\</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">            }\</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">            else\</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">            {\</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">                out &lt;&lt; message &lt;&lt; std::endl;\</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">            }\</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">        }\</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">        ANJING_MSVC_WARNING_POP\</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">    ANJING_MULTI_LINE_MACRO_END</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="log_8hpp.html#a1f2ad34952dc65983d53dabd1b748803">   64</a></span>&#160;<span class="preprocessor">#define ANJING_LOG(message)\</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">    ANJING_LOG_TO_OUT(message, std::cout)</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="log_8hpp.html#ac4237267fe01b43bd659e4c4e751433a">   67</a></span>&#160;<span class="preprocessor">#define ANJING_LOGE(message)\</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">    ANJING_LOG_TO_OUT(message, std::cerr)</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="log_8hpp.html#ac44adba256523613429fcc6a306e6c8a">   70</a></span>&#160;<span class="preprocessor">#define ANJING_LOGF(format, ...)\</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">    ANJING_MULTI_LINE_MACRO_BEGIN\</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">        ANJING_DISABLE_MSVC_4127_WARNING\</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">        if (ANJING_LOG_TEST == 1){\</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">            anjing::Log(__FILE__, __LINE__, format, ## __VA_ARGS__);\</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">        }\</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">        ANJING_MSVC_WARNING_POP\</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">    ANJING_MULTI_LINE_MACRO_END</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">//in wide char</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define ANJING_LOGW(message)\</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">    ANJING_LOG_TO_OUT(message, std::wcout)</span></div>
+<div class="ttc" id="namespaceanjing_html_adc6233322069ed121c78b135d19ecad1"><div class="ttname"><a href="namespaceanjing.html#adc6233322069ed121c78b135d19ecad1">anjing::Log</a></div><div class="ttdeci">void Log(const char *filename, int line, const char *format,...)</div><div class="ttdef"><b>Definition:</b> log.cpp:7</div></div>
 <div class="ttc" id="namespaceanjing_html"><div class="ttname"><a href="namespaceanjing.html">anjing</a></div><div class="ttdef"><b>Definition:</b> app.hpp:5</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

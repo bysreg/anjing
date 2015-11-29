@@ -62,7 +62,7 @@ var searchData=
   ['gettesttypeid',['GetTestTypeId',['../namespacetesting_1_1internal.html#ad0d66d56ead224263cd100c1d6bfc562',1,'testing::internal']]],
   ['getthreadcount',['GetThreadCount',['../namespacetesting_1_1internal.html#a3b9b3649cd04558bf46c75de52a7ef34',1,'testing::internal']]],
   ['gettimeinmillis',['GetTimeInMillis',['../namespacetesting_1_1internal.html#ae66b46943a429e6efb1db456d4cae90c',1,'testing::internal']]],
-  ['gettotalmemoryallocations',['GetTotalMemoryAllocations',['../classanjing_1_1core_1_1_memory_manager.html#ac832f767dc16175585f47c1899437ede',1,'anjing::core::MemoryManager']]],
+  ['gettotalmemoryallocations',['GetTotalMemoryAllocations',['../classanjing_1_1core_1_1_memory_manager.html#ab58083cdf8567189c6fd2560bbcc4a82',1,'anjing::core::MemoryManager']]],
   ['gettypeid',['GetTypeId',['../namespacetesting_1_1internal.html#a6b108e56fdc68ea937ffb3759fb55ab0',1,'testing::internal']]],
   ['gettypename',['GetTypeName',['../namespacetesting_1_1internal.html#a635606b4731f843c86ec8ca51cab83a1',1,'testing::internal']]],
   ['getunittestimpl',['GetUnitTestImpl',['../namespacetesting_1_1internal.html#a9bd0caf5d16512de38b39599c13ee634',1,'testing::internal']]],

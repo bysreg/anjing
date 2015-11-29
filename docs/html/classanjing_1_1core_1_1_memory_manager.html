@@ -100,21 +100,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0a93fe176d09f11b37ae3c532031af12"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanjing_1_1core_1_1_memory_manager.html#a0a93fe176d09f11b37ae3c532031af12">Alloc</a> (unsigned int numbytes, char *filename, unsigned int line)</td></tr>
-<tr class="memdesc:a0a93fe176d09f11b37ae3c532031af12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate memory with input of filename and line number of where the allocation is called.  <a href="#a0a93fe176d09f11b37ae3c532031af12">More...</a><br /></td></tr>
-<tr class="separator:a0a93fe176d09f11b37ae3c532031af12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1904eb8efe991520495ff6ccefeaef91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanjing_1_1core_1_1_memory_manager.html#a1904eb8efe991520495ff6ccefeaef91">Free</a> (void *address)</td></tr>
-<tr class="memdesc:a1904eb8efe991520495ff6ccefeaef91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deallocate memory.  <a href="#a1904eb8efe991520495ff6ccefeaef91">More...</a><br /></td></tr>
-<tr class="separator:a1904eb8efe991520495ff6ccefeaef91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86d89d9f5117d51cce783815d08c057b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanjing_1_1core_1_1_memory_manager.html#a86d89d9f5117d51cce783815d08c057b">Alloc</a> (unsigned int numbytes, const char *filename, unsigned int line)</td></tr>
+<tr class="memdesc:a86d89d9f5117d51cce783815d08c057b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate memory with input of filename and line number of where the allocation is called.  <a href="#a86d89d9f5117d51cce783815d08c057b">More...</a><br /></td></tr>
+<tr class="separator:a86d89d9f5117d51cce783815d08c057b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95bfaeecd579dce617efee95e081821e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanjing_1_1core_1_1_memory_manager.html#a95bfaeecd579dce617efee95e081821e">Free</a> (void *address, const char *filename, unsigned int line)</td></tr>
+<tr class="memdesc:a95bfaeecd579dce617efee95e081821e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deallocate memory. Returns 1 if address is successfully deallocated.  <a href="#a95bfaeecd579dce617efee95e081821e">More...</a><br /></td></tr>
+<tr class="separator:a95bfaeecd579dce617efee95e081821e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb53025d1f9122c5e1bcf8e80f327b2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanjing_1_1core_1_1_memory_manager.html#aeb53025d1f9122c5e1bcf8e80f327b2c">Dump</a> ()</td></tr>
-<tr class="memdesc:aeb53025d1f9122c5e1bcf8e80f327b2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">List all the allocated memories that haven't deleted yet.  <a href="#aeb53025d1f9122c5e1bcf8e80f327b2c">More...</a><br /></td></tr>
+<tr class="memdesc:aeb53025d1f9122c5e1bcf8e80f327b2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">List all the allocated memories by <a class="el" href="classanjing_1_1core_1_1_memory_manager.html">MemoryManager</a> that haven't been deleted yet.  <a href="#aeb53025d1f9122c5e1bcf8e80f327b2c">More...</a><br /></td></tr>
 <tr class="separator:aeb53025d1f9122c5e1bcf8e80f327b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4661403ae88cd27c19841062c1a2bfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanjing_1_1core_1_1_memory_manager.html#ad4661403ae88cd27c19841062c1a2bfd">Clean</a> ()</td></tr>
 <tr class="memdesc:ad4661403ae88cd27c19841062c1a2bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all allocations. This will make <a class="el" href="classanjing_1_1core_1_1_memory_manager.html">MemoryManager</a> state looks like it is just newly instantiated.  <a href="#ad4661403ae88cd27c19841062c1a2bfd">More...</a><br /></td></tr>
 <tr class="separator:ad4661403ae88cd27c19841062c1a2bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac832f767dc16175585f47c1899437ede"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanjing_1_1core_1_1_memory_manager.html#ac832f767dc16175585f47c1899437ede">GetTotalMemoryAllocations</a> ()</td></tr>
-<tr class="memdesc:ac832f767dc16175585f47c1899437ede"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns total memory allocations.  <a href="#ac832f767dc16175585f47c1899437ede">More...</a><br /></td></tr>
-<tr class="separator:ac832f767dc16175585f47c1899437ede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab58083cdf8567189c6fd2560bbcc4a82"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanjing_1_1core_1_1_memory_manager.html#ab58083cdf8567189c6fd2560bbcc4a82">GetTotalMemoryAllocations</a> () const </td></tr>
+<tr class="memdesc:ab58083cdf8567189c6fd2560bbcc4a82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns total memory allocations.  <a href="#ab58083cdf8567189c6fd2560bbcc4a82">More...</a><br /></td></tr>
+<tr class="separator:ab58083cdf8567189c6fd2560bbcc4a82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -126,7 +126,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:aa7735cb29e48773c58205eabd1bde223"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a0a93fe176d09f11b37ae3c532031af12"></a>
+<a class="anchor" id="a86d89d9f5117d51cce783815d08c057b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -139,7 +139,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>filename</em>, </td>
         </tr>
         <tr>
@@ -175,6 +175,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Removes all allocations. This will make <a class="el" href="classanjing_1_1core_1_1_memory_manager.html">MemoryManager</a> state looks like it is just newly instantiated. </p>
+<p>Be careful to use this function. This will wipe out all allocations. We must make sure no other code has ownership of any of the allocations before performing this function. </p>
 
 </div>
 </div>
@@ -191,26 +192,43 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>List all the allocated memories that haven't deleted yet. </p>
+<p>List all the allocated memories by <a class="el" href="classanjing_1_1core_1_1_memory_manager.html">MemoryManager</a> that haven't been deleted yet. </p>
 
 </div>
 </div>
-<a class="anchor" id="a1904eb8efe991520495ff6ccefeaef91"></a>
+<a class="anchor" id="a95bfaeecd579dce617efee95e081821e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void MemoryManager::Free </td>
+          <td class="memname">int MemoryManager::Free </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>address</em></td><td>)</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Deallocate memory. </p>
-<p>if <em>address</em> is nullptr, the function does nothing if <em>address</em> is not allocated using Alloc(or by global operator new overrided by MemoryManager), it causes undefined behaviour this function does not change the value of <em>address</em> itself, hence it still points to the same (now invalid) location </p>
+<p>Deallocate memory. Returns 1 if address is successfully deallocated. </p>
+<p>if <em>address</em> is nullptr, the function does nothing and returns 2 if <em>address</em> is not allocated using Alloc(or by global operator new overrided by MemoryManager), it causes undefined behaviour this function does not change the value of <em>address</em> itself, hence it still points to the same (now invalid) location</p>
+<p>Returns 3 if sentinel code in address is not intact, indicating that there is memory overrun. Address is still deallocated. </p>
 
 </div>
 </div>
@@ -266,7 +284,7 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac832f767dc16175585f47c1899437ede"></a>
+<a class="anchor" id="ab58083cdf8567189c6fd2560bbcc4a82"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -274,7 +292,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="memname">size_t MemoryManager::GetTotalMemoryAllocations </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">

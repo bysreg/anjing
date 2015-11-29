@@ -10,11 +10,16 @@ namespace anjing
 		struct AllocInfo
 		{
 			AllocInfo* prev;
-			AllocInfo* next;						
+			AllocInfo* next;
+			
+			// memory address returned from malloc
 			void* mem;
-			char* filename;
-			unsigned int line;			
-			std::size_t mem_size; // total memory allocated by MemoryManager for this allocation
+
+			const char* filename;
+			unsigned int line;
+
+			// total memory allocated by MemoryManager for this allocation
+			std::size_t mem_size; 
 		};
 
 		class MemoryManager
@@ -40,6 +45,12 @@ namespace anjing
 			/// \a used_alloc_info is assumed to be in used_list
 			void RemoveUsedAllocInfo(AllocInfo* used_alloc_info);
 
+			///
+			/// \brief Returns true if sentinel code in \a alloc_info memory layout is still intact
+			///
+			///
+			bool CheckSentinel(const AllocInfo* alloc_info) const;
+
 		public:
 			///
 			/// \brief Return singleton instance of MemoryManager. 
@@ -50,32 +61,35 @@ namespace anjing
 			/// \brief Allocate memory with input of filename and line number of where the allocation is called
 			///
 			/// if \a ANJING_OVERRIDE_GLOBAL_NEW is defined, then operator new, and new[] will instead call this function
-			void* Alloc(unsigned int numbytes, char* filename, unsigned int line);
+			void* Alloc(unsigned int numbytes, const char* filename, unsigned int line);
 
 			///
-			/// \brief Deallocate memory
+			/// \brief Deallocate memory. Returns 1 if address is successfully deallocated
 			///
-			/// if \a address is nullptr, the function does nothing
+			/// if \a address is nullptr, the function does nothing and returns 2
 			/// if \a address is not allocated using Alloc(or by global operator new overrided by MemoryManager), it causes undefined behaviour
 			/// this function does not change the value of \a address itself, hence it still points to the same (now invalid) location
 			///
-			void Free(void* address);
+			/// Returns 3 if sentinel code in address is not intact, indicating that there is memory overrun. Address is still deallocated.
+			int Free(void* address, const char* filename, unsigned int line);
 
 			///
-			/// \brief List all the allocated memories that haven't deleted yet 
+			/// \brief List all the allocated memories by MemoryManager that haven't been deleted yet 
 			///
 			void Dump();			
 
 			///
 			/// \brief Removes all allocations. This will make MemoryManager state looks like it is just newly instantiated
 			///
+			/// Be careful to use this function. This will wipe out all allocations. We must make sure no other code has
+			/// ownership of any of the allocations before performing this function. 
 			void Clean();
 
 			///
 			/// \brief Returns total memory allocations. 
 			///
 			/// implementation detail : O(n) operation as this function iterates over all alocations.
-			std::size_t GetTotalMemoryAllocations();
+			std::size_t GetTotalMemoryAllocations() const;
 
 			///
 			/// \brief Returns AllocInfo from the address. Adress is assumed to be allocated by MemoryManager

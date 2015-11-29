@@ -21,39 +21,61 @@ namespace anjing {
 #define ANJING_SHOW_LOG_INVOKE_LOCATION 0
 #endif
 
-// the following log macro has runtime check in it. why ? so that the compiler will always check that 
+#define ANJING_MULTI_LINE_MACRO_BEGIN do {
+
+#ifdef _MSC_VER
+
+	#define ANJING_DISABLE_MSVC_4127_WARNING __pragma(warning(push)) __pragma(warning(disable:4127))
+	#define ANJING_MSVC_WARNING_POP __pragma(warning(pop))
+
+	#define ANJING_MULTI_LINE_MACRO_END \
+		ANJING_DISABLE_MSVC_4127_WARNING\
+		} while(0) \
+		ANJING_MSVC_WARNING_POP
+#else
+	
+	#define ANJING_DISABLE_MSVC_4127_WARNING	
+	#define ANJING_MSVC_WARNING_POP
+
+	#define ANJING_MULTI_LINE_MACRO_END }while(0)
+#endif
+
+// The following log macro has runtime check in it. why ? so that the compiler will always check that 
 // the logging code is valid. Optimizer will remove it anyway when ANJING_LOG_TEST is 0.
 // the do-while code ensure that this is a full statement so that it could be safely used in if else without curly braces.
 // more info here : http://stackoverflow.com/questions/1644868/c-define-macro-for-debug-printing/1644898#1644898
-#define ANJING_LOG(message)\
-	do {\
-		if (ANJING_LOG_TEST){\
-			if(ANJING_SHOW_LOG_INVOKE_LOCATION)\
+// You also need to include <iostream> to use these functions
+#define ANJING_LOG_TO_OUT(message, out)\
+	ANJING_MULTI_LINE_MACRO_BEGIN\
+		ANJING_DISABLE_MSVC_4127_WARNING\
+		if (ANJING_LOG_TEST == 1){\
+			if(ANJING_SHOW_LOG_INVOKE_LOCATION == 1)\
 			{\
-				std::cout << message << " (log invoked from : " << __FILE__ << ":" << __LINE__ <<  ")" << std::endl;\
+				out << message << " (log invoked from : " << __FILE__ << ":" << __LINE__ <<  ")" << std::endl;\
 			}\
 			else\
 			{\
-					std::cout << message << std::endl;\
+				out << message << std::endl;\
 			}\
 		}\
-	} while (0)
+		ANJING_MSVC_WARNING_POP\
+	ANJING_MULTI_LINE_MACRO_END
+
+#define ANJING_LOG(message)\
+	ANJING_LOG_TO_OUT(message, std::cout)
+
+#define ANJING_LOGE(message)\
+	ANJING_LOG_TO_OUT(message, std::cerr)
 
 #define ANJING_LOGF(format, ...)\
-	do { if (ANJING_LOG_TEST) anjing::Log(__FILE__, __LINE__, format, ## __VA_ARGS__); } while (0)
+	ANJING_MULTI_LINE_MACRO_BEGIN\
+		ANJING_DISABLE_MSVC_4127_WARNING\
+		if (ANJING_LOG_TEST == 1){\
+			anjing::Log(__FILE__, __LINE__, format, ## __VA_ARGS__);\
+		}\
+		ANJING_MSVC_WARNING_POP\
+	ANJING_MULTI_LINE_MACRO_END
 
 //in wide char
 #define ANJING_LOGW(message)\
-	do {\
-		if (ANJING_LOG_TEST)\
-		{\
-			if (ANJING_SHOW_LOG_INVOKE_LOCATION)\
-			{\
-				std::wcout << message << " (log invoked from : " << __FILE__ << ":" << __LINE__ << ")" << std::endl;\
-			}\
-			else\
-			{\
-				std::wcout << message << " (log invoked from : " << __FILE__ << ":" << __LINE__ << ")" << std::endl;\
-			}\
-		}\
-	} while (0)
+	ANJING_LOG_TO_OUT(message, std::wcout)

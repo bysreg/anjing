@@ -4,4 +4,7 @@ include_directories(
 	${GLEW_INCLUDE_DIR}
 )
 
+# add target app
 add_library(app app.cpp)
+
+set_target_properties(app PROPERTIES COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} ")

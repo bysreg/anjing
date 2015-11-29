@@ -30,7 +30,7 @@ var searchData=
   ['shuffletests',['ShuffleTests',['../classtesting_1_1internal_1_1_unit_test_impl.html#aaaa38e6a4372e6bb9bbe3143a3a32b65',1,'testing::internal::UnitTestImpl']]],
   ['sign_5fbit',['sign_bit',['../classtesting_1_1internal_1_1_floating_point.html#a6176cc4d443724477f2799bcbd9f020a',1,'testing::internal::FloatingPoint']]],
   ['singlefailurechecker',['SingleFailureChecker',['../classtesting_1_1internal_1_1_single_failure_checker.html#a6d350d385526c97c9982e928f5f8fb56',1,'testing::internal::SingleFailureChecker']]],
-  ['size',['size',['../classtesting_1_1_test_part_result_array.html#acd805ad4edda06d983456b2a30760dce',1,'testing::TestPartResultArray::size()'],['../classtesting_1_1internal_1_1_native_array.html#a45de2485baac8bf148e2943828094a40',1,'testing::internal::NativeArray::size()'],['../class_queue.html#a8d69a34b2dfccbf1343b7fc4ba35da90',1,'Queue::Size()']]],
+  ['size',['Size',['../class_queue.html#a8d69a34b2dfccbf1343b7fc4ba35da90',1,'Queue::Size()'],['../classtesting_1_1_test_part_result_array.html#acd805ad4edda06d983456b2a30760dce',1,'testing::TestPartResultArray::size()'],['../classtesting_1_1internal_1_1_native_array.html#a45de2485baac8bf148e2943828094a40',1,'testing::internal::NativeArray::size()']]],
   ['skip',['Skip',['../namespacepump.html#a869bd8932d9ee97f3a0e789abd05d590',1,'pump']]],
   ['skipprefix',['SkipPrefix',['../namespacetesting_1_1internal.html#a244d9a3765727306b597b8992ab84036',1,'testing::internal']]],
   ['skipuntil',['SkipUntil',['../namespacepump.html#a8935d04d89047866b07c59845e2d7d29',1,'pump']]],

@@ -3,6 +3,37 @@ project(anjing)
 
 set(CMAKE_CXX_STANDARD 11) # use c++11
 
+########## DEBUG CONFIGURATION ########
+## This will add some debugging macro if debug configuration is on
+## To switch on debug configuration in linux, supply cmake with
+##  -DCMAKE_BUILD_TYPE=Debug
+## For Windows, change to Debug mode in Visual Studio
+
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DANJING_DEBUG")
+
+## turn on warning flags
+if(WIN32)
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /W4")
+else()
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wextra -pedantic -Wold-style-cast")
+endif()
+
+######################################
+
+######### RELEASE CONFIGURATION ######
+## To switch on release configuration in linux, supply cmake with
+##  -DCMAKE_BUILD_TYPE=Release
+## For Windows, change to Release mode in Visual Studio
+
+## turn on optimization flags
+if(WIN32)
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2")
+else()
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
+endif()
+
+######################################
+
 if(WIN32)
 	set(CMAKE_PREFIX_PATH ${PROJECT_SOURCE_DIR}/windows)
 endif()
@@ -15,8 +46,23 @@ find_package(GLEW REQUIRED)
 
 set(ANJING_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/src")
 
+##### project-wide compile flags #####
+set(ANJING_COMPILE_FLAGS "")
+
+## custom compile flags : 
+# force include defines.hpp
+set(MYAPP_FORCED_INCLUDE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/myapp/defines.hpp")
+if(WIN32)
+	set(ANJING_COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} /FI\"${MYAPP_FORCED_INCLUDE_FILE}\" ")
+else()
+	set(ANJING_COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} -include\"${MYAPP_FORCED_INCLUDE_FILE}\" ")
+endif()
+
+######################################
+
 add_subdirectory(src)
 
+############## TESTS #################
 option(build_test "build_test" OFF)
 if(build_test)
 	
@@ -38,3 +84,4 @@ if(build_test)
 	#find_package(GTest REQUIRED)
 	add_subdirectory(test)
 endif()
+######################################

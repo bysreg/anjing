@@ -1,6 +1,4 @@
-Linux + OSX (GCC & CLang): [![Build Status](https://travis-ci.org/bysreg/anjing.svg?branch=master)](https://travis-ci.org/bysreg/anjing)
-
-Windows: [![Build status](https://ci.appveyor.com/api/projects/status/qw871xxhxlhd0j3a?svg=true)](https://ci.appveyor.com/project/bysreg/anjing)
+# Anjing [![Build Status](https://travis-ci.org/bysreg/anjing.svg?branch=master)](https://travis-ci.org/bysreg/anjing) [![Build status](https://ci.appveyor.com/api/projects/status/qw871xxhxlhd0j3a?svg=true)](https://ci.appveyor.com/project/bysreg/anjing)
 
 ##Dependency :##
 - OpenGL 3.0 
@@ -9,7 +7,7 @@ Windows: [![Build status](https://ci.appveyor.com/api/projects/status/qw871xxhxl
 - Doxygen 1.8.10 (for docs)
 - CMake 3.1.0
 - Google Test 1.7.0 (included in source)
-- C++ 11 supported compiler
+- C++ 11 supported compiler (msvc for windows, and gcc & clang for linux/osx)
 
 ##For windows :##
 add folder /windows/bin to your path
@@ -48,6 +46,10 @@ http://bysreg.github.io/anjing/index.html
   - run "make" to build all executables, including the tests
   - run "make test" to run all the tests
   
+##Building Debug or Release:##
+- this only matters for linux or osx because in windows, you can switch the build mode inside Visual Studio
+- supply argument CMAKE_BUILD_TYPE=Debug or CMAKE_BUILD_TYPE=Release to cmake to build respective configuration
+- example (run inside build folder) :  cmake -DCMAKE_BUILD_TYPE=Debug ..
   
 ##C++ 11 features needed :##
 - Deleted functions, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2346.htm
