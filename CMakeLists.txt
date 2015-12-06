@@ -87,8 +87,10 @@ if(build_test)
 endif()
 
 if(gen_coverage)
-	#this will generate code coverage
+	#this will generate code coverage in debug mode
 	message("coverage report will be generated")
-	set(ANJING_COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} --coverage")
+	if(NOT WIN32)
+		set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} --coverage")
+	endif()
 endif()
 ######################################
