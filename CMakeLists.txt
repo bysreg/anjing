@@ -18,7 +18,7 @@ else()
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wextra -pedantic -Wold-style-cast")
 endif()
 
-######################################
+#=====================================
 
 ######### RELEASE CONFIGURATION ######
 ## To switch on release configuration in linux, supply cmake with
@@ -32,8 +32,9 @@ else()
 	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
 endif()
 
-######################################
+#=====================================
 
+######## PROJECT DEPENDECIES #########
 if(WIN32)
 	set(CMAKE_PREFIX_PATH ${PROJECT_SOURCE_DIR}/windows)
 endif()
@@ -45,8 +46,9 @@ find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 
 set(ANJING_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/src")
+#=====================================
 
-##### project-wide compile flags #####
+##### PROJECT-WIDE COMPILE FLAGS #####
 set(ANJING_COMPILE_FLAGS "")
 
 ## custom compile flags : 
@@ -58,13 +60,23 @@ else()
 	set(ANJING_COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} -include\"${MYAPP_FORCED_INCLUDE_FILE}\" ")
 endif()
 
-######################################
+#=====================================
+
+######## CODE COVERAGE REPORT ########
+option(gen_coverage "gen_coverage" OFF)
+if(gen_coverage)
+	#this will generate code coverage in debug mode
+	message("coverage report will be generated")
+	if(NOT WIN32)
+		set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} --coverage")
+	endif()
+endif()
+#=====================================
 
 add_subdirectory(src)
 
 ############## TESTS #################
 option(build_test "build_test" OFF)
-option(gen_coverage "gen_coverage" OFF)
 if(build_test)
 	
 	if(WIN32)
@@ -84,13 +96,5 @@ if(build_test)
 	
 	#find_package(GTest REQUIRED)
 	add_subdirectory(test)
-endif()
-
-if(gen_coverage)
-	#this will generate code coverage in debug mode
-	message("coverage report will be generated")
-	if(NOT WIN32)
-		set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} --coverage")
-	endif()
 endif()
 ######################################

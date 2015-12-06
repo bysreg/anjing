@@ -43,8 +43,10 @@ env:
 before_script:
   - cd build
   # only generate coverage report if building test and cmake build type is Debug
-  - if [ "$MAKE_TARGET" == "test" ] && [ "$CMAKE_BUILD_TYPE" == "Debug" ] ; then
+  - if [ "$MAKE_TARGET" == "test" ] && [ "$CMAKE_BUILD_TYPE" == "Debug" ]; then
       cmake -Dbuild_test=ON -Dgen_coverage=ON -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ..;
+    elif [ "$MAKE_TARGET" == "test" ]; then
+      cmake -Dbuild_test=ON -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ..;
     else
       cmake -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ..;
     fi
