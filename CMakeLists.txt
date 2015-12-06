@@ -64,16 +64,17 @@ add_subdirectory(src)
 
 ############## TESTS #################
 option(build_test "build_test" OFF)
+option(gen_coverage "gen_coverage" OFF)
 if(build_test)
 	
 	if(WIN32)
 		#this will override gtest_force_shared_crt that is set by googletest's CMakeLists
 		#we do this because googletest' cmake is build as static lib, but other projects in windows is built with runtime library set to dynamic
 		option(gtest_force_shared_crt ON)
-		set(gtest_force_shared_crt ON)	
+		set(gtest_force_shared_crt ON)
 	endif()
 	
-	add_subdirectory(src/third_party/googletest)	
+	add_subdirectory(src/third_party/googletest)
 	
 	message("tests will be build")
 	enable_testing()
@@ -83,5 +84,10 @@ if(build_test)
 	
 	#find_package(GTest REQUIRED)
 	add_subdirectory(test)
+endif()
+
+if(gen_coverage)
+	#this will generate code coverage
+	set(ANJING_COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} -coverage")
 endif()
 ######################################
