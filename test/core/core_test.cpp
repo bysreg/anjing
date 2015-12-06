@@ -1,5 +1,6 @@
 #include "core/memory_manager.hpp"
 #include "core/util.hpp"
+#include "core/log.hpp"
 
 #include <gtest/gtest.h>
 
@@ -115,6 +116,12 @@ TEST_F(MemoryManagerTest, GetAllocInfo)
 	EXPECT_EQ(alloc_info->mem_size, mm.GetTotalMemoryAllocations());
 	EXPECT_EQ(alloc_info->prev, nullptr);
 	EXPECT_EQ(alloc_info->next, nullptr);
+}
+
+
+TEST_F(MemoryManagerTest, GetAllocInfoNull)
+{
+	EXPECT_EQ(MemoryManager::GetAllocInfo(nullptr), nullptr);
 }
 
 // test one allocation and one deallocation with MemoryManager
@@ -304,4 +311,14 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc2)
 
 	DoAllocation();
 	DoAllocation();
+}
+
+TEST_F(MemoryManagerTest, DumpTest)
+{
+	MemoryManager::GetInstance().Dump();
+}
+
+TEST(LogTest, CallLog)
+{
+	Log("core_test.cpp", __LINE__, "%d %f", 2, 1.2f);
 }
