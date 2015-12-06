@@ -141,6 +141,12 @@ TEST_F(MemoryManagerTest, DeallocNormal)
 	EXPECT_EQ(free_ret_code, 1);
 }
 
+TEST_F(MemoryManagerTest, DeallocNull)
+{
+	int ret_code = DoFree(nullptr);
+	EXPECT_EQ(2, ret_code);
+}
+
 // test whether sentinel value could detect buffer overrun
 TEST_F(MemoryManagerTest, SentinelCheck)
 {
@@ -315,6 +321,9 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc2)
 
 TEST_F(MemoryManagerTest, DumpTest)
 {
+	DoAllocation();
+	DoAllocation();
+
 	MemoryManager::GetInstance().Dump();
 }
 
