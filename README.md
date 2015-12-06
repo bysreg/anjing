@@ -1,5 +1,5 @@
 # Anjing 
-[![Build Status](https://travis-ci.org/bysreg/anjing.svg?branch=master)](https://travis-ci.org/bysreg/anjing) [![Build status](https://ci.appveyor.com/api/projects/status/qw871xxhxlhd0j3a?svg=true)](https://ci.appveyor.com/project/bysreg/anjing)
+[![Build Status](https://travis-ci.org/bysreg/anjing.svg?branch=master)](https://travis-ci.org/bysreg/anjing) [![Build status](https://ci.appveyor.com/api/projects/status/qw871xxhxlhd0j3a?svg=true)](https://ci.appveyor.com/project/bysreg/anjing) [![codecov.io](https://codecov.io/github/bysreg/anjing/coverage.svg?branch=master)](https://codecov.io/github/bysreg/anjing?branch=master)
 
 ##Dependency :##
 - OpenGL 3.0 
