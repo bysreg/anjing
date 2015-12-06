@@ -3,7 +3,7 @@ clone_depth: 5
 before_build:
   - cmd: cd C:\projects\anjing
   - cmd: cd build
-  - cmd: cmake ..
+  - cmd: cmake -Dbuild_test=ON ..
   
 configuration:
   - Debug
