@@ -59,6 +59,6 @@ script:
 
 after_success:
   # only upload coverage report in test
-  - if [ "$MAKE_TARGET" == "test" ] then
+  - if [ "$MAKE_TARGET" == "test" ]; then
       ./codecov;
     fi
