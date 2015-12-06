@@ -88,6 +88,7 @@ endif()
 
 if(gen_coverage)
 	#this will generate code coverage
-	set(ANJING_COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} -coverage")
+	message("coverage report will be generated")
+	set(ANJING_COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} --coverage")
 endif()
 ######################################
