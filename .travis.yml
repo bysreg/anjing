@@ -42,8 +42,8 @@ env:
 
 before_script:
   - cd build
+  # only generate coverage report if building test
   - if [ "$MAKE_TARGET" == "test" ]; then
-      # only generate coverage report if building test
       cmake -Dbuild_test=ON -Dgen_coverage=ON -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ..;
     else
       cmake -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ..;
@@ -58,7 +58,7 @@ script:
     fi
 
 after_success:
-    # only upload coverage report in test
+  # only upload coverage report in test
   - if [ "$MAKE_TARGET" == "test" ] then
       codecov;
     fi
