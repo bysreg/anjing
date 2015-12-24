@@ -3,7 +3,7 @@ include_directories(
 )
 
 # add target myapp
-add_executable(myapp main.cpp)
+add_executable(myapp main.cpp defines.hpp)
 
 set_target_properties(myapp PROPERTIES COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} ")
 
