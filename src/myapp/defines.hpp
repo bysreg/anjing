@@ -9,5 +9,3 @@
 		#define ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE // replace Anew and Adelete macro with the two parameter __FILE__ and __LINE__ version
 	#endif
 #endif
-
-#include "core/memory_operator.hpp"
