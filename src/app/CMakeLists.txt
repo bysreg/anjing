@@ -7,4 +7,4 @@ include_directories(
 # add target app
 add_library(app app.cpp app.hpp)
 
-set_target_properties(app PROPERTIES COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} ")
+set_target_properties(app PROPERTIES COMPILE_FLAGS "${PROGRAM_COMPILE_FLAGS} ")
