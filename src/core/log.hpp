@@ -79,3 +79,4 @@ namespace anjing {
 //in wide char
 #define ANJING_LOGW(message)\
 	ANJING_LOG_TO_OUT(message, std::wcout)
+
