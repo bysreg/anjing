@@ -5,6 +5,7 @@
 
 #include <string>
 #include <type_traits>
+#include <typeinfo>
 
 // use vector list of components of a gameobject for now, probably should not use stl
 #include <vector>
