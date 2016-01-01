@@ -24,8 +24,9 @@ protected:
 	{
 		::testing::Test::SetUp();		
 
-		filename = new char[5];
-		strcpy(filename, "test");
+		char filename_temp[] = "test";
+		filename = new char[sizeof(filename_temp)];				
+		CopyString(filename, sizeof(filename_temp), filename_temp, sizeof(filename_temp));
 		line = 12;
 	}
 
