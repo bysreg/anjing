@@ -15,6 +15,10 @@ set_target_properties(memory_operator_test PROPERTIES COMPILE_FLAGS "${ANJING_CO
 target_compile_definitions(core PRIVATE ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE)
 target_compile_definitions(memory_operator_test PRIVATE ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE)
 
+add_executable(game_object_test game_object_test.cpp)
+target_link_libraries(game_object_test core app ${GLEW_LIBRARY} gtest gtest_main ${SDL2_LIBRARY} )
+set_target_properties(game_object_test PROPERTIES COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} ")
 
 add_test(coreTest core_test)
 add_test(memoryOperatorTest memory_operator_test)
+add_test(gameObjectTest game_object_test)
