@@ -1,6 +1,6 @@
 #include "core/util.hpp"
 
-#include <string>
+#include <cstring>
 
 void anjing::core::CopyString(char* dest, size_t dest_size, const char* src, size_t count)
 {
