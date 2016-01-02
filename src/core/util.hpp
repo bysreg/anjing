@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstddef>
+
 #define ANJING_UNUSED(expr) (void)(expr)
 
 namespace anjing
