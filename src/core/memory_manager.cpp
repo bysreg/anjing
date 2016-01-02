@@ -50,14 +50,14 @@ void* MemoryManager::Alloc(unsigned int numbytes, const char* filename, unsigned
 
 	// allocate the actual requested memory. we are going to request more than the numbytes
 	size_t allocated_mem_size = sizeof(AllocInfo*) + numbytes + sizeof(SENTINEL_CODE);
-	void* allocated_mem = malloc(allocated_mem_size);
-	void* actual_mem = ((char*)allocated_mem) + sizeof(AllocInfo*);
+	void* allocated_mem = malloc(allocated_mem_size);	
+	void* actual_mem = AddOffsetToPointer(allocated_mem, sizeof(AllocInfo*));
 	
 	// put the address of the allocinfo in the first bytes of the allocated_mem
 	memcpy(allocated_mem, &alloc_info, sizeof(AllocInfo*));
 
 	// put check code in the last bytes of the allocated_mem
-	memcpy(((char*)actual_mem) + numbytes, &SENTINEL_CODE, sizeof(SENTINEL_CODE));
+	memcpy(AddOffsetToPointer(actual_mem, numbytes), &SENTINEL_CODE, sizeof(SENTINEL_CODE));
 
 	alloc_info->mem = allocated_mem;
 	alloc_info->filename = filename;
@@ -103,7 +103,7 @@ void MemoryManager::Dump()
 
 	while (head != nullptr)
 	{
-		ANJING_LOGF("%4d. 0x%08X: %d bytes(%s: %d)\n", index + 1, (unsigned long)head->mem, head->mem_size, 
+		ANJING_LOGF("%4d. 0x%p: %d bytes(%s: %d)\n", index + 1, (unsigned long)head->mem, head->mem_size, 
 			head->filename, head->line);
 
 		head = head->next;
@@ -160,7 +160,7 @@ AllocInfo* MemoryManager::GetFreeAllocInfo()
 	else
 	{
 		// nothing is free, we need to allocate some
-		AllocInfo* alloc_info = (AllocInfo*) malloc(sizeof(AllocInfo));
+		AllocInfo* alloc_info = static_cast<AllocInfo*>( malloc(sizeof(AllocInfo)));
 		reset_alloc_info(alloc_info);
 		return alloc_info;
 	}
@@ -231,8 +231,7 @@ AllocInfo* MemoryManager::GetAllocInfo(void* address)
 	if (address == nullptr)
 		return nullptr;
 
-	AllocInfo* alloc_info = (AllocInfo*)((void**)(((char*)address) - sizeof(AllocInfo*)))[0];
-
+	AllocInfo* alloc_info = *(static_cast<AllocInfo**>(AddOffsetToPointer(address, -sizeof(AllocInfo*))));
 	return alloc_info;
 }
 

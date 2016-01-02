@@ -112,7 +112,7 @@ TEST_F(MemoryManagerTest, GetAllocInfo)
 	EXPECT_EQ(strcmp(alloc_info->filename, filename), 0);
 	EXPECT_EQ(alloc_info->line, line);
 	EXPECT_GT(alloc_info->mem_size, 0);	
-	EXPECT_EQ((char*)alloc_info->mem + sizeof(AllocInfo*), alloc_mem);
+	EXPECT_EQ(AddOffsetToPointer(alloc_info->mem, sizeof(AllocInfo*)), alloc_mem);
 	EXPECT_GT(mm.GetTotalMemoryAllocations(), 0);
 	EXPECT_EQ(alloc_info->mem_size, mm.GetTotalMemoryAllocations());
 	EXPECT_EQ(alloc_info->prev, nullptr);
@@ -330,5 +330,5 @@ TEST_F(MemoryManagerTest, DumpTest)
 
 TEST(LogTest, CallLog)
 {
-	Log("core_test.cpp", __LINE__, "%d %f", 2, 1.2f);
+	Log("core_test.cpp", __LINE__, "%d %f\n", 2, 1.2f);
 }

@@ -17,5 +17,18 @@ namespace anjing
 		/// like the C++11 extension standard of strncpy_s
 		/// 
 		void CopyString(char* dest, size_t dest_size, const char* src, size_t count);
+
+		///
+		/// \brief Add offset of \a size byte to pointer p
+		///
+		/// This function does not check anything (no bounds checking)
+		///
+		template<typename T>
+		T* AddOffsetToPointer(T* p, size_t size)
+		{
+			char* cp = reinterpret_cast<char*>(p);
+			cp += size;
+			return reinterpret_cast<T*>(cp);
+		}
 	}
 }
