@@ -2,8 +2,10 @@ var searchData=
 [
   ['abort',['Abort',['../namespacetesting_1_1internal_1_1posix.html#a69b8278c59359dd6a6f941b4643db9fb',1,'testing::internal::posix']]],
   ['ad_5fhoc_5ftest_5fresult',['ad_hoc_test_result',['../classtesting_1_1_test_case.html#a3993481a8f0c2253653b5e1ec5934432',1,'testing::TestCase::ad_hoc_test_result()'],['../classtesting_1_1_unit_test.html#ad9f058c36dab7e276322969160ed6f06',1,'testing::UnitTest::ad_hoc_test_result()'],['../classtesting_1_1internal_1_1_unit_test_impl.html#aa5c0533805fa2937c58d6805e20aac51',1,'testing::internal::UnitTestImpl::ad_hoc_test_result()']]],
+  ['addcomponent',['AddComponent',['../classanjing_1_1core_1_1_game_object.html#ab3d2d708be5d7e7d947a8e3670bf8b08',1,'anjing::core::GameObject']]],
   ['addfailure',['AddFailure',['../class_expect_failure_test.html#ab9aeb7820ff7953fc2975ecc5abd046b',1,'ExpectFailureTest']]],
   ['addglobaltestenvironment',['AddGlobalTestEnvironment',['../namespacetesting.html#a460d7b998622e332392c1e00be3a60d5',1,'testing']]],
+  ['addoffsettopointer',['AddOffsetToPointer',['../namespaceanjing_1_1core.html#aeaa274da96a25afd777d269e081c689a',1,'anjing::core']]],
   ['addtestinfo',['AddTestInfo',['../classtesting_1_1internal_1_1_unit_test_impl.html#a1cc87dfc91377ebec4a3ff4192dfcba9',1,'testing::internal::UnitTestImpl']]],
   ['adhoctest',['AdHocTest',['../gtest__output__test___8cc.html#a36cd4d21174efaa3066237d716028d49',1,'gtest_output_test_.cc']]],
   ['adjustforparameterizedtests',['AdjustForParameterizedTests',['../classgtest__filter__unittest_1_1_g_test_filter_unit_test.html#a11c48bf404bca6806b14a1a71d169ace',1,'gtest_filter_unittest::GTestFilterUnitTest']]],

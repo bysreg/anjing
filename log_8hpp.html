@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -126,6 +127,8 @@ Macros</h2></td></tr>
 <tr class="separator:ac4237267fe01b43bd659e4c4e751433a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac44adba256523613429fcc6a306e6c8a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#ac44adba256523613429fcc6a306e6c8a">ANJING_LOGF</a>(format, ...)</td></tr>
 <tr class="separator:ac44adba256523613429fcc6a306e6c8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1998f5f8826f919a5f1d9cc5a30c00c8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8hpp.html#a1998f5f8826f919a5f1d9cc5a30c00c8">ANJING_LOGW</a>(message)&#160;&#160;&#160;<a class="el" href="log_8hpp.html#af66779c64790ed4eef18fab34aa7121d">ANJING_LOG_TO_OUT</a>(message, std::wcout)</td></tr>
+<tr class="separator:a1998f5f8826f919a5f1d9cc5a30c00c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -271,7 +274,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">ANJING_MULTI_LINE_MACRO_BEGIN\</div>
 <div class="line">        ANJING_DISABLE_MSVC_4127_WARNING\</div>
 <div class="line">        if (<a class="code" href="log_8hpp.html#ad61d22e502c65b85ee5792e2404da907">ANJING_LOG_TEST</a> == 1){<a class="code" href="namespaceanjing.html#adc6233322069ed121c78b135d19ecad1">\</a></div>
-<div class="line"><a class="code" href="namespaceanjing.html#adc6233322069ed121c78b135d19ecad1">			anjing::Log</a>(__FILE__, __LINE__, format, ## __VA_ARGS__);\</div>
+<div class="line"><a class="code" href="namespaceanjing.html#adc6233322069ed121c78b135d19ecad1">			anjing::Log</a>(__FILE__, __LINE__, format, __VA_ARGS__);\</div>
 <div class="line">        }<a class="code" href="log_8hpp.html#a52865dfdd14bf467bc790cdfd1127f70">\</a></div>
 <div class="line"><a class="code" href="log_8hpp.html#a52865dfdd14bf467bc790cdfd1127f70">		ANJING_MSVC_WARNING_POP\</a></div>
 <div class="line"><a class="code" href="log_8hpp.html#a52865dfdd14bf467bc790cdfd1127f70">	ANJING_MULTI_LINE_MACRO_END</a></div>
@@ -279,6 +282,22 @@ Functions</h2></td></tr>
 <div class="ttc" id="namespaceanjing_html_adc6233322069ed121c78b135d19ecad1"><div class="ttname"><a href="namespaceanjing.html#adc6233322069ed121c78b135d19ecad1">anjing::Log</a></div><div class="ttdeci">void Log(const char *filename, int line, const char *format,...)</div><div class="ttdef"><b>Definition:</b> log.cpp:7</div></div>
 <div class="ttc" id="log_8hpp_html_ad61d22e502c65b85ee5792e2404da907"><div class="ttname"><a href="log_8hpp.html#ad61d22e502c65b85ee5792e2404da907">ANJING_LOG_TEST</a></div><div class="ttdeci">#define ANJING_LOG_TEST</div><div class="ttdef"><b>Definition:</b> log.hpp:17</div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a1998f5f8826f919a5f1d9cc5a30c00c8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ANJING_LOGW</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">message</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="log_8hpp.html#af66779c64790ed4eef18fab34aa7121d">ANJING_LOG_TO_OUT</a>(message, std::wcout)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a class="anchor" id="a60a56bc4b358bd393f2fbfd6f2f1d3bd"></a>
