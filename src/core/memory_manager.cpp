@@ -240,7 +240,6 @@ AllocInfo* MemoryManager::GetAllocInfo(void* address)
 	return alloc_info;
 }
 
-#ifdef ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE
 void* operator new (std::size_t size, const char* file, int line)
 {
 	return MemoryManager::GetInstance().Alloc(size, file, line);
@@ -266,5 +265,3 @@ void operator delete[](void* p, const char* file, int line)
 
 	MemoryManager::GetInstance().Free(p, file, line);
 }
-
-#endif
