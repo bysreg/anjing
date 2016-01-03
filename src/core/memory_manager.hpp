@@ -51,6 +51,14 @@ namespace anjing
 			///
 			bool CheckSentinel(const AllocInfo* alloc_info) const;
 
+			///
+			/// \brief Returns memory size of the metadata aside from the user requested memory allocation
+			///
+			/// MemoryManager, in order to put useful debugging information, will allocate more than 
+			/// what the user actually requested. This function will return that extra allocation size.		
+			///
+			size_t GetMetadataMemorySize() const;
+
 		public:
 			///
 			/// \brief Return singleton instance of MemoryManager. 

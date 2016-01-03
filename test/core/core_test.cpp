@@ -1,5 +1,6 @@
 #include "core/memory_manager.hpp"
 #include "core/util.hpp"
+#include "core/log.hpp"
 
 #include <gtest/gtest.h>
 
@@ -8,8 +9,7 @@ using namespace anjing::core;
 using namespace std;
 
 class TestClass
-{
-	int foo;
+{	
 };
 
 class MemoryManagerTest : public ::testing::Test 
@@ -23,8 +23,9 @@ protected:
 	{
 		::testing::Test::SetUp();		
 
-		filename = new char[5];
-		strcpy(filename, "test");
+		char filename_temp[] = "test";
+		filename = new char[sizeof(filename_temp)];				
+		CopyString(filename, sizeof(filename_temp), filename_temp, sizeof(filename_temp));
 		line = 12;
 	}
 
@@ -110,11 +111,17 @@ TEST_F(MemoryManagerTest, GetAllocInfo)
 	EXPECT_EQ(strcmp(alloc_info->filename, filename), 0);
 	EXPECT_EQ(alloc_info->line, line);
 	EXPECT_GT(alloc_info->mem_size, 0);	
-	EXPECT_EQ((char*)alloc_info->mem + sizeof(AllocInfo*), alloc_mem);
+	EXPECT_EQ(AddOffsetToPointer(alloc_info->mem, sizeof(AllocInfo*)), alloc_mem);
 	EXPECT_GT(mm.GetTotalMemoryAllocations(), 0);
 	EXPECT_EQ(alloc_info->mem_size, mm.GetTotalMemoryAllocations());
 	EXPECT_EQ(alloc_info->prev, nullptr);
 	EXPECT_EQ(alloc_info->next, nullptr);
+}
+
+
+TEST_F(MemoryManagerTest, GetAllocInfoNull)
+{
+	EXPECT_EQ(MemoryManager::GetAllocInfo(nullptr), nullptr);
 }
 
 // test one allocation and one deallocation with MemoryManager
@@ -132,6 +139,12 @@ TEST_F(MemoryManagerTest, DeallocNormal)
 	EXPECT_EQ(allocinfo->prev, nullptr);
 	EXPECT_EQ(allocinfo->next, nullptr);
 	EXPECT_EQ(free_ret_code, 1);
+}
+
+TEST_F(MemoryManagerTest, DeallocNull)
+{
+	int ret_code = DoFree(nullptr);
+	EXPECT_EQ(2, ret_code);
 }
 
 // test whether sentinel value could detect buffer overrun
@@ -304,4 +317,17 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc2)
 
 	DoAllocation();
 	DoAllocation();
+}
+
+TEST_F(MemoryManagerTest, DumpTest)
+{
+	DoAllocation();
+	DoAllocation();
+
+	MemoryManager::GetInstance().Dump();
+}
+
+TEST(LogTest, CallLog)
+{
+	Log("core_test.cpp", __LINE__, "%d %f\n", 2, 1.2f);
 }

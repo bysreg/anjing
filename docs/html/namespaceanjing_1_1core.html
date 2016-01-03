@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -86,7 +87,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">anjing::core Namespace Reference</div>  </div>
 </div><!--header-->
@@ -96,9 +98,125 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structanjing_1_1core_1_1_alloc_info.html">AllocInfo</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanjing_1_1core_1_1_component.html">Component</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classanjing_1_1core_1_1_component.html" title="Component is used to modify the appearance or behaviour of a gameobject. ">Component</a> is used to modify the appearance or behaviour of a gameobject.  <a href="classanjing_1_1core_1_1_component.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanjing_1_1core_1_1_game_object.html">GameObject</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanjing_1_1core_1_1_memory_manager.html">MemoryManager</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a71264b6a08fbc593b137d403ba523490"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a71264b6a08fbc593b137d403ba523490"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classanjing_1_1core_1_1_component.html">Component</a> *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceanjing_1_1core.html#a71264b6a08fbc593b137d403ba523490">GameObject::AddComponent&lt; anjing::gfx::MeshRenderer &gt;</a> ()</td></tr>
+<tr class="separator:a71264b6a08fbc593b137d403ba523490"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbe16f4166611cbd76c91a5643df392d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanjing_1_1core.html#afbe16f4166611cbd76c91a5643df392d">CopyString</a> (char *dest, size_t dest_size, const char *src, size_t count)</td></tr>
+<tr class="memdesc:afbe16f4166611cbd76c91a5643df392d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Essentially the same function as strcpy.  <a href="#afbe16f4166611cbd76c91a5643df392d">More...</a><br /></td></tr>
+<tr class="separator:afbe16f4166611cbd76c91a5643df392d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaa274da96a25afd777d269e081c689a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aeaa274da96a25afd777d269e081c689a"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceanjing_1_1core.html#aeaa274da96a25afd777d269e081c689a">AddOffsetToPointer</a> (T *p, size_t size)</td></tr>
+<tr class="memdesc:aeaa274da96a25afd777d269e081c689a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add offset of <em>size</em> byte to pointer p.  <a href="#aeaa274da96a25afd777d269e081c689a">More...</a><br /></td></tr>
+<tr class="separator:aeaa274da96a25afd777d269e081c689a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="aeaa274da96a25afd777d269e081c689a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T* anjing::core::AddOffsetToPointer </td>
+          <td>(</td>
+          <td class="paramtype">T *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add offset of <em>size</em> byte to pointer p. </p>
+<p>This function does not check anything (no bounds checking) </p>
+
+</div>
+</div>
+<a class="anchor" id="afbe16f4166611cbd76c91a5643df392d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anjing::core::CopyString </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>dest_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Essentially the same function as strcpy. </p>
+<p>This function will change into strcpy_s in windows and change to strcpy in other compilers Use this function instead of strcpy. This function is made mainly to avoid warning of 'unsafe' function in msvc. Should probably implement this function to actually behave like the C++11 extension standard of strncpy_s </p>
+
+</div>
+</div>
+<a class="anchor" id="a71264b6a08fbc593b137d403ba523490"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classanjing_1_1core_1_1_component.html">Component</a>* <a class="el" href="classanjing_1_1core_1_1_game_object.html#ab3d2d708be5d7e7d947a8e3670bf8b08">anjing::core::GameObject::AddComponent</a>&lt; <a class="el" href="classanjing_1_1gfx_1_1_mesh_renderer.html">anjing::gfx::MeshRenderer</a> &gt; </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

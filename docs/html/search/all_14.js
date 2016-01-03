@@ -76,7 +76,7 @@ var searchData=
   ['signal',['signal',['../classgtest__test__utils_1_1_subprocess.html#af083cd9621a5d5346ffe800191678ea3',1,'gtest_test_utils::Subprocess']]],
   ['singlefailurechecker',['SingleFailureChecker',['../classtesting_1_1internal_1_1_single_failure_checker.html#a6d350d385526c97c9982e928f5f8fb56',1,'testing::internal::SingleFailureChecker']]],
   ['singlefailurechecker',['SingleFailureChecker',['../classtesting_1_1internal_1_1_single_failure_checker.html',1,'testing::internal']]],
-  ['size',['Size',['../class_queue.html#a8d69a34b2dfccbf1343b7fc4ba35da90',1,'Queue::Size()'],['../classtesting_1_1_test_part_result_array.html#acd805ad4edda06d983456b2a30760dce',1,'testing::TestPartResultArray::size()'],['../classtesting_1_1internal_1_1_native_array.html#a45de2485baac8bf148e2943828094a40',1,'testing::internal::NativeArray::size()']]],
+  ['size',['size',['../classtesting_1_1_test_part_result_array.html#acd805ad4edda06d983456b2a30760dce',1,'testing::TestPartResultArray::size()'],['../classtesting_1_1internal_1_1_native_array.html#a45de2485baac8bf148e2943828094a40',1,'testing::internal::NativeArray::size()'],['../class_queue.html#a8d69a34b2dfccbf1343b7fc4ba35da90',1,'Queue::Size()']]],
   ['skip',['Skip',['../namespacepump.html#a869bd8932d9ee97f3a0e789abd05d590',1,'pump']]],
   ['skipprefix',['SkipPrefix',['../namespacetesting_1_1internal.html#a244d9a3765727306b597b8992ab84036',1,'testing::internal']]],
   ['skipuntil',['SkipUntil',['../namespacepump.html#a8935d04d89047866b07c59845e2d7d29',1,'pump']]],

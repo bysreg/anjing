@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -162,14 +163,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">    ANJING_MULTI_LINE_MACRO_BEGIN\</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">        ANJING_DISABLE_MSVC_4127_WARNING\</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">        if (ANJING_LOG_TEST == 1){\</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">            anjing::Log(__FILE__, __LINE__, format, ## __VA_ARGS__);\</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">            anjing::Log(__FILE__, __LINE__, format, __VA_ARGS__);\</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">        }\</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">        ANJING_MSVC_WARNING_POP\</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">    ANJING_MULTI_LINE_MACRO_END</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">//in wide char</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define ANJING_LOGW(message)\</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="log_8hpp.html#a1998f5f8826f919a5f1d9cc5a30c00c8">   80</a></span>&#160;<span class="preprocessor">#define ANJING_LOGW(message)\</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">    ANJING_LOG_TO_OUT(message, std::wcout)</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
 <div class="ttc" id="namespaceanjing_html_adc6233322069ed121c78b135d19ecad1"><div class="ttname"><a href="namespaceanjing.html#adc6233322069ed121c78b135d19ecad1">anjing::Log</a></div><div class="ttdeci">void Log(const char *filename, int line, const char *format,...)</div><div class="ttdef"><b>Definition:</b> log.cpp:7</div></div>
 <div class="ttc" id="namespaceanjing_html"><div class="ttname"><a href="namespaceanjing.html">anjing</a></div><div class="ttdef"><b>Definition:</b> app.hpp:5</div></div>
 </div><!-- fragment --></div><!-- contents -->

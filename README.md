@@ -1,4 +1,5 @@
-# Anjing [![Build Status](https://travis-ci.org/bysreg/anjing.svg?branch=master)](https://travis-ci.org/bysreg/anjing) [![Build status](https://ci.appveyor.com/api/projects/status/qw871xxhxlhd0j3a?svg=true)](https://ci.appveyor.com/project/bysreg/anjing)
+# Anjing 
+[![Build Status](https://travis-ci.org/bysreg/anjing.svg?branch=master)](https://travis-ci.org/bysreg/anjing) [![Build status](https://ci.appveyor.com/api/projects/status/qw871xxhxlhd0j3a?svg=true)](https://ci.appveyor.com/project/bysreg/anjing) [![codecov.io](https://codecov.io/github/bysreg/anjing/coverage.svg?branch=master)](https://codecov.io/github/bysreg/anjing?branch=master)
 
 ##Dependency :##
 - OpenGL 3.0 
@@ -45,12 +46,16 @@ http://bysreg.github.io/anjing/index.html
 - if on linux, 
   - run "make" to build all executables, including the tests
   - run "make test" to run all the tests
-  
+
 ##Building Debug or Release:##
 - this only matters for linux or osx because in windows, you can switch the build mode inside Visual Studio
 - supply argument CMAKE_BUILD_TYPE=Debug or CMAKE_BUILD_TYPE=Release to cmake to build respective configuration
 - example (run inside build folder) :  cmake -DCMAKE_BUILD_TYPE=Debug ..
   
+##Building with code coverage report:##
+- currently only works on linux & osx and it has to be compiled in debug mode (CMAKE_BUILD_TYPE==Debug)
+- supply -Dgen_coverage=ON to cmake
+
 ##C++ 11 features needed :##
 - Deleted functions, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2346.htm
 - Null pointer, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2431.pdf
