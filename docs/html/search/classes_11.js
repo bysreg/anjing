@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['test',['Test',['../classtesting_1_1_test.html',1,'testing']]],
   ['test',['Test',['../classmy__namespace_1_1testing_1_1_test.html',1,'my_namespace::testing']]],
+  ['test',['Test',['../classtesting_1_1_test.html',1,'testing']]],
   ['test_5fbefore_5ftest_5ff_5fin_5fsame_5ftest_5fcase',['TEST_before_TEST_F_in_same_test_case',['../class_t_e_s_t__before___t_e_s_t___f__in__same__test__case.html',1,'']]],
   ['test_5ff_5fbefore_5ftest_5fin_5fsame_5ftest_5fcase',['TEST_F_before_TEST_in_same_test_case',['../class_t_e_s_t___f__before___t_e_s_t__in__same__test__case.html',1,'']]],
   ['testcase',['TestCase',['../classtesting_1_1_test_case.html',1,'testing']]],

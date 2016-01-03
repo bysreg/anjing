@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['addcomponent_3c_20anjing_3a_3agfx_3a_3ameshrenderer_20_3e',['AddComponent&lt; anjing::gfx::MeshRenderer &gt;',['../namespaceanjing_1_1core.html#a71264b6a08fbc593b137d403ba523490',1,'anjing::core']]],
+  ['gameobject',['GameObject',['../classanjing_1_1core_1_1_game_object.html#a0348e3ee2e83d56eafca7a3547f432c4',1,'anjing::core::GameObject']]],
   ['generate',['Generate',['../classtesting_1_1internal_1_1_random.html#a9315b7fb621cbcfdf92ed4b5e584c0db',1,'testing::internal::Random']]],
   ['generatediff',['GenerateDiff',['../classupload_1_1_version_control_system.html#aa5eb260c96e7016dab36b5fc136c9f49',1,'upload.VersionControlSystem.GenerateDiff()'],['../classupload_1_1_subversion_v_c_s.html#a07c2d341f2c7df2772dd7f85e89b0212',1,'upload.SubversionVCS.GenerateDiff()'],['../classupload_1_1_git_v_c_s.html#a3ebfc01cebc9b585706ad3f4389a8833',1,'upload.GitVCS.GenerateDiff()'],['../classupload_1_1_mercurial_v_c_s.html#a6c05746012d8cd435c94ace1465671ef',1,'upload.MercurialVCS.GenerateDiff()']]],
   ['generatefile',['GenerateFile',['../namespacegen__gtest__pred__impl.html#a16210fe365dfd176e04aa2578ac5a8d9',1,'gen_gtest_pred_impl']]],
@@ -18,6 +20,7 @@ var searchData=
   ['getcapturedstdout',['GetCapturedStdout',['../namespacetesting_1_1internal.html#aed657219a9856a8d249a3230de0c54ce',1,'testing::internal']]],
   ['getcharptrvalue',['GetCharPtrValue',['../class_widget.html#af04038bacd7f650695b4c92d45ee2cbd',1,'Widget']]],
   ['getcommandoutput',['GetCommandOutput',['../namespacegtest__output__test.html#a953ec555d073485fbc7d9a092e8f1dea',1,'gtest_output_test']]],
+  ['getcomponent',['GetComponent',['../classanjing_1_1core_1_1_game_object.html#ac6a2b958b1d2ffbddfe152222789da84',1,'anjing::core::GameObject']]],
   ['getcontenttype',['GetContentType',['../namespaceupload.html#a2569514a52ec5cea9b1e637c00770ab4',1,'upload']]],
   ['getcurrentdir',['GetCurrentDir',['../classtesting_1_1internal_1_1_file_path.html#aaff39ccd7bfb7a1c09c0220a64326387',1,'testing::internal::FilePath']]],
   ['getcurrentexecutablename',['GetCurrentExecutableName',['../namespacetesting_1_1internal.html#a7a2bbf069f75bc99873976ad6fc356ad',1,'testing::internal']]],
@@ -37,6 +40,7 @@ var searchData=
   ['getnextrandomseed',['GetNextRandomSeed',['../namespacetesting_1_1internal.html#a6e07a655cb987d131cd8fbeba9a7f1eb',1,'testing::internal']]],
   ['getoutputformat',['GetOutputFormat',['../classtesting_1_1internal_1_1_unit_test_options.html#ae7413a21296d885c6924650b51ac4f6d',1,'testing::internal::UnitTestOptions']]],
   ['getoutputofallcommands',['GetOutputOfAllCommands',['../namespacegtest__output__test.html#a9d88a4a9a91b97a369abac2170a23ebe',1,'gtest_output_test']]],
+  ['getowner',['GetOwner',['../classanjing_1_1core_1_1_component.html#afa1618c8fd51e125e1912d1ec1d559ed',1,'anjing::core::Component']]],
   ['getrandomseedfromflag',['GetRandomSeedFromFlag',['../namespacetesting_1_1internal.html#ae74fedbdaebaac8d1202192266243b9e',1,'testing::internal']]],
   ['getrange',['GetRange',['../classpump_1_1_env.html#a1df05a550bdcfe4bb8c5b1608484a6dc',1,'pump::Env']]],
   ['getrepeater',['GetRepeater',['../classtesting_1_1internal_1_1_test_event_listeners_accessor.html#a07c6f8644e509d0f23c0c16a60856387',1,'testing::internal::TestEventListenersAccessor']]],
