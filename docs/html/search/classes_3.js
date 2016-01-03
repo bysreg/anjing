@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['defaultglobaltestpartresultreporter',['DefaultGlobalTestPartResultReporter',['../classtesting_1_1internal_1_1_default_global_test_part_result_reporter.html',1,'testing::internal']]],
-  ['defaultperthreadtestpartresultreporter',['DefaultPerThreadTestPartResultReporter',['../classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter.html',1,'testing::internal']]],
-  ['derived',['Derived',['../classtesting_1_1internal_1_1_derived.html',1,'testing::internal']]],
-  ['disabledtest',['DisabledTest',['../class_disabled_test.html',1,'']]]
+  ['memorymanager',['MemoryManager',['../classanjing_1_1core_1_1_memory_manager.html',1,'anjing::core']]],
+  ['meshrenderer',['MeshRenderer',['../classanjing_1_1gfx_1_1_mesh_renderer.html',1,'anjing::gfx']]]
 ];
