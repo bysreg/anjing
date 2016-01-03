@@ -71,7 +71,7 @@ namespace anjing {
 	ANJING_MULTI_LINE_MACRO_BEGIN\
 		ANJING_DISABLE_MSVC_4127_WARNING\
 		if (ANJING_LOG_TEST == 1){\
-			anjing::Log(__FILE__, __LINE__, format, ## __VA_ARGS__);\
+			anjing::Log(__FILE__, __LINE__, format, __VA_ARGS__);\
 		}\
 		ANJING_MSVC_WARNING_POP\
 	ANJING_MULTI_LINE_MACRO_END
