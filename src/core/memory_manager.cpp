@@ -49,7 +49,7 @@ void* MemoryManager::Alloc(unsigned int numbytes, const char* filename, unsigned
 	}
 
 	// allocate the actual requested memory. we are going to request more than the numbytes
-	size_t allocated_mem_size = sizeof(AllocInfo*) + numbytes + sizeof(SENTINEL_CODE);
+	size_t allocated_mem_size = numbytes + GetMetadataMemorySize();
 	void* allocated_mem = malloc(allocated_mem_size);	
 	void* actual_mem = AddOffsetToPointer(allocated_mem, sizeof(AllocInfo*));
 	
@@ -103,8 +103,8 @@ void MemoryManager::Dump()
 
 	while (head != nullptr)
 	{
-		ANJING_LOGF("%4d. 0x%p: %d bytes(%s: %d)\n", index + 1, (unsigned long)head->mem, head->mem_size, 
-			head->filename, head->line);
+		ANJING_LOGF("%4d. 0x%p: %d bytes | %d req bytes (%s: %d)\n", index + 1, head->mem, head->mem_size, 
+			head->mem_size - GetMetadataMemorySize(), head->filename, head->line);
 
 		head = head->next;
 		++index;
@@ -173,6 +173,11 @@ bool MemoryManager::CheckSentinel(const AllocInfo* alloc_info) const
 	int diff = memcmp(cmem, &SENTINEL_CODE, sizeof(SENTINEL_CODE));
 
 	return diff == 0;
+}
+
+size_t MemoryManager::GetMetadataMemorySize() const
+{
+	return sizeof(SENTINEL_CODE) + sizeof(AllocInfo*);
 }
 
 void MemoryManager::RemoveUsedAllocInfo(AllocInfo* used_alloc_info)
