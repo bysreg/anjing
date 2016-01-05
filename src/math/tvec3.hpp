@@ -5,15 +5,26 @@ namespace anjing
 	namespace math
 	{
 
+		///
+		/// \brief TVec3 is a template class to store 3 element vector
+		///
 		template<typename T>
 		struct TVec3
-		{
+		{			
 
 			union
 			{
-				struct { T x, y, z; };
-				struct { T r, g, b; };
-				struct { T s, t, p; };
+				T x, r, s;
+			};
+
+			union
+			{
+				T y, g, t;
+			};
+
+			union
+			{
+				T z, b, p;
 			};
 
 			///

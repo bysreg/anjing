@@ -1,13 +1,15 @@
 #include "math/tvec3.hpp"
+#include "core/types.hpp"
 
 #include <gtest/gtest.h>
 
+using namespace anjing::core;
 using namespace anjing::math;
 
 TEST(TVec3Test, ConstructionCheck)
 {
 	TVec3<float> test;
-	TVec3<int> test2;
+	TVec3<int32> test2;
 	TVec3<double> test3(1, 2, 3);
 
 	EXPECT_EQ(test.x, 0); EXPECT_EQ(test.y, 0); EXPECT_EQ(test.z, 0);
