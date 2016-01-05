@@ -5,6 +5,6 @@ include_directories(
 )
 
 # add target gfx
-add_library(gfx mesh_renderer.cpp mesh_renderer.hpp)
+add_library(gfx mesh_renderer.cpp mesh_renderer.hpp mesh.cpp mesh.hpp vertex.hpp)
 
 set_target_properties(gfx PROPERTIES COMPILE_FLAGS "${PROGRAM_COMPILE_FLAGS} ")
