@@ -17,6 +17,15 @@ TEST(TVec3Test, ConstructionCheck)
 	EXPECT_EQ(test3.x, 1); EXPECT_EQ(test3.y, 2); EXPECT_EQ(test3.z, 3);
 }
 
+TEST(TVec3Test, xyzrgbstpCheck)
+{
+	Vec3 test(1, 2, 3);
+
+	EXPECT_EQ(test.x, test.r); EXPECT_EQ(test.x, test.s);
+	EXPECT_EQ(test.y, test.g); EXPECT_EQ(test.y, test.t);
+	EXPECT_EQ(test.z, test.b); EXPECT_EQ(test.z, test.p);
+}
+
 TEST(TVec3Test, AssignmentCheck)
 {
 	Vec3 test = Vec3(1, 2, 3);

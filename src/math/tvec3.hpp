@@ -6,7 +6,7 @@ namespace anjing
 	{
 
 		///
-		/// \brief TVec3 is a template class to store 3 element vector
+		/// \brief TVec3 is a template class (header-only) to store 3 element vector
 		///
 		template<typename T>
 		struct TVec3
