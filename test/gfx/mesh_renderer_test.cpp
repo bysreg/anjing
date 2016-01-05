@@ -31,8 +31,5 @@ TEST_F(MeshRendererTest, Triangle)
 {
 	MeshRenderer* mesh_renderer = static_cast<MeshRenderer*>(go->AddComponent<MeshRenderer>());
 
-	EXPECT_NE(mesh_renderer, nullptr);
-	
-	Mesh* mesh = static_cast<Mesh*>(go->AddComponent<Mesh>());
-	
+	EXPECT_NE(mesh_renderer, nullptr);		
 }
