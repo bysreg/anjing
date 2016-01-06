@@ -1,6 +1,7 @@
 #include "core/memory_manager.hpp"
 #include "core/log.hpp"
 #include "core/util.hpp"
+#include "core/types.hpp"
 
 #include <cstdlib>
 #include <cstring>
@@ -8,7 +9,7 @@
 
 using namespace anjing::core;
 
-const unsigned int SENTINEL_CODE = 0x12345678;
+const uint32 SENTINEL_CODE = 0x12345678;
 
 void reset_alloc_info(AllocInfo* alloc_info)
 {
@@ -50,8 +51,8 @@ void* MemoryManager::Alloc(unsigned int numbytes, const char* filename, unsigned
 
 	// allocate the actual requested memory. we are going to request more than the numbytes
 	size_t allocated_mem_size = numbytes + GetMetadataMemorySize();
-	void* allocated_mem = malloc(allocated_mem_size);	
-	void* actual_mem = AddOffsetToPointer(allocated_mem, sizeof(AllocInfo*));
+	void* allocated_mem = malloc(allocated_mem_size);
+	void* actual_mem = AddOffsetToPointer(allocated_mem, sizeof(AllocInfo*));	
 	
 	// put the address of the allocinfo in the first bytes of the allocated_mem
 	memcpy(allocated_mem, &alloc_info, sizeof(AllocInfo*));
