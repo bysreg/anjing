@@ -1,8 +1,4 @@
 // Test memory manager operator overload
-// We also define ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE 
-// in CMakeLists in /test/core folder for target "core" so that
-// we get the definitions of overloaded operator of new,
-// new[], delete, and delete[]
 
 #ifndef ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE
 #define ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE
@@ -20,7 +16,7 @@ class MemoryOperatorTest : public ::testing::Test
 {
 protected:
 
-	virtual void TearDown()
+	virtual void TearDown() override
 	{
 		::testing::Test::TearDown();		
 		MemoryManager::GetInstance().Clean();
