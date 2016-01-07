@@ -21,12 +21,6 @@ void reset_alloc_info(AllocInfo* alloc_info)
 	alloc_info->mem_size = 0;
 }
 
-MemoryManager& MemoryManager::GetInstance()
-{
-	static MemoryManager instance;
-	return instance;
-}
-
 MemoryManager::MemoryManager() : free_list(nullptr), used_list(nullptr)
 {}
 
