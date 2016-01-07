@@ -4,5 +4,10 @@ using namespace anjing::gfx;
 
 void MeshRenderer::Render()
 {
-	// TODO : render something
+	/// \todo not implemented	
+}
+
+void anjing::gfx::MeshRenderer::SetMesh(Mesh const * const mesh)
+{
+	this->mesh = mesh;
 }
