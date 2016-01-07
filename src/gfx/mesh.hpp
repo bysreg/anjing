@@ -4,6 +4,7 @@
 #include "gfx/vertex.hpp"
 
 #include <vector>
+#include <cstddef>
 
 namespace anjing
 {
