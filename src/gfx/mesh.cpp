@@ -1,4 +1,5 @@
 #include "mesh.hpp"
+#include <cstddef>
 
 using namespace anjing::gfx;
 using namespace anjing::core;

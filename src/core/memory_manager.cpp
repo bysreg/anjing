@@ -108,6 +108,9 @@ int MemoryManager::Free(void* address, const char* filename, unsigned int line)
 		std::string err_msg = "Deleting something that is not allocated by MemoryManager or memory underflow";
 
 		ANJING_LOGE(err_msg);
+
+		/// \todo is it better to quit or crash the program here ?
+
 		return 4;
 	}
 
