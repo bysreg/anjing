@@ -1,5 +1,7 @@
 #pragma once
 
+#include "core\singleton.hpp"
+
 #include <cstddef>
 
 namespace anjing
@@ -24,17 +26,63 @@ namespace anjing
 
 		class MemoryManager
 		{
+
+			ANJING_SINGLETON(MemoryManager)
+
+		public:			
+
+			///
+			/// \brief Allocate memory with input of filename and line number of where the allocation is called
+			///
+			/// if \a ANJING_OVERRIDE_GLOBAL_NEW is defined, then operator new, and new[] will instead call this function
+			void* Alloc(unsigned int numbytes, const char* filename, unsigned int line);
+
+			///
+			/// \brief Deallocate memory. Returns 1 if address is successfully deallocated
+			///
+			/// if \a address is nullptr, the function does nothing and returns 2
+			/// if \a address is not allocated using Alloc(or by global operator new overrided by MemoryManager), it causes undefined behaviour
+			/// this function does not change the value of \a address itself, hence it still points to the same (now invalid) location
+			///
+			/// Returns 2 if address is null pointer
+			/// Returns 3 if tail sentinel code in address is not intact, indicating that there is memory overrun. Address is still deallocated.
+			/// Returns 4 if head sentinel code in address is not intact, indicating that there is memory underflow or we are deleting
+			///   something that is not allocated by MemoryManager
+			///
+			int Free(void* address, const char* filename, unsigned int line);
+
+			///
+			/// \brief List all the allocated memories by MemoryManager that haven't been deleted yet 
+			///
+			void Dump();
+
+			///
+			/// \brief Removes all allocations. This will make MemoryManager state looks like it is just newly instantiated
+			///
+			/// Be careful to use this function. This will wipe out all allocations. We must make sure no other code has
+			/// ownership of any of the allocations before performing this function. 
+			void Clean();
+
+			///
+			/// \brief Returns total memory allocations. 
+			///
+			/// implementation detail : O(n) operation as this function iterates over all alocations.
+			std::size_t GetTotalMemoryAllocations() const;
+
+			///
+			/// \brief Returns AllocInfo from the address. Adress is assumed to be allocated by MemoryManager
+			///
+			/// if \a address is nullptr, this function will return nullptr
+			/// if \a address is not allocated using MemoryManager::All(or by global operator new overrided by MemoryManager), it causes undefined behaviour
+			static AllocInfo* GetAllocInfo(void* address);
+
 		private:
 			AllocInfo* free_list;
 			AllocInfo* used_list;
 
-			static const uint32 SENTINEL_CODE;
-
-			MemoryManager();
-			~MemoryManager();
+			static const uint32 SENTINEL_CODE;					
 			
-			MemoryManager(const MemoryManager&) = delete;
-			void operator=(const MemoryManager&) = delete;
+			~MemoryManager();
 
 			///
 			/// \brief Detach one AllocInfo from the free_list
@@ -79,58 +127,7 @@ namespace anjing
 			///
 			/// \brief Returns pointer to the actual data provided the original allocated memory address
 			///
-			static void* GetActualData(void* alloc_mem);
-
-		public:
-			///
-			/// \brief Return singleton instance of MemoryManager. 
-			///
-			static MemoryManager& GetInstance();
-
-			///
-			/// \brief Allocate memory with input of filename and line number of where the allocation is called
-			///
-			/// if \a ANJING_OVERRIDE_GLOBAL_NEW is defined, then operator new, and new[] will instead call this function
-			void* Alloc(unsigned int numbytes, const char* filename, unsigned int line);
-
-			///
-			/// \brief Deallocate memory. Returns 1 if address is successfully deallocated
-			///
-			/// if \a address is nullptr, the function does nothing and returns 2
-			/// if \a address is not allocated using Alloc(or by global operator new overrided by MemoryManager), it causes undefined behaviour
-			/// this function does not change the value of \a address itself, hence it still points to the same (now invalid) location
-			///
-			/// Returns 2 if address is null pointer
-			/// Returns 3 if tail sentinel code in address is not intact, indicating that there is memory overrun. Address is still deallocated.
-			/// Returns 4 if head sentinel code in address is not intact, indicating that there is memory underflow or we are deleting
-			///   something that is not allocated by MemoryManager
-			///
-			int Free(void* address, const char* filename, unsigned int line);
-
-			///
-			/// \brief List all the allocated memories by MemoryManager that haven't been deleted yet 
-			///
-			void Dump();			
-
-			///
-			/// \brief Removes all allocations. This will make MemoryManager state looks like it is just newly instantiated
-			///
-			/// Be careful to use this function. This will wipe out all allocations. We must make sure no other code has
-			/// ownership of any of the allocations before performing this function. 
-			void Clean();
-
-			///
-			/// \brief Returns total memory allocations. 
-			///
-			/// implementation detail : O(n) operation as this function iterates over all alocations.
-			std::size_t GetTotalMemoryAllocations() const;
-
-			///
-			/// \brief Returns AllocInfo from the address. Adress is assumed to be allocated by MemoryManager
-			///
-			/// if \a address is nullptr, this function will return nullptr
-			/// if \a address is not allocated using MemoryManager::All(or by global operator new overrided by MemoryManager), it causes undefined behaviour
-			static AllocInfo* GetAllocInfo(void* address);
+			static void* GetActualData(void* alloc_mem);		
 		};
 
 	}
