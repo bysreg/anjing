@@ -60,6 +60,6 @@ http://bysreg.github.io/anjing/index.html
 - Deleted functions, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2346.htm
 - Null pointer, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2431.pdf
 - Strongly typed enums, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2347.pdf  
-  
+- override keyword 
   
   
