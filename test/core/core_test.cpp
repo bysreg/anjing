@@ -12,6 +12,8 @@ class TestClass
 {	
 };
 
+typedef uint32 SentinelType;
+
 class MemoryManagerTest : public ::testing::Test 
 {
 protected:
@@ -19,7 +21,7 @@ protected:
 	char* filename;
 	int line;
 
-	virtual void SetUp()
+	virtual void SetUp() override
 	{
 		::testing::Test::SetUp();		
 
@@ -29,7 +31,7 @@ protected:
 		line = 12;
 	}
 
-	virtual void TearDown()
+	virtual void TearDown() override
 	{
 		::testing::Test::TearDown();
 
@@ -78,9 +80,9 @@ TEST_F(MemoryManagerTest, Singleton)
 // test MemoryManager::Alloc
 TEST_F(MemoryManagerTest, AllocNormal)
 {
-	void* alloc_mem = DoAllocation();
+	void* actual_mem = DoAllocation();
 
-	EXPECT_NE(alloc_mem, nullptr);
+	EXPECT_NE(actual_mem, nullptr);
 }
 
 // test MemoryManager::GetTotalMemoryAllocations
@@ -88,8 +90,8 @@ TEST_F(MemoryManagerTest, GetTotalMemoryAllocations)
 {
 	EXPECT_EQ(MemoryManager::GetInstance().GetTotalMemoryAllocations(), 0);
 
-	void* alloc_mem = DoAllocation();
-	ANJING_UNUSED(alloc_mem);
+	void* actual_mem = DoAllocation();
+	ANJING_UNUSED(actual_mem);
 
 	// the memory allocated must be at least the size of the TestClass
 	EXPECT_GE(MemoryManager::GetInstance().GetTotalMemoryAllocations(), sizeof(TestClass));
@@ -100,18 +102,18 @@ TEST_F(MemoryManagerTest, GetAllocInfo)
 {
 	MemoryManager& mm = MemoryManager::GetInstance();	
 	
-	void* alloc_mem = DoAllocation();
+	void* actual_mem = DoAllocation();
 
-	EXPECT_NE(alloc_mem, nullptr);
+	EXPECT_NE(actual_mem, nullptr);
 	
 	// get the AllocInfo address
-	AllocInfo* alloc_info = MemoryManager::GetAllocInfo(alloc_mem);
+	AllocInfo* alloc_info = MemoryManager::GetAllocInfo(actual_mem);
 	EXPECT_NE(alloc_info, nullptr);
 	
 	EXPECT_EQ(strcmp(alloc_info->filename, filename), 0);
 	EXPECT_EQ(alloc_info->line, line);
-	EXPECT_GT(alloc_info->mem_size, 0);	
-	EXPECT_EQ(AddOffsetToPointer(alloc_info->mem, sizeof(AllocInfo*)), alloc_mem);
+	EXPECT_GT(alloc_info->mem_size, 0);		
+	EXPECT_EQ(AddOffsetToPointer(alloc_info->mem, sizeof(SentinelType) + sizeof(AllocInfo*)), actual_mem);
 	EXPECT_GT(mm.GetTotalMemoryAllocations(), 0);
 	EXPECT_EQ(alloc_info->mem_size, mm.GetTotalMemoryAllocations());
 	EXPECT_EQ(alloc_info->prev, nullptr);
@@ -129,10 +131,10 @@ TEST_F(MemoryManagerTest, DeallocNormal)
 {
 	MemoryManager& mm = MemoryManager::GetInstance();	
 
-	void* alloc_mem = DoAllocation();
-	AllocInfo* allocinfo = mm.GetAllocInfo(alloc_mem);
+	void* actual_mem = DoAllocation();
+	AllocInfo* allocinfo = mm.GetAllocInfo(actual_mem);
 
-	int free_ret_code = DoFree(alloc_mem);
+	int free_ret_code = DoFree(actual_mem);
 
 	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0);
 
@@ -147,15 +149,30 @@ TEST_F(MemoryManagerTest, DeallocNull)
 	EXPECT_EQ(2, ret_code);
 }
 
+// test whether sentinel value could detect buffer underflow
+TEST_F(MemoryManagerTest, HeadSentinelCheck)
+{
+	void* alloc1 = DoAllocation();
+	
+	// mess around with the head sentinel value intentionally
+	char* sentinel = static_cast<char*>(AddOffsetToPointer(alloc1, -sizeof(SentinelType)));
+
+	// invert the first byte
+	sentinel[0] = !sentinel[0];
+
+	int free_ret_code = DoFree(alloc1);
+	EXPECT_EQ(4, free_ret_code);
+}
+
 // test whether sentinel value could detect buffer overrun
-TEST_F(MemoryManagerTest, SentinelCheck)
+TEST_F(MemoryManagerTest, TailSentinelCheck)
 {
 	MemoryManager& mm = MemoryManager::GetInstance();
 	void* alloc1 = DoAllocation();
 	AllocInfo* allocinfo = mm.GetAllocInfo(alloc1);
 
-	// mess around with the sentinel value intentionally	
-	char* sentinel = static_cast<char*>(allocinfo->mem) + sizeof(AllocInfo*) + sizeof(TestClass);
+	// mess around with the tail sentinel value intentionally
+	char* sentinel = static_cast<char*>(allocinfo->mem) + sizeof(AllocInfo*) + sizeof(SentinelType) + sizeof(TestClass);
 
 	// invert the first byte
 	sentinel[0] = !sentinel[0];

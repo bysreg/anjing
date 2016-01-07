@@ -9,7 +9,7 @@
 
 using namespace anjing::core;
 
-const uint32 SENTINEL_CODE = 0x12345678;
+const uint32 MemoryManager::SENTINEL_CODE = 0x12345678;
 
 void reset_alloc_info(AllocInfo* alloc_info)
 {
@@ -33,6 +33,26 @@ MemoryManager::MemoryManager() : free_list(nullptr), used_list(nullptr)
 MemoryManager::~MemoryManager()
 {}
 
+void* MemoryManager::GetAllocMem(void* actual_mem) const
+{
+	return AddOffsetToPointer(actual_mem, -sizeof(AllocInfo*) - sizeof(SENTINEL_CODE));
+}
+
+void* MemoryManager::GetHeadSentinel(void* alloc_mem) const
+{
+	return AddOffsetToPointer(alloc_mem, sizeof(AllocInfo*));
+}
+
+void* MemoryManager::GetTailSentinel(void* alloc_mem, size_t actual_mem_size) const
+{
+	return AddOffsetToPointer(alloc_mem, sizeof(AllocInfo*) + sizeof(SENTINEL_CODE) + actual_mem_size);
+}
+
+void* MemoryManager::GetActualData(void* alloc_mem) const
+{
+	return AddOffsetToPointer(alloc_mem, sizeof(AllocInfo*) + sizeof(SENTINEL_CODE));
+}
+
 void* MemoryManager::Alloc(unsigned int numbytes, const char* filename, unsigned int line)
 {
 	AllocInfo* alloc_info = GetFreeAllocInfo();
@@ -52,13 +72,18 @@ void* MemoryManager::Alloc(unsigned int numbytes, const char* filename, unsigned
 	// allocate the actual requested memory. we are going to request more than the numbytes
 	size_t allocated_mem_size = numbytes + GetMetadataMemorySize();
 	void* allocated_mem = malloc(allocated_mem_size);
-	void* actual_mem = AddOffsetToPointer(allocated_mem, sizeof(AllocInfo*));	
-	
+	void* actual_mem = GetActualData(allocated_mem);	
+	void* head_sentinel_mem = GetHeadSentinel(allocated_mem);
+	void* tail_sentinel_mem = GetTailSentinel(allocated_mem, numbytes);
+
 	// put the address of the allocinfo in the first bytes of the allocated_mem
 	memcpy(allocated_mem, &alloc_info, sizeof(AllocInfo*));
 
-	// put check code in the last bytes of the allocated_mem
-	memcpy(AddOffsetToPointer(actual_mem, numbytes), &SENTINEL_CODE, sizeof(SENTINEL_CODE));
+	// put the sentinel code after pointer to AllocInfo (head sentinel, to detect underflow)
+	memcpy(head_sentinel_mem, &SENTINEL_CODE, sizeof(SENTINEL_CODE));
+
+	// put the sentinel code at the last bytes of allocated_mem (tail sentinel, to detect overflow)
+	memcpy(tail_sentinel_mem, &SENTINEL_CODE, sizeof(SENTINEL_CODE));
 
 	alloc_info->mem = allocated_mem;
 	alloc_info->filename = filename;
@@ -73,11 +98,24 @@ int MemoryManager::Free(void* address, const char* filename, unsigned int line)
 	if (address == nullptr)
 		return 2;
 
+	// check whether head sentinel is still intact
+	void* head_sentinel = GetHeadSentinel(GetAllocMem(address));
+	int underflow_check = memcmp(head_sentinel, &SENTINEL_CODE, sizeof(SENTINEL_CODE));
+
+	if (underflow_check != 0)
+	{
+		// either there has been underflow or we are deleting something that is not allocated by MemoryManager
+		std::string err_msg = "Deleting something that is not allocated by MemoryManager or memory underflow";
+
+		ANJING_LOGE(err_msg);
+		return 4;
+	}
+
 	AllocInfo* alloc_info = GetAllocInfo(address);	
 	int ret_code = 1;
 
 	// before free, check whether the sentinel value is still intact
-	bool is_memory_overrun = CheckSentinel(alloc_info) == false;
+	bool is_memory_overrun = CheckTailSentinel(alloc_info) == false;
 	if (is_memory_overrun)
 	{
 		std::string err_msg = "Memory overrun detected!! Allocated in " +
@@ -167,18 +205,16 @@ AllocInfo* MemoryManager::GetFreeAllocInfo()
 	}
 }
 
-bool MemoryManager::CheckSentinel(const AllocInfo* alloc_info) const
+bool MemoryManager::CheckTailSentinel(const AllocInfo* alloc_info) const
 {	
-	char* cmem = static_cast<char*>(alloc_info->mem);
-	cmem = cmem + alloc_info->mem_size - sizeof(SENTINEL_CODE);
+	void* cmem = AddOffsetToPointer(alloc_info->mem, alloc_info->mem_size - sizeof(SENTINEL_CODE));
 	int diff = memcmp(cmem, &SENTINEL_CODE, sizeof(SENTINEL_CODE));
-
 	return diff == 0;
 }
 
 size_t MemoryManager::GetMetadataMemorySize() const
 {
-	return sizeof(SENTINEL_CODE) + sizeof(AllocInfo*);
+	return (sizeof(SENTINEL_CODE) * 2) + sizeof(AllocInfo*);
 }
 
 void MemoryManager::RemoveUsedAllocInfo(AllocInfo* used_alloc_info)
@@ -237,7 +273,7 @@ AllocInfo* MemoryManager::GetAllocInfo(void* address)
 	if (address == nullptr)
 		return nullptr;
 
-	AllocInfo* alloc_info = *(static_cast<AllocInfo**>(AddOffsetToPointer(address, -sizeof(AllocInfo*))));
+	AllocInfo* alloc_info = *(static_cast<AllocInfo**>(GetAllocMem(address)));
 	return alloc_info;
 }
 

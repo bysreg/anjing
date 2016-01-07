@@ -7,7 +7,6 @@ add_executable(core_test core_test.cpp)
 target_link_libraries(core_test core app ${GLEW_LIBRARY} gtest gtest_main ${SDL2_LIBRARY})
 set_target_properties(core_test PROPERTIES COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} ")
 
-
 add_executable(memory_operator_test memory_operator_test.cpp)
 target_link_libraries(memory_operator_test core app ${GLEW_LIBRARY} gtest gtest_main ${SDL2_LIBRARY} )
 set_target_properties(memory_operator_test PROPERTIES COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} ")

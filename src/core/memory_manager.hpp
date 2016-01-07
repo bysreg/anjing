@@ -28,6 +28,8 @@ namespace anjing
 			AllocInfo* free_list;
 			AllocInfo* used_list;
 
+			static const uint32 SENTINEL_CODE;
+
 			MemoryManager();
 			~MemoryManager();
 			
@@ -46,10 +48,10 @@ namespace anjing
 			void RemoveUsedAllocInfo(AllocInfo* used_alloc_info);
 
 			///
-			/// \brief Returns true if sentinel code in \a alloc_info memory layout is still intact
+			/// \brief Returns true if tail sentinel code in \a alloc_info memory layout is still intact
 			///
 			///
-			bool CheckSentinel(const AllocInfo* alloc_info) const;
+			bool CheckTailSentinel(const AllocInfo* alloc_info) const;
 
 			///
 			/// \brief Returns memory size of the metadata aside from the user requested memory allocation
@@ -58,6 +60,26 @@ namespace anjing
 			/// what the user actually requested. This function will return that extra allocation size.		
 			///
 			size_t GetMetadataMemorySize() const;
+
+			///
+			/// \brief Returns pointer to original allocated memory by MemoryManager
+			///
+			static void* GetAllocMem(void* actual_mem);
+
+			///
+			/// \brief Returns pointer to head sentinel provided the original allocated memory address
+			///
+			static void* GetHeadSentinel(void* alloc_mem);
+
+			///
+			/// \brief Returns pointer to tail sentinel provided the original allocated memory address
+			///
+			static void* GetTailSentinel(void* alloc_mem, size_t actual_mem_size);
+
+			///
+			/// \brief Returns pointer to the actual data provided the original allocated memory address
+			///
+			static void* GetActualData(void* alloc_mem);
 
 		public:
 			///
@@ -78,7 +100,11 @@ namespace anjing
 			/// if \a address is not allocated using Alloc(or by global operator new overrided by MemoryManager), it causes undefined behaviour
 			/// this function does not change the value of \a address itself, hence it still points to the same (now invalid) location
 			///
-			/// Returns 3 if sentinel code in address is not intact, indicating that there is memory overrun. Address is still deallocated.
+			/// Returns 2 if address is null pointer
+			/// Returns 3 if tail sentinel code in address is not intact, indicating that there is memory overrun. Address is still deallocated.
+			/// Returns 4 if head sentinel code in address is not intact, indicating that there is memory underflow or we are deleting
+			///   something that is not allocated by MemoryManager
+			///
 			int Free(void* address, const char* filename, unsigned int line);
 
 			///
