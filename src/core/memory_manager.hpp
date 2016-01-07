@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core\singleton.hpp"
+#include "core/singleton.hpp"
 
 #include <cstddef>
 
