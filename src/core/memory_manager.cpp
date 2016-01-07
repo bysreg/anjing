@@ -33,22 +33,22 @@ MemoryManager::MemoryManager() : free_list(nullptr), used_list(nullptr)
 MemoryManager::~MemoryManager()
 {}
 
-void* MemoryManager::GetAllocMem(void* actual_mem) const
+void* MemoryManager::GetAllocMem(void* actual_mem)
 {
 	return AddOffsetToPointer(actual_mem, -sizeof(AllocInfo*) - sizeof(SENTINEL_CODE));
 }
 
-void* MemoryManager::GetHeadSentinel(void* alloc_mem) const
+void* MemoryManager::GetHeadSentinel(void* alloc_mem)
 {
 	return AddOffsetToPointer(alloc_mem, sizeof(AllocInfo*));
 }
 
-void* MemoryManager::GetTailSentinel(void* alloc_mem, size_t actual_mem_size) const
+void* MemoryManager::GetTailSentinel(void* alloc_mem, size_t actual_mem_size)
 {
 	return AddOffsetToPointer(alloc_mem, sizeof(AllocInfo*) + sizeof(SENTINEL_CODE) + actual_mem_size);
 }
 
-void* MemoryManager::GetActualData(void* alloc_mem) const
+void* MemoryManager::GetActualData(void* alloc_mem)
 {
 	return AddOffsetToPointer(alloc_mem, sizeof(AllocInfo*) + sizeof(SENTINEL_CODE));
 }
