@@ -19,6 +19,8 @@ namespace anjing
 		///
 		class GameObject
 		{
+			friend class Scene;
+
 		public:			
 
 			///
@@ -71,6 +73,14 @@ namespace anjing
 			/// to be able to add component properly to gameobject's internal component list
 			///
 			void AddComponentToGOList(Component* component);
+
+			///
+			/// \brief Return MeshRenderer component, nullptr if it doesn't exist in this GameObject
+			///
+			anjing::gfx::MeshRenderer* GetMeshRenderer() const
+			{
+				return mesh_renderer;
+			}
 		};
 
 
