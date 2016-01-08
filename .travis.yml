@@ -23,6 +23,7 @@ before_install:
       sudo apt-get install -y libsdl2-dev;
       sudo apt-get install -y libglew-dev;
       export DISPLAY=:99.0;
+	  sh /etc/init.d/xvfb +extension RANDR
       sh -e /etc/init.d/xvfb start;
       sleep 3;
     fi
