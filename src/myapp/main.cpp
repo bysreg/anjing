@@ -4,9 +4,6 @@
 #include <cstdio>
 #include <cstdlib>
 
-using namespace std;
-using namespace anjing;
-
 static bool auto_close = false;
 
 static bool ParseArgs(int argc, char* argv[])
@@ -29,8 +26,8 @@ static bool ParseArgs(int argc, char* argv[])
 
 int main(int argc, char* argv[])
 {
-	App app;
-	App::StartApplication(&app, 800, 600, 60, "My App");
+	anjing::app::App app;
+	anjing::app::App::StartApplication(&app, 800, 600, 60, "My App");
 	
 	if (!ParseArgs(argc, argv))
 	{
