@@ -13,5 +13,5 @@ set_target_properties(test_memory_operator PROPERTIES COMPILE_FLAGS "${ANJING_CO
 # we need to define these because the test relies on these defines
 target_compile_definitions(test_memory_operator PRIVATE ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE)
 
-add_test(TestCore test_core)
-add_test(TestMemoryOperator test_memory_operator)
+add_test(NAME TestCore COMMAND test_core)
+add_test(NAME TestMemoryOperator COMMAND test_memory_operator)
