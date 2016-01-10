@@ -6,7 +6,7 @@
 using namespace anjing::core;
 using namespace anjing::math;
 
-TEST(TVec4Test, ConstructionCheck)
+TEST(TVec2Test, ConstructionCheck)
 {
 	TVec2<float> test;
 	TVec2<int32> test2;
@@ -17,7 +17,7 @@ TEST(TVec4Test, ConstructionCheck)
 	EXPECT_EQ(test3.x, 1); EXPECT_EQ(test3.y, 2);
 }
 
-TEST(TVec3Test, xyzrgbstpCheck)
+TEST(TVec2Test, xyzrgbstpCheck)
 {
 	Vec2 test(1, 2);
 
@@ -25,7 +25,7 @@ TEST(TVec3Test, xyzrgbstpCheck)
 	EXPECT_EQ(test.y, test.g); EXPECT_EQ(test.y, test.t);	
 }
 
-TEST(TVec3Test, AssignmentCheck)
+TEST(TVec2Test, AssignmentCheck)
 {
 	Vec2 test = Vec2(1, 2);
 
