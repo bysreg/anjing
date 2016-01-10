@@ -1,4 +1,6 @@
-#include "game_object.hpp"
+#include "core/game_object.hpp"
+#include "core/transform.hpp"
+#include "core/scene.hpp"
 
 using namespace anjing::core;
 
@@ -6,12 +8,21 @@ GameObject::GameObject() : components(nullptr)
 {
 	components = Anew std::vector<Component*>();
 	components->reserve(2);
+
+	// every GameObject has transform component
+	AddComponent<Transform>();
+
+	// add the GameObject to the scene
+	Scene::GetInstance().AddGameObject(this);
 }
 
 GameObject::~GameObject()
 {	
 	RemoveAllComponents();
 	Adelete(components);
+
+	// remove GameObject from the scene
+	Scene::GetInstance().RemoveGameObject(this);
 }
 
 void GameObject::RemoveAllComponents()
@@ -30,5 +41,4 @@ void GameObject::AddComponentToGOList(Component* component)
 }
 
 void GameObject::Update()
-{
-}
+{}

@@ -15,7 +15,9 @@ namespace anjing
 		class Scene
 		{
 
-			ANJING_SINGLETON(Scene)			
+			ANJING_SINGLETON(Scene)
+
+			friend class GameObject;
 
 		public:
 
@@ -28,8 +30,15 @@ namespace anjing
 
 			std::list<GameObject*> game_objects;
 
+			///
+			/// \brief Adds a GameObject to the scene
+			///
 			void AddGameObject(GameObject* go);
 
+			///
+			/// \brief Removes a GameObject from the scene
+			///
+			void RemoveGameObject(GameObject* go);
 		};
 	}
 }

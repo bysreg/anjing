@@ -19,3 +19,13 @@ void anjing::core::Scene::Render()
 		}
 	}
 }
+
+void anjing::core::Scene::AddGameObject(GameObject* go)
+{
+	game_objects.push_back(go);
+}
+
+void anjing::core::Scene::RemoveGameObject(GameObject * go)
+{
+	game_objects.remove(go);
+}
