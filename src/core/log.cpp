@@ -5,12 +5,7 @@
 
 #define ANJING_LOG_BUFFER_SIZE 2048
 
-void anjing::core::Log(FILE* stream, const char* filename, int line, std::string message)
-{
-	anjing::core::Log(stream, filename, line, message.c_str(), "");
-}
-
-void anjing::core::Log(FILE* stream, const char* filename, int line, const char* format, ...) 
+void anjing::core::LogFormat(FILE* stream, const char* filename, int line, const char* format, ...)
 {
 	ANJING_UNUSED(filename);
 	ANJING_UNUSED(line);
@@ -20,11 +15,11 @@ void anjing::core::Log(FILE* stream, const char* filename, int line, const char*
 
 	if (stream == stdout)
 	{
-		fprintf(stream, "out > ");
+		fprintf(stream, "stdout > ");
 	}
 	else if (stream == stderr)
 	{
-		fprintf(stream, "err > ");
+		fprintf(stream, "stderr > ");
 	}
 
 	va_start(params, format);

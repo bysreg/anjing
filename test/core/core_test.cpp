@@ -346,8 +346,12 @@ TEST_F(MemoryManagerTest, DumpTest)
 
 TEST(LogTest, CallLog)
 {
-	Log(stdout, "core_test.cpp", __LINE__, "%d %f\n", 2, 1.2f);
-	Log(stderr, "core_test.cpp", __LINE__, "%d %f\n", 2, 1.2f);
+	LogFormat(stdout, "core_test.cpp", __LINE__, "%d %f\n", 2, 1.2f);
+	LogFormat(stderr, "core_test.cpp", __LINE__, "%d %f\n", 2, 1.2f);
 	ANJING_LOGF("%s kintamani\n", "anjing");
 	ANJING_LOGF_E("%s kintamani\n", "anjing");
+	
+	std::string test = "test";
+	ANJING_LOGS("test " << 1 << " " << 2 << " " << 3 << " " << std::endl);
+	ANJING_LOGS_E("test " << 1 << " " << 2 << " " << 3 << " " << std::endl);
 }

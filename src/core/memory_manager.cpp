@@ -101,7 +101,7 @@ int MemoryManager::Free(void* address, const char* filename, unsigned int line)
 		// either there has been underflow or we are deleting something that is not allocated by MemoryManager
 		std::string err_msg = "Deleting something that is not allocated by MemoryManager or memory underflow";
 
-		ANJING_LOGE(err_msg);
+		ANJING_LOGS_E(err_msg);
 
 		/// \todo is it better to quit or crash the program here ?
 
@@ -119,7 +119,7 @@ int MemoryManager::Free(void* address, const char* filename, unsigned int line)
 			std::string(alloc_info->filename) + " line " + std::to_string(alloc_info->line) +
 			" and deleted in " + std::string(filename) + " line " + std::to_string(line);
 
-		ANJING_LOGE(err_msg);
+		ANJING_LOGS_E(err_msg);
 		ret_code = 3;
 	}
 
@@ -135,8 +135,8 @@ void MemoryManager::Dump()
 
 	int index = 0;
 
-	ANJING_LOG("\n");
-	ANJING_LOG("Starting memory dump\n");
+	ANJING_LOGS("\n");
+	ANJING_LOGS("Starting memory dump\n");
 
 	while (head != nullptr)
 	{
@@ -149,7 +149,7 @@ void MemoryManager::Dump()
 
 	size_t total_memory_left = GetTotalMemoryAllocations();
 	ANJING_LOGF("\nTotal memory not deleted : %d\n", total_memory_left);
-	ANJING_LOG("---------------------------\n");
+	ANJING_LOGS("---------------------------\n");
 }
 
 void MemoryManager::Clean()
