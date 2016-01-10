@@ -135,7 +135,8 @@ void MemoryManager::Dump()
 
 	int index = 0;
 
-	ANJING_LOG("\nStarting memory dump\n");
+	ANJING_LOG("\n");
+	ANJING_LOG("Starting memory dump\n");
 
 	while (head != nullptr)
 	{
