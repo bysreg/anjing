@@ -1,10 +1,11 @@
 #include "app/app.hpp"
+#include "core/log.hpp"
 
 #include <GL/glew.h>
 #include <SDL.h>
 
 #include <cassert>
-#include <iostream>
+#include <cstdio>
 
 int anjing::app::App::StartApplication(anjing::app::App* app, int width, int height, int fps, const std::string& title)
 {
@@ -43,6 +44,33 @@ int anjing::app::App::StartApplication(anjing::app::App* app, int width, int hei
 	}
 
 	return 0;
+}
+
+std::FILE* anjing::app::App::GetAssets(std::string filename, std::string mode)
+{	
+	static std::string assets_dir = "./assets";
+	static bool is_init = false;
+	
+	// try to open it first inside the assets folder in the same directory as the program
+	std::string path = (assets_dir + "/" + filename);
+	std::FILE* file = std::fopen(path.c_str(), mode.c_str());
+	
+	// if it fails to open it, try to open the file above the folder hierarchy four times 
+	// (this means the program is inside :
+	// <project directory>/build/<src or test>/<the startup project>/<build mode (Debug or Release)>/
+	if (file == nullptr)
+	{
+		path = "../../../assets/" + filename;
+		file = std::fopen(path.c_str(), mode.c_str());
+	}
+	
+	// still cannot open the file
+	if (file == nullptr)
+	{
+		ANJING_LOGF_E("unable to open file : %s\n", filename.c_str());
+	}
+
+	return file;
 }
 
 int anjing::app::App::Init()

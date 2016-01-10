@@ -16,6 +16,13 @@ namespace anjing
 			///
 			static int StartApplication(App* app, int width, int height, int fps, const std::string& title);
 
+			///
+			/// \brief Opens the file specified by \a filename in the default assets folder
+			///
+			/// Returns nullptr if the file does not exist
+			/// You need to close the file if it successfully opened
+			static std::FILE* GetAssets(std::string filename, std::string mode);
+
 		protected:
 
 			///
