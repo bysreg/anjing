@@ -79,7 +79,7 @@ int anjing::gfx::Shader::CompileShader(GLuint& out_shader, const std::string& fi
 		return 2;
 	}
 
-	GLchar const * const shader_source = static_cast<GLchar*>(source);
+	GLchar const* shader_source = static_cast<GLchar*>(source);
 	glShaderSource(shader, 1, &shader_source, NULL);
 	AdeleteArr(source);
 
