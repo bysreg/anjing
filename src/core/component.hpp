@@ -27,12 +27,16 @@ namespace anjing
 			///
 			Component() : owner(nullptr) {}
 
+		public:
+
 			///
 			/// \brief Default destructor of Component
 			///
-			virtual ~Component() {};
-
-		public:
+			/// Component's destructor is intentionally public while the constructor is protected.
+			/// The destructor needs to be public so that GameObject class can destroy it using
+			/// Adelete macro
+			///
+			virtual ~Component() {}
 
 			///
 			/// \brief Return owner of this component;
