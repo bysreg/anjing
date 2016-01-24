@@ -4,7 +4,7 @@
 
 using namespace anjing::core;
 
-GameObject::GameObject() : components(nullptr)
+GameObject::GameObject() : components(nullptr), mesh_renderer(nullptr)
 {
 	components = Anew std::vector<Component*>();
 	components->reserve(2);
@@ -32,6 +32,8 @@ void GameObject::RemoveAllComponents()
 		Component* component = components->at(i);
 		Adelete(component);
 	}
+
+	components->clear();
 }
 
 void GameObject::AddComponentToGOList(Component* component)
