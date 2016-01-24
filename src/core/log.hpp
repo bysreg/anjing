@@ -17,28 +17,9 @@ namespace anjing
 #define ANJING_ENABLE_LOG // turn this off to disable logging
 
 #ifdef ANJING_ENABLE_LOG
-#define ANJING_LOG_TEST 1
+	#define ANJING_LOG_TEST 1
 #else
-#define ANJING_LOG_TEST 0
-#endif
-
-#define ANJING_MULTI_LINE_MACRO_BEGIN do {
-
-#ifdef _MSC_VER
-
-#define ANJING_DISABLE_MSVC_4127_WARNING __pragma(warning(push)) __pragma(warning(disable:4127))
-#define ANJING_MSVC_WARNING_POP __pragma(warning(pop))
-
-#define ANJING_MULTI_LINE_MACRO_END \
-		ANJING_DISABLE_MSVC_4127_WARNING\
-		} while(0) \
-		ANJING_MSVC_WARNING_POP
-#else
-
-#define ANJING_DISABLE_MSVC_4127_WARNING	
-#define ANJING_MSVC_WARNING_POP
-
-#define ANJING_MULTI_LINE_MACRO_END }while(0)
+	#define ANJING_LOG_TEST 0
 #endif
 
 // The following log macro has runtime check in it. why ? so that the compiler will always check that 
