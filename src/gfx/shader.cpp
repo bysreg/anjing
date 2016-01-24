@@ -79,7 +79,7 @@ int anjing::gfx::Shader::CompileShader(GLuint& out_shader, const std::string& fi
 		return 2;
 	}
 
-	glShaderSource(shader, 1, static_cast<GLchar**>(&source), NULL);
+	glShaderSource(shader, 1, &static_cast<GLchar*>(source), NULL);
 	AdeleteArr(source);
 
 	glCompileShader(shader);
@@ -119,7 +119,7 @@ char* anjing::gfx::Shader::ReadSource(const std::string & filepath)
 
 	char* shader_source = Anew char[size + 1];
 	std::fread(shader_source, sizeof(char), size, pf);
-	shader_source[size] = NULL;
+	shader_source[size] = '\0';
 	std::fclose(pf);
 
 	return shader_source;
