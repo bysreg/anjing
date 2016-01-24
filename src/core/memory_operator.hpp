@@ -3,14 +3,35 @@
 #ifdef ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE
 	#include <cstddef>
 	#include <new>
+
 	void* operator new (std::size_t size, const char* file, int line);
 	void* operator new[](std::size_t size, const char* file, int line);
 	void operator delete (void* p, const char* file, int line);
 	void operator delete[](void* p, const char* file, int line);
+	
+	namespace anjing
+	{
+		namespace core
+		{
+			template<typename T>
+			void Destroy(T* obj, const char* filename, unsigned int line)
+			{
+				obj->~T();
+				operator delete(obj, __FILE__, __LINE__);
+			}
+
+			template<typename T>
+			void DestroyArr(T* obj, const char* filename, unsigned int line)
+			{
+				obj->~T();
+				operator delete[](obj, __FILE__, __LINE__);
+			}
+		}
+	}
 
 	#define Anew new(__FILE__, __LINE__)
-	#define Adelete(M) operator delete(M, __FILE__, __LINE__);
-	#define AdeleteArr(M) operator delete[](M, __FILE__, __LINE__);
+	#define Adelete(M) anjing::core::Destroy(M, __FILE__, __LINE__)			
+	#define AdeleteArr(M) anjing::core::DestroyArr(M, __FILE__, __LINE__)
 
 #else
 	
