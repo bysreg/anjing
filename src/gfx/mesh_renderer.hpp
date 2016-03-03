@@ -8,16 +8,11 @@ namespace anjing
 	{
 		//forward declarations
 		class Mesh;
+		class Material;
 
 		class MeshRenderer : public anjing::core::Component
 		{
 			friend class anjing::core::GameObject;
-
-		protected:
-			///
-			/// \brief Default constructor for MeshRenderer
-			///
-			MeshRenderer() : mesh(nullptr) {}
 
 		public:
 			///
@@ -30,10 +25,23 @@ namespace anjing
 			///
 			void SetMesh(Mesh const * const mesh);
 
+			///
+			/// \brief Assign material to be renderer
+			///
+			void SetMaterial(Material const * const material);
+
+		protected:
+			///
+			/// \brief Default constructor for MeshRenderer
+			///
+			MeshRenderer() : mesh(nullptr) {}
+		
+			virtual ~MeshRenderer() {}
+
 		private:
 
 			Mesh const * mesh;
-
+			Material const * material;
 		};
 	}
 }

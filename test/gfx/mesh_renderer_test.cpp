@@ -2,6 +2,8 @@
 #include "gfx/mesh.hpp"
 #include "gfx/mesh_renderer.hpp"
 #include "math/tvec3.hpp"
+#include "gfx/material.hpp"
+#include "gfx/shader.hpp"
 
 #include <gtest/gtest.h>
 
@@ -47,5 +49,15 @@ TEST_F(MeshRendererTest, Triangle)
 
 	EXPECT_EQ(mesh.GetIndexCount(), 3);
 
+	anjing::gfx::Shader* shader = anjing::gfx::Shader::LoadShaderProgram("default/default.vs", "default/default.fs");
+	
+	anjing::gfx::Material* mat = Anew anjing::gfx::Material;
+	mat->SetShader(shader);
+
+	mesh_renderer->SetMaterial(mat);
+	mesh_renderer->SetMesh(&mesh);
+
 	/// \todo Test Triangle rendering
+
+
 }
