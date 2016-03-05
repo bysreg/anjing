@@ -32,7 +32,7 @@ int anjing::app::App::StartApplication(anjing::app::App* app, int width, int hei
 	SDL_GLContext glContext = SDL_GL_CreateContext(window);
 	if (glContext == NULL)
 	{
-		std::cerr << "SDL_GL_CreateContext failed" << std::endl;
+		std::cerr << "SDL_GL_CreateContext failed : " << SDL_GetError() << std::endl;
 		return -3;
 	}
 
