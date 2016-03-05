@@ -4,6 +4,7 @@
 #include "math/tvec3.hpp"
 #include "gfx/material.hpp"
 #include "gfx/shader.hpp"
+#include "app/app.hpp"
 
 #include <gtest/gtest.h>
 
@@ -33,6 +34,10 @@ public:
 
 TEST_F(MeshRendererTest, Triangle)
 {
+	// need to start the application first, before we can render anything
+	anjing::app::App* app = Anew anjing::app::App;
+	anjing::app::App::StartApplication(app, 800, 600, 60, "TestMeshRenderer");
+
 	MeshRenderer* mesh_renderer = static_cast<MeshRenderer*>(go->AddComponent<MeshRenderer>());
 	EXPECT_NE(mesh_renderer, nullptr);
 
