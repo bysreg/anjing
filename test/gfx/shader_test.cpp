@@ -40,7 +40,7 @@ TEST_F(ShaderTest, CheckLoadShader)
 	// segmentation fault, so we disable these tests for now for linux
 	anjing::gfx::Shader* shader = nullptr;
 
-#ifdef __linux__
+#ifndef __linux__
 	// test failure to compile the shader program
 	shader = anjing::gfx::Shader::LoadShaderProgram("", "");	
 	EXPECT_EQ(shader, nullptr);
