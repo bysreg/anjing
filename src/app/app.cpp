@@ -18,7 +18,7 @@ int anjing::app::App::StartApplication(anjing::app::App* app, int width, int hei
 
 	// set OpenGL attributes
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
 	std::string win_title = title + " (" + std::to_string(fps) + " fps) ";
