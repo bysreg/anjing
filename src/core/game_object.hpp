@@ -138,7 +138,7 @@ namespace anjing
 		}
 
 		template<typename T>
-		inline static void GameObject::Destroy(T* t)
+		inline void GameObject::Destroy(T* t)
 		{
 			// check if t is derived from anjing::core::Component
 			static_assert(std::is_base_of<anjing::core::Component, T>::value, "T must derive from anjing::core::Component");
