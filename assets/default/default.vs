@@ -1,4 +1,4 @@
-#version 330
+#version 130
 
 in vec3 a_posL; // local pos
 in vec2 a_uv;
