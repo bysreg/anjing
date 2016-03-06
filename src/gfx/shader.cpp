@@ -81,7 +81,7 @@ int anjing::gfx::Shader::CompileShader(GLuint& out_shader, const std::string& fi
 
 	GLchar const* source_arr[2] = { 0 };
 
-#if ANJING__OPENGL_VERSION == 300
+#if ANJING_OPENGL_VERSION == 300
 	source_arr[0] = static_cast<GLchar const*>("#version 130\n\n");
 #elif ANJING_OPENGL_VERSION == 330
 	source_arr[0] = static_cast<GLchar const*>("#version 330\n\n");
