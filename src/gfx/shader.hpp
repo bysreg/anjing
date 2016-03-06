@@ -88,6 +88,7 @@ namespace anjing
 			/// Returns 0 on success. 
 			/// Returns 1 when shader is failed to compile
 			/// Returns 2 when shader file cannot be read
+			/// Returns 3 when ANJING__OPENGL_VERSION is set to something other than 300 or 330
 			///
 			static int CompileShader(GLuint& out_shader, const std::string& filepath, ShaderType shader_type);
 

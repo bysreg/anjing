@@ -79,18 +79,20 @@ int anjing::gfx::Shader::CompileShader(GLuint& out_shader, const std::string& fi
 		return 2;
 	}
 
-	char* source_arr[2] = { 0 };
+	GLchar const* source_arr[2] = { 0 };
 
 #if ANJING__OPENGL_VERSION == 300
-	source_arr[0] = "#version 130\n\n";
+	source_arr[0] = static_cast<GLchar const*>("#version 130\n\n");
 #elif ANJING_OPENGL_VERSION == 330
-	source_arr[0] = "#version 330\n\n";
+	source_arr[0] = static_cast<GLchar const*>("#version 330\n\n");
 #else
 	ANJING_LOGF_E("ANJING DOES NOT SUPPORT OpenGL version %d\n", ANJING_OPENGL_VERSION);
+	return 3;
 #endif
 
 	GLchar const* shader_source = static_cast<GLchar*>(source);
-	glShaderSource(shader, 1, &shader_source, NULL);
+	source_arr[1] = shader_source;
+	glShaderSource(shader, 2, source_arr, NULL);
 	AdeleteArr(source);
 
 	glCompileShader(shader);
