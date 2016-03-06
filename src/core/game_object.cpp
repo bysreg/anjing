@@ -25,11 +25,28 @@ GameObject::~GameObject()
 	Scene::GetInstance().RemoveGameObject(this);
 }
 
+bool anjing::core::GameObject::RemoveComponent(anjing::core::Component* component)
+{
+	for (size_t i = 0; i < components->size(); i++)
+	{
+		if (components->at(i) == component)
+		{
+			components->erase(components->begin() + i);
+			component->OnRemoved();
+			Adelete(component);
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void GameObject::RemoveAllComponents()
 {
 	for (size_t i = 0; i < components->size(); i++)
 	{
 		Component* component = components->at(i);
+		component->OnRemoved();
 		Adelete(component);
 	}
 
@@ -40,6 +57,7 @@ void GameObject::AddComponentToGOList(Component* component)
 {
 	component->owner = this;
 	components->push_back(component);
+	component->OnAdded();
 }
 
 void GameObject::Update()

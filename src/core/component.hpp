@@ -27,6 +27,16 @@ namespace anjing
 			///
 			Component() : owner(nullptr) {}
 
+			///
+			/// \brief OnAdded will be called after this component is added to a GameObject
+			///
+			virtual void OnAdded() {}
+
+			///
+			/// \brief OnRemove will be called after this component is removed from a GameObject
+			///
+			virtual void OnRemoved() {}
+
 		public:
 
 			///
@@ -44,7 +54,7 @@ namespace anjing
 			inline GameObject* GetOwner() const
 			{
 				return owner;
-			}		
+			}
 		};
 
 	}

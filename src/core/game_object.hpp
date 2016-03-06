@@ -32,6 +32,13 @@ namespace anjing
 			Component* AddComponent();
 
 			///
+			/// \brief Removes a component
+			/// \todo This function should also can be used to remove a \a GameObject from the Scene
+			///
+			template <typename T>
+			static void Destroy(T* t);
+
+			///
 			/// \brief Get component with type T attached to the gameobject
 			///
 			/// Return null if there is no such component with type T
@@ -62,9 +69,14 @@ namespace anjing
 			std::vector<Component*>* components;			
 
 			///
+			/// \brief Remove a component from gameobject. Returns true if such component is successfully being removed from the GameObject
+			///
+			bool RemoveComponent(anjing::core::Component* component);
+
+			///
 			/// \brief Remove all components of gameobject
 			///
-			void RemoveAllComponents();
+			void RemoveAllComponents();			
 
 			///
 			/// \brief helper function for AddComponent
@@ -123,6 +135,16 @@ namespace anjing
 			}
 
 			return nullptr;
+		}
+
+		template<typename T>
+		inline static void GameObject::Destroy(T* t)
+		{
+			// check if t is derived from anjing::core::Component
+			static_assert(std::is_base_of<anjing::core::Component, T>::value, "T must derive from anjing::core::Component");
+
+			anjing::core::Component* component = t;
+			component->GetOwner()->RemoveComponent(component);
 		}
 	}
 }

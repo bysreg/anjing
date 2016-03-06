@@ -53,3 +53,11 @@ TEST_F(GameObjectTest, AddMeshRendererCheck)
 	EXPECT_EQ(mesh_renderer->GetOwner(), go);
 	EXPECT_EQ(go->GetComponent<anjing::gfx::MeshRenderer>(), mesh_renderer);
 }
+
+TEST_F(GameObjectTest, DestroyComponent)
+{
+	anjing::core::Component* component = go->AddComponent<anjing::core::Component>();
+
+	go->Destroy(component);
+	EXPECT_EQ(go->GetComponent<anjing::core::Component>(), nullptr);
+}
