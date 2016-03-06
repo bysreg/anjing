@@ -62,4 +62,5 @@ http://bysreg.github.io/anjing/index.html
 - Strongly typed enums, as defined in http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2347.pdf  
 - Override keyword 
   
-  
+##Notes :##
+- Windows and iOS use OpenGL 3.3, while Linux uses OpenGL 3.0. OSX can only use OpenGL core profile 3.2 (3.3/4.1 in OS X 10.9), aside from that you'll get OpenGL 2.1 instead. Linux is set to use OpenGL 3.0 because currently Travis CI can only support up to OpenGL 3.0 (if you request more than that, we will fail on OpenGL context creation)
