@@ -1,4 +1,5 @@
-#version 130
+
+// #version is added in anjing::gfx::Shader::CompileShader
 
 precision mediump float;
 

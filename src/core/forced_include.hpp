@@ -23,5 +23,16 @@
 
 #endif
 
+#ifdef __linux__
+// we are using OpenGL 3.0 because travis CI does not support newer OpenGL version
+#define ANJING_OPENGL_VERSION 300
+#define ANJING_OPENGL_MAJOR_VERSION 3
+#define ANJING_OPENGL_MINOR_VERSION 0
+#else
+#define ANJING_OPENGL_VERSION 330
+#define ANJING_OPENGL_MAJOR_VERSION 3
+#define ANJING_OPENGL_MINOR_VERSION 3
+#endif
+
 #include "core/types.hpp"
 #include "core/memory_operator.hpp"

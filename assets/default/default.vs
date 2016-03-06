@@ -1,4 +1,5 @@
-#version 130
+
+// #version is added in anjing::gfx::Shader::CompileShader
 
 in vec3 a_posL; // local pos
 in vec2 a_uv;
