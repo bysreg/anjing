@@ -54,6 +54,22 @@ namespace anjing
 			return *this;
 		}
 
+		template<typename T>
+		TVec3<T> operator/(const TVec3<T>& v, T scalar)
+		{
+			return TVec3<T>(
+				v.x / scalar,
+				v.y / scalar, 
+				v.z / scalar
+				);
+		}
+
+		template<typename T>
+		bool operator== (const TVec3<T>& a, TVec3<T> b)
+		{
+			return (a.x == b.x) && (a.y == b.y) && (a.z == b.z);
+		}
+
 		typedef TVec3<float> Vec3;
 	}
 }
