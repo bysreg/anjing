@@ -43,6 +43,20 @@ TEST(TVec2Test, EqualityCheck)
 	EXPECT_EQ(false, test1 == test3);
 }
 
+TEST(TVec2Test, AdditionCheck)
+{
+	Vec2 test = Vec2(4, 3) + Vec2(1, 2);
+
+	EXPECT_EQ(true, test == Vec2(5, 5));
+}
+
+TEST(TVec2Test, SubstractionCheck)
+{
+	Vec2 test = Vec2(4, 3) - Vec2(1, 2);
+
+	EXPECT_EQ(true, test == Vec2(3, 1));
+}
+
 TEST(TVec2Test, DivideByScalarCheck)
 {
 	Vec2 test = (Vec2(6, 8) / 2.0f);

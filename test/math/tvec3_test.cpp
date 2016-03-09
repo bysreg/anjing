@@ -44,6 +44,20 @@ TEST(TVec3Test, EqualityCheck)
 	EXPECT_EQ(false, test1 == test3);
 }
 
+TEST(TVec3Test, AdditionCheck)
+{
+	Vec3 test = Vec3(4, 3, 2) + Vec3(1, 2, 3);
+
+	EXPECT_EQ(true, test == Vec3(5, 5, 5));
+}
+
+TEST(TVec3Test, SubstractionCheck)
+{
+	Vec3 test = Vec3(4, 3, 2) - Vec3(1, 2, 3);
+
+	EXPECT_EQ(true, test == Vec3(3, 1, -1));
+}
+
 TEST(TVec3Test, DivideByScalarCheck)
 {
 	Vec3 test = (Vec3(6, 8, 10) / 2.0f);	
@@ -67,4 +81,17 @@ TEST(TVec3Test, DotCheck)
 	Vec3 b(4, 2, 5);
 	float test = Dot(a, b);
 	EXPECT_EQ(test, 35);
+}
+
+TEST(TVec3Test, CrossCheck)
+{
+	Vec3 a(1, 0, 0);
+	Vec3 b(0, 1, 0);
+	Vec3 test = Cross(a, b);
+	EXPECT_EQ(true, test == Vec3(0, 0, 1));
+
+	Vec3 a2(2, 0, 0);
+	Vec3 b2(0, 2, 0);
+	Vec3 test2 = Cross(a2, b2);
+	EXPECT_EQ(true, test2 == Vec3(0, 0, 4));
 }

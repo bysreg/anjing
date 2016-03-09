@@ -28,6 +28,16 @@ namespace anjing
 		{
 			return (a.x * b.x) + (a.y * b.y) + (a.z * b.z) + (a.w * b.w);
 		}
+		
+		template<typename T>
+		inline TVec3<T> Cross(TVec3<T> const & a, TVec3<T> const & b)
+		{
+			return TVec3<T>(
+				a.y*b.z - a.z*b.y,
+				a.z*b.x - a.x*b.z,
+				a.x*b.y - a.y*b.x
+				);
+		}
 
 		template<typename T, template<typename> class VecType >
 		inline VecType<double> Normalize(VecType<double> const & x)

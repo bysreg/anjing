@@ -61,6 +61,28 @@ namespace anjing
 		}
 
 		template<typename T>
+		TVec4<T> operator+(const TVec4<T>& a, const TVec4<T>& b)
+		{
+			return TVec4<T>(
+				a.x + b.x,
+				a.y + b.y,
+				a.z + b.z,
+				a.w + b.w
+				);
+		}
+
+		template<typename T>
+		TVec4<T> operator-(const TVec4<T>& a, const TVec4<T>& b)
+		{
+			return TVec4<T>(
+				a.x - b.x,
+				a.y - b.y,
+				a.z - b.z,
+				a.w - b.w
+				);
+		}
+
+		template<typename T>
 		TVec4<T> operator/(const TVec4<T>& v, T scalar)
 		{
 			return TVec4<T>(
