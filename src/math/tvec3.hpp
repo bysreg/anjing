@@ -39,7 +39,11 @@ namespace anjing
 			TVec3(const T& a, const T& b, const T& c) : x(a), y(b), z(c)
 			{}								
 
-			TVec3<T>& operator=(const TVec3<T>& v);
+			inline std::size_t Size() const { return 3; }
+
+			// operators
+			TVec3<T>& operator=(const TVec3<T>& v);	
+			TVec3<T> operator-();
 
 		};
 
@@ -71,6 +75,17 @@ namespace anjing
 				a.x - b.x,
 				a.y - b.y,
 				a.z - b.z
+				);
+		}
+
+		// unary -
+		template<typename T>
+		TVec3<T> TVec3<T>::operator-()
+		{
+			return TVec3<T>(
+				-x,
+				-y,
+				-z
 				);
 		}
 

@@ -35,6 +35,8 @@ namespace anjing
 			{				
 			}								
 
+			inline std::size_t Size() const { return 2; }
+
 			TVec2<T>& operator=(const TVec2<T>& v);
 
 		};

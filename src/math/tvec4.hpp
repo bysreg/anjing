@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstddef>
+
 namespace anjing
 {
 	namespace math
@@ -42,10 +44,14 @@ namespace anjing
 			/// Alternative constructor for TVec4
 			///			
 			TVec4(const T& a, const T& b, const T& c, const T& d) : x(a), y(b), z(c), w(d)
-			{}								
+			{}
 
+			inline std::size_t Size() const { return 4; }
+
+			// operators
 			TVec4<T>& operator=(const TVec4<T>& v);
-
+			T& operator[](std::size_t i);
+			T const & operator[](std::size_t i) const;
 		};
 
 		///////////////// implementation
@@ -58,6 +64,18 @@ namespace anjing
 			this->z = v.z;
 			this->a = v.a;
 			return *this;
+		}
+
+		template<typename T>
+		inline T & TVec4<T>::operator[](std::size_t i)
+		{			
+			return (&x)[i];
+		}
+
+		template<typename T>
+		inline T const & TVec4<T>::operator[](std::size_t i) const
+		{
+			return (&x)[i];
 		}
 
 		template<typename T>

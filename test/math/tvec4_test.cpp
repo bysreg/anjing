@@ -28,6 +28,16 @@ TEST(TVec4Test, xyzrgbstpCheck)
 	EXPECT_EQ(test.w, test.a); EXPECT_EQ(test.w, test.q);
 }
 
+TEST(TVec4Test, subscriptCheck)
+{
+	Vec4 test(1, 2, 3, 4);
+
+	EXPECT_EQ(test.x, test[0]);
+	EXPECT_EQ(test.y, test[1]);
+	EXPECT_EQ(test.z, test[2]);
+	EXPECT_EQ(test.w, test[3]);
+}
+
 TEST(TVec4Test, AssignmentCheck)
 {
 	Vec4 test = Vec4(1, 2, 3, 4);

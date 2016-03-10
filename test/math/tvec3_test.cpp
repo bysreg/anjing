@@ -58,6 +58,15 @@ TEST(TVec3Test, SubstractionCheck)
 	EXPECT_EQ(true, test == Vec3(3, 1, -1));
 }
 
+TEST(TVec3Test, NegationCheck)
+{
+	Vec3 test(1, 2, 3);
+
+	test = -test;
+
+	EXPECT_EQ(test==Vec3(-1, -2, -3), true);
+}
+
 TEST(TVec3Test, DivideByScalarCheck)
 {
 	Vec3 test = (Vec3(6, 8, 10) / 2.0f);	
