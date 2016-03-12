@@ -21,12 +21,7 @@ namespace anjing
 			///
 			/// Default constructor for TMat4
 			///
-			TMat4();
-
-			///
-			/// \brief Creates a viewing matrix
-			///
-			TMat4<T> LookAt(TVec3<T> const & eye, TVec3<T> const & center, TVec3<T> const & up);
+			TMat4();			
 
 			///
 			/// \brief Make this matrix as identity matrix
