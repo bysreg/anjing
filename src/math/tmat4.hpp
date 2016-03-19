@@ -29,8 +29,8 @@ namespace anjing
 			void SetAsIdentity();
 
 			//operators
-			typename Type& operator[](std::size_t i);
-			typename Type const & operator[](std::size_t i) const;
+			typename TMat4<T>::Type& operator[](std::size_t i);
+			typename TMat4<T>::Type const & operator[](std::size_t i) const;
 
 		private:
 
