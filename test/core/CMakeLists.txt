@@ -3,7 +3,7 @@ include_directories(
 	${GTEST_INCLUDE_DIR}
 )
 
-add_executable(test_core core_test.cpp game_object_test.cpp)
+add_executable(test_core core_test.cpp game_object_test.cpp transform_test.cpp)
 target_link_libraries(test_core core app gfx ${GLEW_LIBRARY} gtest gtest_main ${SDL2_LIBRARY})
 set_target_properties(test_core PROPERTIES COMPILE_FLAGS "${ANJING_COMPILE_FLAGS} ")
 

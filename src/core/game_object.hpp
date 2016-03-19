@@ -10,6 +10,16 @@
 // use vector list of components of a gameobject for now, probably should not use stl
 #include <vector>
 
+// forward declaration
+namespace anjing 
+{
+	namespace core
+	{
+		class Scene;
+		class Transform;
+	}
+}
+
 namespace anjing
 {
 	namespace core
@@ -19,7 +29,8 @@ namespace anjing
 		///
 		class GameObject
 		{
-			friend class Scene;
+			friend class anjing::core::Scene;
+			friend class anjing::core::Transform;
 
 		public:			
 
@@ -63,9 +74,12 @@ namespace anjing
 			///
 			virtual void Update();			
 
+			inline anjing::core::Transform* GetTransform() { return transform; }
+
 		private:
 			
 			anjing::gfx::MeshRenderer* mesh_renderer;			
+			anjing::core::Transform* transform;
 			std::vector<Component*>* components;			
 
 			///
@@ -93,6 +107,11 @@ namespace anjing
 			{
 				return mesh_renderer;
 			}
+
+			///
+			/// \brief set transform to \a value. This should only be called by anjing::core::Component
+			///
+			inline void SetTransform(anjing::core::Transform* value) { transform = value; }
 		};
 
 
@@ -125,6 +144,7 @@ namespace anjing
 			static_assert(std::is_base_of<Component, T>::value, "type is not a component");
 
 			// TODO : is it better to do reflection here ?
+			// is it better to store the component in a hash map or something if it exceeds certain size?
 
 			for (size_t i = 0; i < components->size(); i++)
 			{

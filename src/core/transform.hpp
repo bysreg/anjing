@@ -24,6 +24,8 @@ namespace anjing
 			
 			anjing::math::Vec3 wpos;					
 
+			virtual void OnAdded() override;
+
 		};
 	}
 }
