@@ -13,6 +13,11 @@
 // forward declaration
 namespace anjing 
 {
+	namespace gfx
+	{
+		class Camera;
+	}
+
 	namespace core
 	{
 		class Scene;
@@ -31,6 +36,7 @@ namespace anjing
 		{
 			friend class anjing::core::Scene;
 			friend class anjing::core::Transform;
+			friend class anjing::gfx::Camera;
 
 		public:			
 

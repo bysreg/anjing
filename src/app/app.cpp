@@ -43,6 +43,9 @@ int anjing::app::App::StartApplication(anjing::app::App* app, int width, int hei
 		return -4;
 	}
 
+	app->width = width;
+	app->height = height;
+
 	if (app->Init() == 0)
 	{
 		std::cout << "application initialized" << std::endl;

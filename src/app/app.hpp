@@ -34,6 +34,11 @@ namespace anjing
 			/// \brief Release all app's memory
 			///
 			virtual void Clean();
+
+		private:
+
+			int width;
+			int height;
 		};
 	}
 }

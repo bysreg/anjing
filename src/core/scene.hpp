@@ -4,20 +4,31 @@
 
 #include <list>
 
+// forward declarations
 namespace anjing
 {
 	namespace core
 	{
-
-		//forward declarations
 		class GameObject;
+	}
 
+	namespace gfx
+	{
+		class Camera;
+	}
+}
+
+namespace anjing
+{
+	namespace core
+	{
 		class Scene
 		{
 
 			ANJING_SINGLETON(Scene)
 
-			friend class GameObject;
+			friend class anjing::core::GameObject;
+			friend class anjing::gfx::Camera;
 
 		public:
 
@@ -28,17 +39,31 @@ namespace anjing
 
 		private:
 
-			std::list<GameObject*> game_objects;
+			std::list<anjing::core::GameObject*> game_objects;
+			anjing::gfx::Camera* camera;
+
+			uint32 width;
+			uint32 height;
+
+			///
+			/// Set the screen size
+			///
+			inline void SetScreenSize(uint32 width, uint32 height) { this->width = width; this->height = height; }
 
 			///
 			/// \brief Adds a GameObject to the scene
 			///
-			void AddGameObject(GameObject* go);
+			void AddGameObject(anjing::core::GameObject* go);
 
 			///
 			/// \brief Removes a GameObject from the scene
 			///
-			void RemoveGameObject(GameObject* go);
+			void RemoveGameObject(anjing::core::GameObject* go);
+
+			///
+			/// \brief Set the main camera of the scene 
+			///
+			inline void SetCamera(anjing::gfx::Camera* camera) { this->camera = camera; }
 		};
 	}
 }
