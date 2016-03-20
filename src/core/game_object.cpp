@@ -1,5 +1,4 @@
 #include "core/game_object.hpp"
-#include "core/transform.hpp"
 #include "core/scene.hpp"
 
 using namespace anjing::core;

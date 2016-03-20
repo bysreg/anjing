@@ -3,6 +3,12 @@
 #include "gfx/mesh_renderer.hpp"
 #include "core/component.hpp"
 
+// components
+// we cant forward declare components, because in GetComponent, we use typeid which requires
+// the type to be complete
+#include "core/transform.hpp"
+#include "gfx/camera.hpp"
+
 #include <string>
 #include <type_traits>
 #include <typeinfo>
@@ -13,15 +19,9 @@
 // forward declaration
 namespace anjing 
 {
-	namespace gfx
-	{
-		class Camera;
-	}
-
 	namespace core
 	{
-		class Scene;
-		class Transform;
+		class Scene;		
 	}
 }
 
@@ -153,7 +153,7 @@ namespace anjing
 			// is it better to store the component in a hash map or something if it exceeds certain size?
 
 			for (size_t i = 0; i < components->size(); i++)
-			{
+			{			
 				if (typeid(*(components->at(i))) == typeid(T))
 				{
 					return dynamic_cast<T*>(components->at(i));
