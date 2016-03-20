@@ -7,14 +7,19 @@
 // forward declarations
 namespace anjing
 {
+	namespace gfx
+	{
+		class Camera;
+	}
+
 	namespace core
 	{
 		class GameObject;
 	}
 
-	namespace gfx
+	namespace app
 	{
-		class Camera;
+		class App;
 	}
 }
 
@@ -29,6 +34,7 @@ namespace anjing
 
 			friend class anjing::core::GameObject;
 			friend class anjing::gfx::Camera;
+			friend class anjing::app::App;
 
 		public:
 

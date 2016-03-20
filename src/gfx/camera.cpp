@@ -71,6 +71,7 @@ void anjing::gfx::Camera::UpdateView()
 void anjing::gfx::Camera::OnAdded()
 {
 	anjing::core::Scene::GetInstance().SetCamera(this);
+	this->Init();
 }
 
 void anjing::gfx::Camera::OnRemoved()

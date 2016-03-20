@@ -1,5 +1,6 @@
 #include "app/app.hpp"
 #include "core/log.hpp"
+#include "core/scene.hpp"
 
 #include <GL/glew.h>
 #include <SDL.h>
@@ -83,6 +84,9 @@ std::FILE* anjing::app::App::GetAssets(std::string filename, std::string mode)
 
 int anjing::app::App::Init()
 {
+	// initialize Anjing Scene
+	anjing::core::Scene::GetInstance().SetScreenSize(width, height);
+
 	return 0;
 }
 

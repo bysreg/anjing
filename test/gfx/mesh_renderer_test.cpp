@@ -5,6 +5,8 @@
 #include "gfx/material.hpp"
 #include "gfx/shader.hpp"
 #include "app/app.hpp"
+#include "core/scene.hpp"
+#include "gfx/camera.hpp"
 
 #include <gtest/gtest.h>
 
@@ -16,12 +18,21 @@ class MeshRendererTest : public ::testing::Test
 {
 public:
 	GameObject* go;
+	GameObject* mainCamera;
 
 	virtual void SetUp() override
 	{
 		::testing::Test::SetUp();
 
+		// need to start the application first, before we can render anything
+		anjing::app::App* app = Anew anjing::app::App;
+		anjing::app::App::StartApplication(app, 800, 600, 60, "TestMeshRenderer");
+
 		go = Anew GameObject;
+
+		// a scene has to have one gameobject as camera to be able to display anything
+		mainCamera = Anew GameObject;
+		mainCamera->AddComponent<anjing::gfx::Camera>();
 	}
 
 	virtual void TearDown() override
@@ -29,15 +40,12 @@ public:
 		::testing::Test::TearDown();
 
 		Adelete(go);
+		Adelete(mainCamera);
 	}
 };
 
 TEST_F(MeshRendererTest, Triangle)
-{
-	// need to start the application first, before we can render anything
-	anjing::app::App* app = Anew anjing::app::App;
-	anjing::app::App::StartApplication(app, 800, 600, 60, "TestMeshRenderer");
-
+{	
 	MeshRenderer* mesh_renderer = static_cast<MeshRenderer*>(go->AddComponent<MeshRenderer>());
 	EXPECT_NE(mesh_renderer, nullptr);
 
@@ -62,7 +70,5 @@ TEST_F(MeshRendererTest, Triangle)
 	mesh_renderer->SetMaterial(mat);
 	mesh_renderer->SetMesh(&mesh);
 
-	/// \todo Test Triangle rendering
-
-
+	anjing::core::Scene::GetInstance().Render();
 }
