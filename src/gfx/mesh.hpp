@@ -5,6 +5,7 @@
 
 #include <vector>
 #include <cstddef>
+#include <GL/glew.h>
 
 namespace anjing
 {
@@ -35,17 +36,26 @@ namespace anjing
 			///
 			void AddIndex(anjing::core::uint32 index);
 
+			///
+			/// \brief Call this after modifying the mesh, to update the mesh
+			///
+			/// If you didn't call this after modifying the mesh, the mesh will
+			/// display the old mesh instead
+			///
+			void UpdateMesh();
 
 			///
 			/// \brief Default constructor for Mesh
 			///
-			Mesh();
+			Mesh();		
 
 		private:
 			
 			std::vector<Vertex> vertices;
 			std::vector<anjing::core::uint32> indices;
 
+			GLuint vertices_id;
+			
 		};
 
 	}

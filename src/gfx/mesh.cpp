@@ -23,6 +23,14 @@ void anjing::gfx::Mesh::AddIndex(uint32 index)
 	indices.push_back(index);
 }
 
+void anjing::gfx::Mesh::UpdateMesh()
+{
+	glGenBuffers(1, &vertices_id);
+	glBindBuffer(GL_ARRAY_BUFFER, vertices_id);
+	glBufferData(GL_ARRAY_BUFFER, vertices.size(), &vertices[0], GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
 Mesh::Mesh()
 {
 	vertices.reserve(3);

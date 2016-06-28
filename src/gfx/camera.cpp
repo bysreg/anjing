@@ -38,7 +38,7 @@ void anjing::gfx::Camera::Render()
 		anjing::gfx::MeshRenderer* mesh_renderer = go->GetMeshRenderer();
 		if (mesh_renderer != nullptr)
 		{
-			
+					
 		}
 	}
 
