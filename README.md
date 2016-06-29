@@ -12,6 +12,7 @@
 
 ##For windows :##
 add folder /windows/bin to your path
+Visual Studio 2015
 
 ##How to build:##
 - go to folder build, and run this from terminal in linux/osx or cmd in windows: "cmake ..".
@@ -41,8 +42,8 @@ http://bysreg.github.io/anjing/index.html
   - you need to build gtest first, and put the libgtest.a nd libgtest-main.a to /usr/lib
 - use "cmake -Dbuild_test=ON .."
 - if on windows, 
-  - instead of myapp project as the startup project, set the "appTestExecutable" as the startup project, and build that project
-  - use ctrl+F5, so that the program won't immediately quit so that you can see the test's results. 
+  - build solution
+  - build RUN_TESTS, you can see the test's result in Output window in visual studio
 - if on linux, 
   - run "make" to build all executables, including the tests
   - run "make test" to run all the tests
