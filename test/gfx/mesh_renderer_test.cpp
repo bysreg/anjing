@@ -19,13 +19,14 @@ class MeshRendererTest : public ::testing::Test
 public:
 	GameObject* go;
 	GameObject* mainCamera;
+	anjing::app::App* app;
 
 	virtual void SetUp() override
 	{
 		::testing::Test::SetUp();
 
 		// need to start the application first, before we can render anything
-		anjing::app::App* app = Anew anjing::app::App;
+		app = Anew anjing::app::App;
 		anjing::app::App::StartApplication(app, 800, 600, 60, "TestMeshRenderer");
 
 		go = Anew GameObject;
@@ -41,6 +42,9 @@ public:
 
 		Adelete(go);
 		Adelete(mainCamera);
+
+		anjing::app::App::StopApplication(app);
+		Adelete(app);
 	}
 };
 

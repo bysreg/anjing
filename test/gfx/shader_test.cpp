@@ -41,25 +41,30 @@ TEST_F(ShaderTest, CheckLoadShader)
 	anjing::gfx::Shader* shader = nullptr;
 
 #ifndef __linux__
-	printf("test some error checks on shader compilation... \n");
+	printf("--- test some error checks on shader compilation... \n ---");
 
 	// test failure to compile the shader program
+	printf("> test wrong path for vertex and fragment shader\n");
 	shader = anjing::gfx::Shader::LoadShaderProgram("", "");	
 	EXPECT_EQ(shader, nullptr);
 
 	// test failure to compile fragment shader
+	printf("> test wrong path for fragment shader\n");
 	shader = anjing::gfx::Shader::LoadShaderProgram("default/default.vs", "");
 	EXPECT_EQ(shader, nullptr);
 
 	// test failure to compile vertex shader
+	printf("> test wrong path for vertex shader\n");
 	shader = anjing::gfx::Shader::LoadShaderProgram("", "default/default.fs");
 	EXPECT_EQ(shader, nullptr);
 
 	// test compile error on vertex shader
+	printf("> test compile error in vertex shader\n");
 	shader = anjing::gfx::Shader::LoadShaderProgram("default/test/error.vs", "default/default.fs");
 	EXPECT_EQ(shader, nullptr);
 
 	// test linking error (no main in fragment shader)
+	printf("> test compile error in fragment shader\n");
 	shader = anjing::gfx::Shader::LoadShaderProgram("default/default.vs", "default/test/error.fs");
 	EXPECT_EQ(shader, nullptr);
 #endif
