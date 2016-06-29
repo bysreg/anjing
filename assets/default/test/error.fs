@@ -11,10 +11,9 @@ in vec3 v_posW;
 
 uniform sampler2D u_diffuse_texture;
 
-out vec4 o_color;
+// intentional syntax error
+ou vec4 o_color;
 
-// intentional error
-/*
 void main()
 {	
 	//o_color = vec4(v_posP.z / 20.0); // display depth, divided by 20 so that it will display more progressive 		
@@ -24,4 +23,3 @@ void main()
 	//o_color = vec4(v_normalW, 1.0); // display world normal
 	//o_color = vec4(v_uv, 0.0, 1.0); // display uv
 }
-*/

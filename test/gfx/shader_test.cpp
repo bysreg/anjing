@@ -64,6 +64,7 @@ TEST_F(ShaderTest, CheckLoadShader)
 	shader = anjing::gfx::Shader::LoadShaderProgram("default/test/error.vs", "default/default.fs");
 	EXPECT_EQ(shader, nullptr);
 
+
 	// test linking error (no main in fragment shader)
 	printf("> test compile error in fragment shader\n");
 	shader = anjing::gfx::Shader::LoadShaderProgram("default/default.vs", "default/test/error.fs");
