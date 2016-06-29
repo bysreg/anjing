@@ -1,6 +1,7 @@
 include_directories(
 	${ANJING_INCLUDE_DIR}
 	${GTEST_INCLUDE_DIR}
+	${SDL2_INCLUDE_DIR}
 )
 
 add_executable(test_app app_test.cpp)
