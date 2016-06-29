@@ -33,7 +33,9 @@ class MaterialTest : public ::testing::Test
 		::testing::Test::TearDown();
 
 		Adelete(mat);
-		Adelete(app);		
+
+		anjing::app::App::StopApplication(app);
+		Adelete(app);
 	}
 };
 

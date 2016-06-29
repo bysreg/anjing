@@ -29,6 +29,7 @@ class ShaderTest : public ::testing::Test
 	{
 		::testing::Test::TearDown();
 
+		anjing::app::App::StopApplication(app);
 		Adelete(app);
 	}
 };

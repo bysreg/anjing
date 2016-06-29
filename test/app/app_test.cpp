@@ -6,6 +6,7 @@ TEST(AppTest, NormalUseCase)
 {
 	anjing::app::App app;
 	EXPECT_EQ(0, anjing::app::App::StartApplication(&app, 800, 600, 60, "My App"));	
+	EXPECT_EQ(0, anjing::app::App::StopApplication(&app));
 }
 
 TEST(AppTest, CheckGetAssets)
