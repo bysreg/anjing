@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <SDL.h>
 
 namespace anjing 
 {
@@ -23,6 +24,11 @@ namespace anjing
 			/// You need to close the file if it successfully opened
 			static std::FILE* GetAssets(std::string filename, std::string mode);
 
+			///
+			/// \brief Close the application, do necessary clean up
+			///
+			static int StopApplication(App* app);
+
 		protected:
 
 			///
@@ -39,6 +45,10 @@ namespace anjing
 
 			int width;
 			int height;
+
+			SDL_Window* window;
+			SDL_GLContext gl_context;
+
 		};
 	}
 }

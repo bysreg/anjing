@@ -2,6 +2,7 @@ include_directories(
 	${ANJING_INCLUDE_DIR}
 	${GTEST_INCLUDE_DIR}
 	${GLEW_INCLUDE_DIR}
+	${SDL2_INCLUDE_DIR}
 )
 
 add_executable(test_gfx mesh_renderer_test.cpp mesh_test.cpp shader_test.cpp material_test.cpp)

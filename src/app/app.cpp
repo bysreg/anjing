@@ -3,7 +3,6 @@
 #include "core/scene.hpp"
 
 #include <GL/glew.h>
-#include <SDL.h>
 
 #include <cassert>
 #include <cstdio>
@@ -46,11 +45,22 @@ int anjing::app::App::StartApplication(anjing::app::App* app, int width, int hei
 
 	app->width = width;
 	app->height = height;
+	app->window = window;
 
 	if (app->Init() == 0)
 	{
 		std::cout << "application initialized" << std::endl;
 	}
+
+	return 0;
+}
+
+int anjing::app::App::StopApplication(anjing::app::App* app)
+{
+	assert(app);
+
+	SDL_GL_DeleteContext(app->gl_context);
+	SDL_DestroyWindow(app->window);
 
 	return 0;
 }
@@ -92,5 +102,4 @@ int anjing::app::App::Init()
 
 void anjing::app::App::Clean()
 {
-
 }
