@@ -42,5 +42,7 @@ int main(int argc, char* argv[])
 		getchar();
 	}
 
+	anjing::app::App::StopApplication(&app);
+
 	return 0;
 }
