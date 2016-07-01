@@ -11,8 +11,8 @@
 - C++ 11 supported compiler (msvc for windows, and gcc & clang for linux/osx)
 
 ##For windows :##
-add folder /windows/bin to your path
-Visual Studio 2015
+- add folder /windows/bin to your path
+- Visual Studio 2015
 
 ##How to build:##
 - go to folder build, and run this from terminal in linux/osx or cmd in windows: "cmake ..".
