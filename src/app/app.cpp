@@ -29,8 +29,8 @@ int anjing::app::App::StartApplication(anjing::app::App* app, int width, int hei
 		return -2;
 	}
 
-	SDL_GLContext glContext = SDL_GL_CreateContext(window);
-	if (glContext == NULL)
+	SDL_GLContext gl_context = SDL_GL_CreateContext(window);
+	if (gl_context == NULL)
 	{
 		std::cerr << "SDL_GL_CreateContext failed : " << SDL_GetError() << std::endl;
 		return -3;
@@ -46,6 +46,7 @@ int anjing::app::App::StartApplication(anjing::app::App* app, int width, int hei
 	app->width = width;
 	app->height = height;
 	app->window = window;
+	app->gl_context = gl_context;
 
 	if (app->Init() == 0)
 	{
