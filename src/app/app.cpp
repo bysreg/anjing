@@ -60,8 +60,11 @@ int anjing::app::App::StopApplication(anjing::app::App* app)
 {
 	assert(app);
 
-	SDL_GL_DeleteContext(app->gl_context);
-	SDL_DestroyWindow(app->window);
+	if(app->gl_context != nullptr)
+		SDL_GL_DeleteContext(app->gl_context);
+	
+	if(app->window != nullptr)
+		SDL_DestroyWindow(app->window);
 
 	return 0;
 }

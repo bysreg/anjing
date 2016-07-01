@@ -46,8 +46,8 @@ namespace anjing
 			int width;
 			int height;
 
-			SDL_Window* window;
-			SDL_GLContext gl_context;
+			SDL_Window* window = nullptr;
+			SDL_GLContext gl_context = nullptr;
 
 		};
 	}
