@@ -19,6 +19,7 @@ uniform mat4 u_proj_view;
 void main()
 {
 	v_uv = a_uv;
+	v_color = a_color;
 	v_normalL = a_normalL;
 	v_normalW = (u_world * vec4(a_normalL, 0.0)).xyz;
 	v_posW = (u_world * vec4(a_posL, 1.0)).xyz;
