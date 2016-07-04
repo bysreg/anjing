@@ -5,6 +5,15 @@
 #include <string>
 #include <GL/glew.h>
 
+// forward declaration
+namespace anjing
+{
+	namespace gfx
+	{
+		class MeshRenderer;
+	}
+}
+
 namespace anjing
 {
 	namespace gfx
@@ -19,6 +28,8 @@ namespace anjing
 		class Shader : private anjing::core::Noncopyable
 		{			
 
+			friend class anjing::gfx::MeshRenderer;
+
 		public:
 
 			///
@@ -27,6 +38,11 @@ namespace anjing
 			/// Returns nullptr, if either vertex or fragment shader has compile error
 			/// Returns nullptr, if there is linker error 			
 			static Shader* LoadShaderProgram(const std::string& vs_filepath, const std::string& fs_filepath);			
+
+			///
+			/// \brief Set this shader as the active shader for rendering
+			///
+			inline void SetActive() { glUseProgram(program); }
 
 		private:
 
@@ -77,7 +93,7 @@ namespace anjing
 			///
 			/// \brief Returns OpenGL local normal attribute index
 			///
-			inline GLint GetLocalNormatId() const
+			inline GLint GetLocalNormalId() const
 			{
 				return local_normal_att;
 			}			
