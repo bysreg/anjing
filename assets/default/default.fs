@@ -4,6 +4,7 @@
 precision mediump float;
 
 in vec3 v_posP;
+in vec4 v_color;
 in vec2 v_uv;
 in vec3 v_normalL;
 in vec3 v_normalW;
@@ -17,8 +18,9 @@ void main()
 {	
 	//o_color = vec4(v_posP.z / 20.0); // display depth, divided by 20 so that it will display more progressive 		
 	//o_color = vec4(v_posW, 1.0); // display world position	
-	o_color = texture(u_diffuse_texture, v_uv); // display diffuse
+	//o_color = texture(u_diffuse_texture, v_uv); // display diffuse
 	//o_color = vec4(1, 0, 0, 1);
+	o_color = v_color;
 	//o_color = vec4(v_normalW, 1.0); // display world normal
 	//o_color = vec4(v_uv, 0.0, 1.0); // display uv
 }

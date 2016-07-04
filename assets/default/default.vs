@@ -2,10 +2,12 @@
 // #version is added in anjing::gfx::Shader::CompileShader
 
 in vec3 a_posL; // local pos
+in vec4 a_color;
 in vec2 a_uv;
 in vec3 a_normalL;
 
 out vec3 v_posP;
+out vec4 v_color;
 out vec2 v_uv;
 out vec3 v_normalL;
 out vec3 v_normalW;
