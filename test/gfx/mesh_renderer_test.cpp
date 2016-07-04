@@ -54,6 +54,9 @@ TEST_F(MeshRendererTest, Triangle)
 	EXPECT_NE(mesh_renderer, nullptr);
 
 	Mesh mesh;
+
+	EXPECT_EQ(mesh.IsDirty(), true);
+
 	mesh.AddVertex(Vertex(Vec3(0, 0, 0), Vec4(1, 0, 0, 1)));
 	mesh.AddVertex(Vertex(Vec3(1, 0, 0), Vec4(0, 1, 0, 1)));
 	mesh.AddVertex(Vertex(Vec3(0, 1, 0), Vec4(0, 0, 1, 1)));
@@ -65,6 +68,10 @@ TEST_F(MeshRendererTest, Triangle)
 	mesh.AddIndex(2);
 
 	EXPECT_EQ(mesh.GetIndexCount(), 3);
+	EXPECT_EQ(mesh.IsDirty(), true);
+
+	mesh.UpdateMesh();
+	EXPECT_EQ(mesh.IsDirty(), false);
 
 	anjing::gfx::Shader* shader = anjing::gfx::Shader::LoadShaderProgram("default/default.vs", "default/default.fs");
 	

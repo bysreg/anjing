@@ -7,6 +7,15 @@
 #include <cstddef>
 #include <GL/glew.h>
 
+// forward declarations
+namespace anjing
+{
+	namespace gfx 
+	{
+		class MeshRenderer;
+	}
+}
+
 namespace anjing
 {
 	namespace gfx 
@@ -14,6 +23,9 @@ namespace anjing
 
 		class Mesh
 		{
+
+			friend class anjing::gfx::MeshRenderer;
+
 		public:
 
 			///
@@ -49,12 +61,22 @@ namespace anjing
 			///
 			Mesh();		
 
+			///
+			/// \brief Return whether Mesh has been modified but not yet updated
+			///
+			bool IsDirty() inline const
+			{
+				return is_dirty;
+			}
+
 		private:
 			
 			std::vector<Vertex> vertices;
-			std::vector<anjing::core::uint32> indices;
+			std::vector<GLuint> indices;
 
-			GLuint vertices_id;
+			GLuint vertices_id = 0;
+			GLuint indices_id = 0;
+			bool is_dirty = true;
 			
 		};
 

@@ -16,19 +16,35 @@ size_t anjing::gfx::Mesh::GetIndexCount() const
 void anjing::gfx::Mesh::AddVertex(Vertex vertex)
 {
 	vertices.push_back(vertex);
+	is_dirty = true;
 }
 
 void anjing::gfx::Mesh::AddIndex(uint32 index)
 {
 	indices.push_back(index);
+	is_dirty = true;
 }
 
 void anjing::gfx::Mesh::UpdateMesh()
 {
+	// delete first in case we already generate buffer on that id
+	if (vertices_id != 0)
+	{
+		glDeleteBuffers(1, &vertices_id);
+		glDeleteBuffers(1, &indices_id);
+	}
+
 	glGenBuffers(1, &vertices_id);
 	glBindBuffer(GL_ARRAY_BUFFER, vertices_id);
-	glBufferData(GL_ARRAY_BUFFER, vertices.size(), &vertices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	glGenBuffers(1, &indices_id);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_id);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * indices.size(), &indices[0], GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+	is_dirty = false;
 }
 
 Mesh::Mesh()
