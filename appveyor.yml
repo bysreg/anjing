@@ -4,7 +4,8 @@ before_build:
   - cmd: cd C:\projects\anjing
   - cmd: cd build
   - cmd: cmake -Dbuild_test=ON ..
-  
+  - cmd: msbuild C:\projects\anjing\build\ALL_BUILD.vcxproj /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+
 configuration:
   - Debug
   - Release
