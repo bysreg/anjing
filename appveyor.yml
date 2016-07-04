@@ -11,5 +11,5 @@ configuration:
   
 build:
   parallel: true
-  project: C:\projects\anjing\build\src\myapp\myapp.vcxproj
+  project: C:\projects\anjing\build\RUN_TESTS.vcxproj
   
