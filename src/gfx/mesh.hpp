@@ -64,7 +64,7 @@ namespace anjing
 			///
 			/// \brief Return whether Mesh has been modified but not yet updated
 			///
-			bool IsDirty() inline const
+			inline bool IsDirty() const
 			{
 				return is_dirty;
 			}
