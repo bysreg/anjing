@@ -17,14 +17,14 @@
 			void Destroy(T* obj, const char* filename, unsigned int line)
 			{
 				obj->~T();
-				operator delete(obj, __FILE__, __LINE__);
+				operator delete(obj, filename, line);
 			}
 
 			template<typename T>
 			void DestroyArr(T* obj, const char* filename, unsigned int line)
 			{
 				obj->~T();
-				operator delete[](obj, __FILE__, __LINE__);
+				operator delete[](obj, filename, line);
 			}
 		}
 	}
