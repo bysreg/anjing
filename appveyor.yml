@@ -15,4 +15,4 @@ build_script:
 
 test_script:
   - cmd: cd C:\projects\anjing\build
-  - cmd: ctest -C %CONFIGURATION% --output-on-failure
+  - cmd: ctest -C %CONFIGURATION% --output-on-failure -R TestApp -V
