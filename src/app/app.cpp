@@ -78,12 +78,21 @@ std::FILE* anjing::app::App::GetAssets(std::string filename, std::string mode)
 	std::string path = (assets_dir + "/" + filename);
 	std::FILE* file = std::fopen(path.c_str(), mode.c_str());
 	
-	// if it fails to open it, try to open the file above the folder hierarchy four times 
-	// (this means the program is inside :
-	// <project directory>/build/<src or test>/<the startup project>/<build mode (Debug or Release)>/
+	// if it fails to open it, try to open the file above the folder hierarchy THREE times
+	// (this means the program relative path starts from:
+	// <project directory>/build/<src or test>/<the startup project>/
 	if (file == nullptr)
 	{
 		path = "../../../assets/" + filename;
+		file = std::fopen(path.c_str(), mode.c_str());
+	}
+
+	// if it fails to open it, try to open the file above the folder hierarchy FOUR times 
+	// (this means the program relative path starts from:
+	// <project directory>/build/<src or test>/<the startup project>/<build mode (Debug or Release)>/
+	if (file == nullptr)
+	{
+		path = "../../../../assets/" + filename;
 		file = std::fopen(path.c_str(), mode.c_str());
 	}
 	
