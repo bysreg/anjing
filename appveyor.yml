@@ -15,5 +15,5 @@ build:
   project: C:\projects\anjing\build\test\app\test_app.vcxproj
   
 after_build:
-  - cmd: cd C:\projects\anjing\build\test\app\$(configuration)
+  - cmd: cd C:\projects\anjing\build\test\app\%CONFIGURATION%
   - cmd: test_app.exe
