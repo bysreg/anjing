@@ -4,16 +4,15 @@ before_build:
   - cmd: cd C:\projects\anjing
   - cmd: cd build
   - cmd: cmake -Dbuild_test=ON ..
-  - cmd: msbuild C:\projects\anjing\build\ALL_BUILD.vcxproj /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 configuration:
   - Debug
   - Release
   
-build:
-  parallel: true
-  project: C:\projects\anjing\build\test\app\test_app.vcxproj
-  
-after_build:
-  - cmd: cd C:\projects\anjing\build\test\app\%CONFIGURATION%
-  - cmd: test_app.exe
+build_script:
+  - cmd: msbuild C:\projects\anjing\build\ALL_BUILD.vcxproj /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+#  - cmd: msbuild C:\projects\anjing\build\test\app\test_app.vcxproj /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+
+test_script:
+  - cmd: cd C:\projects\anjing\build
+  - cmd: ctest -C %CONFIGURATION% --output-on-failure
