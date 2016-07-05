@@ -9,10 +9,14 @@ configuration:
   - Debug
   - Release
   
-build_script:
-  - cmd: msbuild C:\projects\anjing\build\ALL_BUILD.vcxproj /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+#build_script:
+#  - cmd: msbuild C:\projects\anjing\build\ALL_BUILD.vcxproj /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 #  - cmd: msbuild C:\projects\anjing\build\test\app\test_app.vcxproj /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+
+build:
+  parallel: true
+  project: C:\projects\anjing\build\anjing.sln
 
 test_script:
   - cmd: cd C:\projects\anjing\build
-  - cmd: ctest -C %CONFIGURATION% --output-on-failure -R TestApp -V
+  - cmd: ctest -C %CONFIGURATION% --output-on-failure -V
