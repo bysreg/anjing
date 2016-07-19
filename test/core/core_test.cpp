@@ -355,3 +355,17 @@ TEST(LogTest, CallLog)
 	ANJING_LOGS("test " << 1 << " " << 2 << " " << 3 << " " << std::endl);
 	ANJING_LOGS_E("test " << 1 << " " << 2 << " " << 3 << " " << std::endl);
 }
+
+TEST(UtilTest, AddOffsetToPointerTest)
+{
+	char* arr = Anew char[100];
+	char* arr_offset = AddOffsetToPointer(arr, 2);
+
+	EXPECT_EQ(arr + 2, arr_offset);
+
+	arr_offset = AddOffsetToPointer(arr_offset, -1);
+
+	EXPECT_EQ(arr + 1, arr_offset);
+
+	AdeleteArr(arr);
+}

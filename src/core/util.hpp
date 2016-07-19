@@ -19,15 +19,15 @@ namespace anjing
 		void CopyString(char* dest, size_t dest_size, const char* src, size_t count);
 
 		///
-		/// \brief Add offset of \a size byte to pointer p
+		/// \brief Add \a offset byte to pointer p. Offset can be negative
 		///
 		/// This function does not check anything (no bounds checking)
 		///
 		template<typename T>
-		T* AddOffsetToPointer(T* p, size_t size)
+		T* AddOffsetToPointer(T* p, int32 offset)
 		{
 			char* cp = reinterpret_cast<char*>(p);
-			cp += size;
+			cp += offset;
 			return reinterpret_cast<T*>(cp);
 		}
 	}
