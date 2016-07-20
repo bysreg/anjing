@@ -1,5 +1,8 @@
 clone_depth: 5
 
+install:
+  - cmd: set PATH=%PATH%;C:\projects\anjing\windows\bin
+
 before_build:
   - cmd: cd C:\projects\anjing
   - cmd: cd build
