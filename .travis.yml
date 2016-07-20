@@ -3,6 +3,10 @@
 
 language: cpp
 
+branches:
+  only:
+    - master
+
 compiler:
   - gcc
   - clang
