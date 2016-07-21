@@ -9,6 +9,7 @@
 #include "gfx/camera.hpp"
 
 #include <gtest/gtest.h>
+#include <cstdio>
 
 using namespace anjing::core;
 using namespace anjing::gfx;
@@ -50,19 +51,23 @@ public:
 
 TEST_F(MeshRendererTest, Triangle)
 {	
+	printf("test add componen\n");
 	MeshRenderer* mesh_renderer = static_cast<MeshRenderer*>(go->AddComponent<MeshRenderer>());
 	EXPECT_NE(mesh_renderer, nullptr);
 
+	printf("test new mesh\n");
 	Mesh mesh;
 
 	EXPECT_EQ(mesh.IsDirty(), true);
 
+	printf("test add vertex\n");
 	mesh.AddVertex(Vertex(Vec3(0, 0, 0), Vec4(1, 0, 0, 1)));
 	mesh.AddVertex(Vertex(Vec3(1, 0, 0), Vec4(0, 1, 0, 1)));
 	mesh.AddVertex(Vertex(Vec3(0, 1, 0), Vec4(0, 0, 1, 1)));
 
 	EXPECT_EQ(mesh.GetVertexCount(), 3);
 
+	printf("test add index\n");
 	mesh.AddIndex(0);
 	mesh.AddIndex(1);
 	mesh.AddIndex(2);
@@ -70,16 +75,20 @@ TEST_F(MeshRendererTest, Triangle)
 	EXPECT_EQ(mesh.GetIndexCount(), 3);
 	EXPECT_EQ(mesh.IsDirty(), true);
 
+	printf("test update mesh\n");
 	mesh.UpdateMesh();
 	EXPECT_EQ(mesh.IsDirty(), false);
 
+	printf("test load shader program\n");
 	anjing::gfx::Shader* shader = anjing::gfx::Shader::LoadShaderProgram("default/default.vs", "default/default.fs");
 	
+	printf("new material and set material\n");
 	anjing::gfx::Material* mat = Anew anjing::gfx::Material;
 	mat->SetShader(shader);
 
 	mesh_renderer->SetMaterial(mat);
 	mesh_renderer->SetMesh(&mesh);
 
+	printf("test render\n");
 	anjing::core::Scene::GetInstance().Render();
 }
