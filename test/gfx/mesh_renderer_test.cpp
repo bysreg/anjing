@@ -51,7 +51,7 @@ public:
 
 TEST_F(MeshRendererTest, Triangle)
 {	
-	printf("test add componen\n");
+	printf("test add component\n");
 	MeshRenderer* mesh_renderer = static_cast<MeshRenderer*>(go->AddComponent<MeshRenderer>());
 	EXPECT_NE(mesh_renderer, nullptr);
 
