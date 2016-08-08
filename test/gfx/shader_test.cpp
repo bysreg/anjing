@@ -42,7 +42,7 @@ TEST_F(ShaderTest, CheckLoadShader)
 	anjing::gfx::Shader* shader = nullptr;
 
 #ifndef __linux__
-	printf("--- test some error checks on shader compilation... \n ---");
+	printf("--- test some error checks on shader compilation... --- \n");
 
 	// test failure to compile the shader program
 	printf("> test wrong path for vertex and fragment shader\n");

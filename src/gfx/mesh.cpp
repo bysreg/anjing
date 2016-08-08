@@ -34,16 +34,16 @@ void anjing::gfx::Mesh::UpdateMesh()
 		glDeleteBuffers(1, &indices_id);
 	}
 
-	printf("1");
+	printf("1\n");
 	glGenBuffers(1, &vertices_id);
 	
-	printf("2");
+	printf("2\n");
 	glBindBuffer(GL_ARRAY_BUFFER, vertices_id);
 
-	printf("3");
+	printf("3\n");
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
 
-	printf("4");
+	printf("4\n");
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	glGenBuffers(1, &indices_id);
