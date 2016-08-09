@@ -69,6 +69,8 @@ int anjing::gfx::Shader::CompileShader(GLuint& out_shader, const std::string& fi
 	GLint compile_result;
 	GLint glshader_type = 0;
 
+	printf("a\n");
+
 	switch (shader_type)
 	{
 	case ShaderType::Vertex:
@@ -80,6 +82,8 @@ int anjing::gfx::Shader::CompileShader(GLuint& out_shader, const std::string& fi
 	}
 
 	GLuint shader = glCreateShader(glshader_type);
+
+	printf("b\n");
 
 	char* source = ReadSource(filepath);
 
@@ -100,9 +104,14 @@ int anjing::gfx::Shader::CompileShader(GLuint& out_shader, const std::string& fi
 	return 3;
 #endif
 
+	printf("c\n");
+
 	GLchar const* shader_source = static_cast<GLchar*>(source);
 	source_arr[1] = shader_source;
 	glShaderSource(shader, 2, source_arr, NULL);
+
+	printf("d\n");
+
 	AdeleteArr(source);
 
 	glCompileShader(shader);
