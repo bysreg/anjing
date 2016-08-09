@@ -9,12 +9,22 @@ anjing::gfx::Shader * anjing::gfx::Shader::LoadShaderProgram(const std::string &
 	GLuint compiled_vs_id, compiled_fs_id, program;
 	GLint link_status;
 
+	printf("1\n");
+
 	if (CompileShader(compiled_vs_id, vs_filepath, ShaderType::Vertex) != 0)
 		return nullptr;
+
+	printf("2\n");
+
 	if (CompileShader(compiled_fs_id, fs_filepath, ShaderType::Fragment) != 0)
 		return nullptr;
 	
+	printf("3\n");
+
 	program = glCreateProgram();
+
+	printf("4\n");
+
 	glAttachShader(program, compiled_vs_id);
 	glAttachShader(program, compiled_fs_id);
 	glLinkProgram(program);
