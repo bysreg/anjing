@@ -22,4 +22,5 @@ build:
 
 test_script:
   - cmd: cd C:\projects\anjing\build
+  - cmd: echo conf = %CONFIGURATION%
   - cmd: ctest -C %CONFIGURATION% --output-on-failure -V
