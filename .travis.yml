@@ -30,7 +30,9 @@ before_install:
       sudo apt-get install -y --install-recommends linux-generic-lts-wily xserver-xorg-core-lts-wily xserver-xorg-lts-wily xserver-xorg-video-all-lts-wily xserver-xorg-input-all-lts-wily libwayland-egl1-mesa-lts-wily;
       export DISPLAY=:99.0;
       sh -e /etc/init.d/xvfb start;
+      echo "executing sleep"
       sleep 3;
+      echo "executing glxinfo | grep OpenGL"
       glxinfo | grep OpenGL;
     fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then 
