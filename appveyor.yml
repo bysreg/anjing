@@ -6,7 +6,8 @@ install:
   - ps: (New-Object Net.WebClient).DownloadFile('ftp://ftp.freedesktop.org/pub/mesa/12.0.3/mesa-12.0.3.tar.gz', 'mesa.tar.gz')
   - ps: (New-Object Net.WebClient).DownloadFile('http://superb-sea2.dl.sourceforge.net/project/scons/scons/2.5.0/scons-2.5.0.zip', 'scons.zip')
   - ps: (New-Object Net.WebClient).DownloadFile('https://github.com/lexxmark/winflexbison/releases/download/v2.5.6/win_flex_bison-2.5.6.zip', 'flex_bison.zip')
-  - cmd: 7z e -oflex_bison flex_bison.zip
+  - cmd: dir
+  - cmd: 7z e -oflex_bison flex_bison.zip  
   - cmd: cd flex_bison
   - cmd: cp win_bison.exe bison.exe
   - cmd: cp win_flex.exe flex.exe
