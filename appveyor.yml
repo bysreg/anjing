@@ -1,5 +1,8 @@
 clone_depth: 5
 
+init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
 install:
   - cmd: set PATH=%PATH%;C:\projects\anjing\windows\bin;C:\Python27\Scripts;
   - cmd: pip install Mako
@@ -7,20 +10,20 @@ install:
   - cmd: curl -fsS -o scons.zip http://superb-sea2.dl.sourceforge.net/project/scons/scons/2.5.0/scons-2.5.0.zip
   - cmd: curl -fsS -o flex_bison.zip https://github.com/lexxmark/winflexbison/releases/download/v2.5.6/win_flex_bison-2.5.6.zip
   - cmd: dir
-  - cmd: 7z e -oscons -y scons.zip
-  - cmd: cd scons
-  - cmd: python setup.py install
-  - cmd: cd ..
-  - cmd: 7z e -oflex_bison -y flex_bison.zip
-  - cmd: cd flex_bison
-  - cmd: cp win_bison.exe bison.exe
-  - cmd: cp win_flex.exe flex.exe
-  - cmd: cd ..
-  - cmd: 7z e -omesa.tar -y mesa.tar.gz
-  - cmd: cd mesa.tar
-  - cmd: 7z e -omesa -y mesa-12.0.3.tar
-  - cmd: cd mesa
-  - cmd: scons
+  # - cmd: 7z e -oscons -y scons.zip
+  # - cmd: cd scons
+  # - cmd: python setup.py install
+  # - cmd: cd ..
+  # - cmd: 7z e -oflex_bison -y flex_bison.zip
+  # - cmd: cd flex_bison
+  # - cmd: cp win_bison.exe bison.exe
+  # - cmd: cp win_flex.exe flex.exe
+  # - cmd: cd ..
+  # - cmd: 7z e -omesa.tar -y mesa.tar.gz
+  # - cmd: cd mesa.tar
+  # - cmd: 7z e -omesa -y mesa-12.0.3.tar
+  # - cmd: cd mesa
+  # - cmd: scons
 
 before_build:
   - cmd: cd C:\projects\anjing
@@ -34,6 +37,9 @@ configuration:
 build:
   parallel: true
   project: C:\projects\anjing\build\anjing.sln
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 #Appveyor only supports opengl up to 1.1, so disable this until we find out how to make appveyor support opengl 3.3
 #test_script:
