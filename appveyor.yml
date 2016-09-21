@@ -23,9 +23,9 @@ install:
   - cmd: 7z x -omesa.tar -y mesa.tar.gz
   - cmd: cd mesa.tar
   - cmd: 7z x -ttar -omesa -y mesa.tar
-  - cmd: cd mesa
+  - cmd: cd mesa\mesa-12.0.3
   - cmd: scons
-  - cmd: cd C:\projects\mesa.tar\mesa\build\windows-x86-debug\gallium\targets\libgl-gdi
+  - cmd: cd C:\projects\mesa.tar\mesa\mesa-12.0.3\build\windows-x86-debug\gallium\targets\libgl-gdi
   - cmd: cp opengl32.dll C:\projects\anjing\windows\bin
 
 before_build:
