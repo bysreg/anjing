@@ -12,7 +12,7 @@ class TestClass
 {	
 };
 
-typedef uint32 SentinelType;
+using SentinelType = uint32;
 
 class MemoryManagerTest : public ::testing::Test 
 {

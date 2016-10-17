@@ -86,6 +86,6 @@ namespace anjing
 			return (a.x == b.x) && (a.y == b.y);
 		}
 
-		typedef TVec2<float> Vec2;
+		using Vec2 = TVec2<float>;
 	}
 }

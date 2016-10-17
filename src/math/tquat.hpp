@@ -15,7 +15,7 @@ namespace anjing
 		struct TQuat
 		{
 
-			typedef TQuat<T> Type;
+			using Type = TQuat<T>;
 
 		public:
 			///
@@ -49,6 +49,6 @@ namespace anjing
 			return os;
 		}
 
-		typedef TQuat<float> Quatf;
+		using Quatf = TQuat<float>;
 	}
 }

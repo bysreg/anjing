@@ -6,9 +6,9 @@ namespace anjing
 {
 	namespace core
 	{
-		typedef uint16_t uint16;
-		typedef int16_t int16;
-		typedef uint32_t uint32;
-		typedef int32_t int32;
+		using uint16 = uint16_t;
+		using int16 = int16_t;
+		using uint32 = uint32_t;
+		using int32 = int32_t;
 	}
 }

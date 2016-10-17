@@ -15,7 +15,7 @@ namespace anjing
 		struct TMat4
 		{
 
-			typedef TVec4<T> Type;
+			using Type = TVec4<T>;
 
 		public:
 			///
@@ -78,6 +78,6 @@ namespace anjing
 			return os;
 		}
 
-		typedef TMat4<float> Mat4;
+		using Mat4 = TMat4<float>;
 	}
 }
