@@ -3,6 +3,12 @@ project(anjing)
 
 set(CMAKE_CXX_STANDARD 11) # use c++11
 
+########## PLATFORM CONFIGURATION #######
+if(WIN32)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DANJING_WINDOWS")
+endif()
+#========================================
+
 ########## DEBUG CONFIGURATION ########
 ## This will add some debugging macro if debug configuration is on
 ## To switch on debug configuration in linux, supply cmake with
