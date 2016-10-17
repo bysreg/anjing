@@ -66,6 +66,12 @@ namespace anjing
 			// ensure class cannot be constructed directly
 			Shader() = default;
 
+			/// \brief Returns OpenGL program
+			inline GLuint GetGLProgram() const
+			{
+				return program;
+			}
+
 			///
 			/// \brief Returns openGL local position attribute index
 			///

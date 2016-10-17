@@ -9,8 +9,7 @@ using namespace anjing::core;
 using namespace std;
 
 class TestClass
-{	
-};
+{};
 
 using SentinelType = uint32;
 

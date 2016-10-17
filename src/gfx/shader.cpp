@@ -45,7 +45,7 @@ anjing::gfx::Shader * anjing::gfx::Shader::LoadShaderProgram(const std::string &
 	shader->vertex_shader = compiled_vs_id;
 	shader->fragment_shader = compiled_fs_id;
 
-	//load all the attributes
+	// load all the attributes
 	shader->local_pos_att = glGetAttribLocation(program, "a_posL");
 	shader->color_att = glGetAttribLocation(program, "a_color");
 	shader->uv_att = glGetAttribLocation(program, "a_uv");

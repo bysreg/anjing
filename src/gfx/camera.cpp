@@ -19,10 +19,6 @@ void anjing::gfx::Camera::Init()
 
 	glViewport(0, 0, anjing::core::Scene::GetInstance().width, anjing::core::Scene::GetInstance().height);
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	
-	/*initialize_static_models(scene.get_static_models(), scene.num_static_models());
-	
-	initialize_primitives();*/
 }
 
 void anjing::gfx::Camera::Render()
