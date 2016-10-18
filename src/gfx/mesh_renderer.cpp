@@ -3,6 +3,7 @@
 #include "shader.hpp"
 #include "mesh.hpp"
 #include "core/assert.hpp"
+#include "core/game_object.hpp"
 
 #include <GL/glew.h>
 
@@ -30,9 +31,9 @@ void MeshRenderer::Render()
 	glVertexAttribPointer(shader->GetLocalNormalId(), 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*) (offsetof(Vertex, normal)));
 
 	// set shader uniforms
-	/*GLint uni_world = glGetUniformLocation(shader->GetGLProgram(), "u_world");
+	GLint uni_world = glGetUniformLocation(shader->GetGLProgram(), "u_world");
 	ANJING_ASSERT(uni_world != -1);
-	glUniformMatrix4fv(uni_world, 1, GL_FALSE, );*/
+	//glUniformMatrix4fv(uni_world, 1, GL_FALSE, GetOwner()->GetTransform()->);
 }
 
 void anjing::gfx::MeshRenderer::SetMesh(Mesh const * const mesh)
