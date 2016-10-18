@@ -11,7 +11,7 @@ using namespace anjing::math;
 
 TEST(TMat4Test, ConstructionCheck)
 {
-	Mat4 mat;
+	Mat4f mat;
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -24,7 +24,7 @@ TEST(TMat4Test, ConstructionCheck)
 
 TEST(TMat4Test, IdentityCheck)
 {
-	Mat4 mat;
+	Mat4f mat;
 	mat.SetAsIdentity();
 
 	for (int i = 0; i < 4; i++)
@@ -41,18 +41,18 @@ TEST(TMat4Test, IdentityCheck)
 
 TEST(TMat4Test, PrintCheck)
 {
-	Mat4 mat;
+	Mat4f mat;
 
 	std::cout << mat << std::endl;
 }
 
 TEST(TMat4Test, LookAtCheck)
 {
-	Vec3 eye(0, 0, 0);
-	Vec3 center(0, 0, 1);
-	Vec3 up(0, 1, 0);
+	Vec3f eye(0, 0, 0);
+	Vec3f center(0, 0, 1);
+	Vec3f up(0, 1, 0);
 
-	Mat4 view = LookAt(eye, center, up);
+	Mat4f view = LookAt(eye, center, up);
 	std::cout << view << std::endl;
 	
 	// FIXME: not sure what the value exactly supposed to be

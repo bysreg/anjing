@@ -78,6 +78,6 @@ namespace anjing
 			return os;
 		}
 
-		using Mat4 = TMat4<float>;
+		using Mat4f = TMat4<float>;
 	}
 }

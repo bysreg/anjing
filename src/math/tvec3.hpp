@@ -107,6 +107,6 @@ namespace anjing
 			return (a.x == b.x) && (a.y == b.y) && (a.z == b.z);
 		}
 
-		using Vec3 = TVec3<float>;
+		using Vec3f = TVec3<float>;
 	}
 }

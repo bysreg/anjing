@@ -20,7 +20,7 @@ TEST(TVec4Test, ConstructionCheck)
 
 TEST(TVec4Test, xyzrgbstpCheck)
 {
-	Vec4 test(1, 2, 3, 4);
+	Vec4f test(1, 2, 3, 4);
 
 	EXPECT_EQ(test.x, test.r); EXPECT_EQ(test.x, test.s);
 	EXPECT_EQ(test.y, test.g); EXPECT_EQ(test.y, test.t);
@@ -30,7 +30,7 @@ TEST(TVec4Test, xyzrgbstpCheck)
 
 TEST(TVec4Test, subscriptCheck)
 {
-	Vec4 test(1, 2, 3, 4);
+	Vec4f test(1, 2, 3, 4);
 
 	EXPECT_EQ(test.x, test[0]);
 	EXPECT_EQ(test.y, test[1]);
@@ -40,16 +40,16 @@ TEST(TVec4Test, subscriptCheck)
 
 TEST(TVec4Test, AssignmentCheck)
 {
-	Vec4 test = Vec4(1, 2, 3, 4);
+	Vec4f test = Vec4f(1, 2, 3, 4);
 
 	EXPECT_EQ(test.x, 1); EXPECT_EQ(test.y, 2); EXPECT_EQ(test.z, 3); EXPECT_EQ(test.w, 4);
 }
 
 TEST(TVec4Test, EqualityCheck)
 {
-	Vec4 test1 = Vec4(3, 4, 5, 6);
-	Vec4 test2 = Vec4(3, 4, 5, 6);
-	Vec4 test3 = Vec4(4, 5, 6, 7);
+	Vec4f test1 = Vec4f(3, 4, 5, 6);
+	Vec4f test2 = Vec4f(3, 4, 5, 6);
+	Vec4f test3 = Vec4f(4, 5, 6, 7);
 
 	EXPECT_EQ(true, test1 == test2);
 	EXPECT_EQ(false, test1 == test3);
@@ -57,41 +57,41 @@ TEST(TVec4Test, EqualityCheck)
 
 TEST(TVec4Test, AdditionCheck)
 {
-	Vec4 test = Vec4(4, 3, 2, 1) + Vec4(1, 2, 3, 4);
+	Vec4f test = Vec4f(4, 3, 2, 1) + Vec4f(1, 2, 3, 4);
 
-	EXPECT_EQ(true, test == Vec4(5, 5, 5, 5));
+	EXPECT_EQ(true, test == Vec4f(5, 5, 5, 5));
 }
 
 TEST(TVec4Test, SubstractionCheck)
 {
-	Vec4 test = Vec4(4, 3, 2, 1) - Vec4(1, 2, 3, 4);
+	Vec4f test = Vec4f(4, 3, 2, 1) - Vec4f(1, 2, 3, 4);
 
-	EXPECT_EQ(true, test == Vec4(3, 1, -1, -3));
+	EXPECT_EQ(true, test == Vec4f(3, 1, -1, -3));
 }
 
 TEST(TVec4Test, DivideByScalarCheck)
 {
-	Vec4 test = (Vec4(6, 8, 10, 12) / 2.0f);
-	EXPECT_EQ(true, test == Vec4(3, 4, 5, 6));
+	Vec4f test = (Vec4f(6, 8, 10, 12) / 2.0f);
+	EXPECT_EQ(true, test == Vec4f(3, 4, 5, 6));
 }
 
 TEST(TVec4Test, NormalizeCheck)
 {
-	Vec4 test1 = Normalize(Vec4(5, 0, 0, 0));
-	Vec4 test2 = Normalize(Vec4(0, 3, 0, 0));
-	Vec4 test3 = Normalize(Vec4(0, 0, 4, 0));
-	Vec4 test4 = Normalize(Vec4(0, 0, 0, 2));
+	Vec4f test1 = Normalize(Vec4f(5, 0, 0, 0));
+	Vec4f test2 = Normalize(Vec4f(0, 3, 0, 0));
+	Vec4f test3 = Normalize(Vec4f(0, 0, 4, 0));
+	Vec4f test4 = Normalize(Vec4f(0, 0, 0, 2));
 
-	EXPECT_EQ(test1 == Vec4(1, 0, 0, 0), true);
-	EXPECT_EQ(test2 == Vec4(0, 1, 0, 0), true);
-	EXPECT_EQ(test3 == Vec4(0, 0, 1, 0), true);
-	EXPECT_EQ(test4 == Vec4(0, 0, 0, 1), true);
+	EXPECT_EQ(test1 == Vec4f(1, 0, 0, 0), true);
+	EXPECT_EQ(test2 == Vec4f(0, 1, 0, 0), true);
+	EXPECT_EQ(test3 == Vec4f(0, 0, 1, 0), true);
+	EXPECT_EQ(test4 == Vec4f(0, 0, 0, 1), true);
 }
 
 TEST(TVec4Test, DotCheck)
 {
-	Vec4 a(1, 3, 5, 6);
-	Vec4 b(4, 2, 5, 2);
+	Vec4f a(1, 3, 5, 6);
+	Vec4f b(4, 2, 5, 2);
 	float test = Dot(a, b);
 	EXPECT_EQ(test, 47);
 }

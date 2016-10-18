@@ -15,14 +15,14 @@ namespace anjing
 			///
 			/// \brief Returns current world position
 			///
-			inline anjing::math::Vec3 GetWorldPosition() const
+			inline anjing::math::Vec3f GetWorldPosition() const
 			{
 				return wpos;
 			}			
 
 		private:
 			
-			anjing::math::Vec3 wpos;					
+			anjing::math::Vec3f wpos;
 
 			virtual void OnAdded() override;
 

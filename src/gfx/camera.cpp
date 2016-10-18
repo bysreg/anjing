@@ -42,16 +42,16 @@ void anjing::gfx::Camera::Render()
 
 }
 
-anjing::math::Vec3 anjing::gfx::Camera::GetDirection() const
+anjing::math::Vec3f anjing::gfx::Camera::GetDirection() const
 {
 	// FIXME: for now always looking at z positive direction
-	return anjing::math::Vec3(0, 0, 1);
+	return anjing::math::Vec3f(0, 0, 1);
 }
 
-anjing::math::Vec3 anjing::gfx::Camera::GetUp() const
+anjing::math::Vec3f anjing::gfx::Camera::GetUp() const
 {
 	// FIXME: for now always return y + direction
-	return anjing::math::Vec3(0, 1, 0);
+	return anjing::math::Vec3f(0, 1, 0);
 }
 
 void anjing::gfx::Camera::UpdateProj()

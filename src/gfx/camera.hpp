@@ -46,12 +46,12 @@ namespace anjing
 			///
 			/// \brief Get the camera's direction vector
 			///
-			anjing::math::Vec3 GetDirection() const;
+			anjing::math::Vec3f GetDirection() const;
 
 			///
 			/// \brief Get camera's up direction vector
 			///
-			anjing::math::Vec3 GetUp() const;
+			anjing::math::Vec3f GetUp() const;
 
 			///
 			/// \brief Update the camera's projection matrix
@@ -75,8 +75,8 @@ namespace anjing
 			float near_clip;
 			float far_clip;
 
-			anjing::math::Mat4 proj_mat;
-			anjing::math::Mat4 view_mat;
+			anjing::math::Mat4f proj_mat;
+			anjing::math::Mat4f view_mat;
 
 			///
 			/// \brief Called when OnAdded is called
