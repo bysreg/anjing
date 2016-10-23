@@ -12,25 +12,25 @@ namespace anjing
 	{
 
 		template<typename T>
-		inline T Dot(TVec2<T> const & a, TVec2<T> const & b)
+		T Dot(TVec2<T> const & a, TVec2<T> const & b)
 		{
 			return (a.x * b.x) + (a.y * b.y);
 		}
 
 		template<typename T>
-		inline T Dot(TVec3<T> const & a, TVec3<T> const & b)
+		T Dot(TVec3<T> const & a, TVec3<T> const & b)
 		{
 			return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
 		}
 
 		template<typename T>
-		inline T Dot(TVec4<T> const & a, TVec4<T> const & b)
+		T Dot(TVec4<T> const & a, TVec4<T> const & b)
 		{
 			return (a.x * b.x) + (a.y * b.y) + (a.z * b.z) + (a.w * b.w);
 		}
 		
 		template<typename T>
-		inline TVec3<T> Cross(TVec3<T> const & a, TVec3<T> const & b)
+		TVec3<T> Cross(TVec3<T> const & a, TVec3<T> const & b)
 		{
 			return TVec3<T>(
 				a.y*b.z - a.z*b.y,
@@ -40,13 +40,13 @@ namespace anjing
 		}
 
 		template<typename T, template<typename> class VecType >
-		inline VecType<double> Normalize(VecType<double> const & x)
+		VecType<double> Normalize(VecType<double> const & x)
 		{
 			return x / (sqrt(Dot(x, x)));
 		}
 
 		template<template<typename> class VecType >
-		inline VecType<float> Normalize(VecType<float> const & x)
+		VecType<float> Normalize(VecType<float> const & x)
 		{
 			return x / (sqrtf(Dot(x, x)));
 		}
