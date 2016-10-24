@@ -1,9 +1,7 @@
 #pragma once
 
-#include "math/tvec4.hpp"
-#include "math/vecops.hpp"
+#include "core/assert.hpp"
 
-#include <cstddef>
 #include <iostream>
 
 namespace anjing
@@ -27,13 +25,6 @@ namespace anjing
 
 			/// \brief Make this quaternion as identity quaternion
 			void SetAsIdentity();
-
-			///
-			/// \brief Perform conjugate operation on this quaternion
-			///
-			/// if q = <w, x, y, z>, its conjugate is defined as q' = <w, -x, -y, -z>
-			///
-			void Conjugate() {x *= -1;y *= -1;z *= -1;}
 
 			T w, x, y, z;
 
@@ -59,6 +50,12 @@ namespace anjing
 		{
 			os << q.w << " < " << q.x << " " << q.y << " " << q.z << " > " << std::endl;
 			return os;
+		}
+
+		template<typename T>
+		bool operator==(TQuat<T> const& a, TQuat<T> const& b)
+		{
+			return (a.w == b.w) && (a.x == b.x) && (a.y == b.y) && (a.z == b.z);
 		}
 
 		template<typename T>
@@ -94,6 +91,13 @@ namespace anjing
 		TQuat<T> operator*(const T& scalar, const TQuat<T>& a)
 		{
 			return a * scalar;
+		}
+
+		template<typename T>
+		TQuat<T> operator/(TQuat<T> const& a, T const& scalar)
+		{
+			ANJING_ASSERT(scalar != 0);
+			return TQuat<T>(a.w / scalar, a.x / scalar, a.y / scalar, a.z / scalar);
 		}
 
 		using Quatf = TQuat<float>;

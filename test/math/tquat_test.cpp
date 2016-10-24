@@ -1,7 +1,9 @@
 #include "math/quatops.hpp"
+#include "math/const.hpp"
 
 #include <gtest/gtest.h>
 #include <iostream>
+#include <cmath>
 
 using namespace anjing::core;
 using namespace anjing::math;
@@ -46,12 +48,25 @@ TEST(TEST_TITLE, Identity)
 TEST(TEST_TITLE, Conjugate)
 {
 	Quatf q(1, 2.2f, 3.3f, 4.4f);
-	q.Conjugate();
+	Quatf q_c = Conjugate(q);
+	EXPECT_EQ(1, q_c.w);
+	EXPECT_EQ(-2.2f, q_c.x);
+	EXPECT_EQ(-3.3f, q_c.y);
+	EXPECT_EQ(-4.4f, q_c.z);
+	
+	Conjugate(&q);
+	EXPECT_EQ(q_c.w, q.w);
+	EXPECT_EQ(q_c.x, q.x);
+	EXPECT_EQ(q_c.y, q.y);
+	EXPECT_EQ(q_c.z, q.z);
+}
 
-	EXPECT_EQ(1, q.w);
-	EXPECT_EQ(-2.2f, q.x);
-	EXPECT_EQ(-3.3f, q.y);
-	EXPECT_EQ(-4.4f, q.z);
+TEST(TEST_TITLE, Equality)
+{
+	Quatf q(2, 3, 4, 5);
+	Quatf copy = q;
+
+	EXPECT_EQ(copy, q);
 }
 
 TEST(TEST_TITLE, Addition)
@@ -108,6 +123,18 @@ TEST(TEST_TITLE, ScalarQuaternionMultiplication)
 	EXPECT_EQ(d.z, c.z);
 }
 
+TEST(TEST_TITLE, ScalarDivision)
+{
+	Quatf a(1, 2, 3, 4);
+	float scalar = 2;
+	Quatf val = a / scalar;
+
+	EXPECT_EQ(0.5f, val.w);
+	EXPECT_EQ(1, val.x);
+	EXPECT_EQ(1.5f, val.y);
+	EXPECT_EQ(2, val.z);
+}
+
 TEST(TEST_TITLE, Dot)
 {
 	Quatf a(1, 2, 3, 4);
@@ -126,8 +153,7 @@ TEST(TEST_TITLE, SqrMagnitude)
 	EXPECT_EQ(Dot(a, a), val);
 
 	// a * a' == SqrMagnitude(a) == a' * a
-	Quatf ca = a;
-	ca.Conjugate();
+	Quatf ca = Conjugate(a);
 	auto d = ca * a;
 	auto e = a * ca;
 	EXPECT_EQ(d.w, val);
@@ -138,6 +164,33 @@ TEST(TEST_TITLE, SqrMagnitude)
 	EXPECT_EQ(e.x, 0);
 	EXPECT_EQ(e.y, 0);
 	EXPECT_EQ(e.z, 0);
+}
+
+TEST(TEST_TITLE, Inverse)
+{
+	Quatf q(1, 2, 3, 4);
+	Quatf inv_q = Inverse(q);
+	Quatf result = q * inv_q;
+	float result_sqrmag = SqrMagnitude(result);
+
+	EXPECT_EQ(1, result.w);
+	EXPECT_EQ(1, result_sqrmag);
+
+	Quatf result2 = inv_q * q;
+	float result2_sqrmag = SqrMagnitude(result2);
+	EXPECT_EQ(1, result2.w);
+	EXPECT_EQ(1, result2_sqrmag);
+}
+
+TEST(TEST_TITLE, CreateFromAngleAxis)
+{
+	float angle = anjing::math::PI / 2.0f; // 90 degree
+	Vec3f axis(0, 1, 0);
+	Quatf q = CreateFromAngleAxis(angle, axis);
+	EXPECT_EQ(std::cosf(angle * 0.5f), q.w);
+	EXPECT_EQ(0, q.x);
+	EXPECT_EQ(std::sinf(angle * 0.5f), q.y);
+	EXPECT_EQ(0, q.z);
 }
 
 TEST(TEST_TITLE, Print)
