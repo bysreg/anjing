@@ -56,9 +56,9 @@ namespace anjing
 		template<typename T>
 		TQuat<T> CreateFromAngleAxis(T angle, TVec3<T> const& axis)
 		{
-			T sinf_val = std::sinf(angle * 0.5f);
+			T sinf_val = std::sin(angle * 0.5f);
 			return TQuat<T>(
-				std::cosf(angle * 0.5f),
+				std::cos(angle * 0.5f),
 				sinf_val * axis.x,
 				sinf_val * axis.y,
 				sinf_val * axis.z

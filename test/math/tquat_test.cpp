@@ -187,9 +187,9 @@ TEST(TEST_TITLE, CreateFromAngleAxis)
 	float angle = anjing::math::PI / 2.0f; // 90 degree
 	Vec3f axis(0, 1, 0);
 	Quatf q = CreateFromAngleAxis(angle, axis);
-	EXPECT_EQ(std::cosf(angle * 0.5f), q.w);
+	EXPECT_EQ(std::cos(angle * 0.5f), q.w);
 	EXPECT_EQ(0, q.x);
-	EXPECT_EQ(std::sinf(angle * 0.5f), q.y);
+	EXPECT_EQ(std::sin(angle * 0.5f), q.y);
 	EXPECT_EQ(0, q.z);
 }
 
