@@ -20,16 +20,16 @@ namespace anjing
 
 			inline Shader* GetShader() const
 			{
-				return shader;
+				return m_Shader;
 			}
 
 			inline void SetShader(Shader* shader)
 			{
-				this->shader = shader;
+				m_Shader = shader;
 			}
 
 		private:
-			Shader* shader;
+			Shader* m_Shader;
 
 		};
 

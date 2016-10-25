@@ -1,4 +1,4 @@
 #include "material.hpp"
 
-anjing::gfx::Material::Material() : shader(nullptr)
+anjing::gfx::Material::Material() : m_Shader(nullptr)
 {}

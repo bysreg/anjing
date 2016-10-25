@@ -45,16 +45,16 @@ namespace anjing
 
 		private:
 
-			std::list<anjing::core::GameObject*> game_objects;
-			anjing::gfx::Camera* camera;
+			std::list<anjing::core::GameObject*> m_GameObjects;
+			anjing::gfx::Camera* m_Camera;
 
-			uint32 width;
-			uint32 height;
+			uint32 m_Width;
+			uint32 m_Height;
 
 			///
 			/// Set the screen size
 			///
-			inline void SetScreenSize(uint32 width, uint32 height) { this->width = width; this->height = height; }
+			inline void SetScreenSize(uint32 width, uint32 height) { m_Width = width; m_Height = height; }
 
 			///
 			/// \brief Adds a GameObject to the scene
@@ -69,7 +69,7 @@ namespace anjing
 			///
 			/// \brief Set the main camera of the scene 
 			///
-			inline void SetCamera(anjing::gfx::Camera* camera) { this->camera = camera; }
+			inline void SetCamera(anjing::gfx::Camera* camera) { m_Camera = camera; }
 		};
 	}
 }

@@ -13,12 +13,12 @@ using namespace anjing::gfx;
 
 void MeshRenderer::Render()
 {
-	Shader* shader = material->GetShader();
+	Shader* shader = m_Material->GetShader();
 
 	shader->SetActive();
 
-	glBindBuffer(GL_ARRAY_BUFFER, mesh->vertices_id);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->indices_id);
+	glBindBuffer(GL_ARRAY_BUFFER, m_Mesh->vertices_id);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Mesh->indices_id);
 
 	// set shader attributes
 	glEnableVertexAttribArray(shader->GetLocalPositionId());
@@ -38,10 +38,10 @@ void MeshRenderer::Render()
 
 void anjing::gfx::MeshRenderer::SetMesh(Mesh const * const mesh)
 {
-	this->mesh = mesh;
+	this->m_Mesh = mesh;
 }
 
 void anjing::gfx::MeshRenderer::SetMaterial(Material const * const material)
 {
-	this->material = material;
+	this->m_Material = material;
 }

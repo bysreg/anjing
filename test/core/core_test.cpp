@@ -154,7 +154,7 @@ TEST_F(MemoryManagerTest, HeadSentinelCheck)
 	void* alloc1 = DoAllocation();
 	
 	// mess around with the head sentinel value intentionally
-	char* sentinel = static_cast<char*>(AddOffsetToPointer(alloc1, -sizeof(SentinelType)));
+	char* sentinel = static_cast<char*>(AddOffsetToPointer(alloc1, 0 - sizeof(SentinelType)));
 
 	// invert the first byte
 	sentinel[0] = !sentinel[0];
@@ -166,9 +166,8 @@ TEST_F(MemoryManagerTest, HeadSentinelCheck)
 // test whether sentinel value could detect buffer overrun
 TEST_F(MemoryManagerTest, TailSentinelCheck)
 {
-	MemoryManager& mm = MemoryManager::GetInstance();
 	void* alloc1 = DoAllocation();
-	AllocInfo* allocinfo = mm.GetAllocInfo(alloc1);
+	AllocInfo* allocinfo = MemoryManager::GetInstance().GetAllocInfo(alloc1);
 
 	// mess around with the tail sentinel value intentionally
 	char* sentinel = static_cast<char*>(allocinfo->mem) + sizeof(AllocInfo*) + sizeof(SentinelType) + sizeof(TestClass);

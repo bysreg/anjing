@@ -29,7 +29,7 @@ MemoryManager::~MemoryManager()
 
 void* MemoryManager::GetAllocMem(void* actual_mem)
 {
-	return AddOffsetToPointer(actual_mem, -sizeof(AllocInfo*) - sizeof(SENTINEL_CODE));
+	return AddOffsetToPointer(actual_mem, 0 - sizeof(AllocInfo*) - sizeof(SENTINEL_CODE));
 }
 
 void* MemoryManager::GetHeadSentinel(void* alloc_mem)

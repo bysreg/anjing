@@ -34,14 +34,14 @@ namespace anjing
 			///
 			/// \brief Default constructor for MeshRenderer
 			///
-			MeshRenderer() : mesh(nullptr) {}
+			MeshRenderer() : m_Mesh(nullptr) {}
 		
 			virtual ~MeshRenderer() {}
 
 		private:
 
-			Mesh const * mesh;
-			Material const * material;
+			Mesh const * m_Mesh;
+			Material const * m_Material;
 		};
 	}
 }
