@@ -193,6 +193,19 @@ TEST(TEST_TITLE, CreateFromAngleAxis)
 	EXPECT_EQ(0, q.z);
 }
 
+TEST(TEST_TITLE, GetAngleAxis)
+{
+	float angle = anjing::math::PI / 2.0f; // 90 degree
+	Vec3f axis(0, 1, 0);
+	Quatf q = CreateFromAngleAxis(angle, axis);
+
+	float check_angle;
+	Vec3f check_axis;
+	GetAngleAxis(q, check_angle, check_axis);
+	EXPECT_EQ(check_angle, angle);
+	EXPECT_EQ(check_axis, axis);
+}
+
 TEST(TEST_TITLE, Print)
 {
 	Quatf q;

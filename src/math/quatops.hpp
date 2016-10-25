@@ -56,13 +56,22 @@ namespace anjing
 		template<typename T>
 		TQuat<T> CreateFromAngleAxis(T angle, TVec3<T> const& axis)
 		{
-			T sinf_val = std::sin(angle * 0.5f);
+			T sin_val = std::sin(angle * 0.5f);
 			return TQuat<T>(
 				std::cos(angle * 0.5f),
-				sinf_val * axis.x,
-				sinf_val * axis.y,
-				sinf_val * axis.z
+				sin_val * axis.x,
+				sin_val * axis.y,
+				sin_val * axis.z
 				);
+		}
+
+		/// \brief Get angle and axis from a quaternion. This will modify the parameters
+		template<typename T>
+		void GetAngleAxis(TQuat<T> const& q, T& angle, TVec3<T>& axis)
+		{
+			angle = std::acos(q.w) * 2;
+			T sin_val = std::sin(angle * 0.5f);
+			axis = TVec3<T>(q.x / sin_val, q.y / sin_val, q.z / sin_val);
 		}
 
 	}
