@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef ANJING_DEBUG
+#if defined(ANJING_DEBUG) && !defined(ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE)
 	#define ANJING_REPLACE_GLOBAL_NEW_DELETE_FILE_LINE
 #endif
 

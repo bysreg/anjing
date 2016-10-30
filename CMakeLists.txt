@@ -19,8 +19,9 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DANJING_DEBUG")
 
 ## turn on warning flags
 if(WIN32)
-	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /W4")
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /W4 /WX")
 else()
+	# for linux/osx OS using gcc/clang
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wextra -pedantic -Wold-style-cast")
 endif()
 
@@ -112,7 +113,8 @@ if(build_test)
 	# Include the gtest library. gtest_SOURCE_DIR is available due to googletest's CMakeLists	
 	set(GTEST_INCLUDE_DIR ${gtest_SOURCE_DIR}/include)
 	
-	#find_package(GTest REQUIRED)
+	# Disable warning for gtest
+	set_property(TARGET gtest APPEND_STRING PROPERTY COMPILE_FLAGS " -w")
 	add_subdirectory(test)
 endif()
 ######################################

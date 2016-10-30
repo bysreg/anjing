@@ -47,7 +47,7 @@ TEST_F(MemoryOperatorTest, NewDeleteCheck)
 {
 	int* a = Anew int;	
 
-	EXPECT_GT(MemoryManager::GetInstance().GetTotalMemoryAllocations(), 0);
+	EXPECT_GT(MemoryManager::GetInstance().GetTotalMemoryAllocations(), static_cast<unsigned>(0));
 	
 	Adelete(a);
 
@@ -58,7 +58,7 @@ TEST_F(MemoryOperatorTest, NewDeleteArrCheck)
 {
 	char* a = Anew char[10];
 
-	EXPECT_GT(MemoryManager::GetInstance().GetTotalMemoryAllocations(), 0);
+	EXPECT_GT(MemoryManager::GetInstance().GetTotalMemoryAllocations(), static_cast<unsigned>(0));
 
 	AdeleteArr(a);
 

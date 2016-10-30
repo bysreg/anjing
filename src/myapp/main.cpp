@@ -1,5 +1,6 @@
 #include "app/app.hpp"
 #include "core/memory_manager.hpp"
+#include "core/util.hpp"
 
 #include <cstdio>
 #include <cstdlib>
@@ -39,7 +40,8 @@ int main(int argc, char* argv[])
 	if (!auto_close)
 	{
 		printf("Press any key to close...\n");
-		getchar();
+		int _ = getchar();
+		ANJING_UNUSED(_);
 	}
 
 	anjing::app::App::StopApplication(&app);

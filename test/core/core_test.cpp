@@ -111,9 +111,9 @@ TEST_F(MemoryManagerTest, GetAllocInfo)
 	
 	EXPECT_EQ(strcmp(alloc_info->filename, filename), 0);
 	EXPECT_EQ(alloc_info->line, line);
-	EXPECT_GT(alloc_info->mem_size, 0);		
+	EXPECT_GT(alloc_info->mem_size, static_cast<unsigned>(0));		
 	EXPECT_EQ(AddOffsetToPointer(alloc_info->mem, sizeof(SentinelType) + sizeof(AllocInfo*)), actual_mem);
-	EXPECT_GT(mm.GetTotalMemoryAllocations(), 0);
+	EXPECT_GT(mm.GetTotalMemoryAllocations(), static_cast<unsigned>(0));
 	EXPECT_EQ(alloc_info->mem_size, mm.GetTotalMemoryAllocations());
 	EXPECT_EQ(alloc_info->prev, nullptr);
 	EXPECT_EQ(alloc_info->next, nullptr);
@@ -193,7 +193,7 @@ TEST_F(MemoryManagerTest, MultipleAlloc)
 
 	total_one_allocation_size = MemoryManager::GetAllocInfo(allocations[0])->mem_size;
 	
-	EXPECT_GT(mm.GetTotalMemoryAllocations(), 0);
+	EXPECT_GT(mm.GetTotalMemoryAllocations(), static_cast<unsigned>(0));
 	EXPECT_EQ(mm.GetTotalMemoryAllocations(), total_one_allocation_size * 5);
 }
 
