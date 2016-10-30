@@ -27,8 +27,7 @@ void anjing::gfx::Camera::Render()
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	auto iter = game_objects.begin();
-	for (iter; iter != game_objects.end(); ++iter)
+	for (auto iter = game_objects.begin(); iter != game_objects.end(); ++iter)
 	{
 		anjing::core::GameObject* go = *iter;
 
