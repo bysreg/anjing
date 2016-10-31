@@ -39,8 +39,8 @@ TEST(TVec2Test, EqualityCheck)
 	Vec2f test2 = Vec2f(3, 4);
 	Vec2f test3 = Vec2f(4, 5);
 
-	EXPECT_EQ(true, test1 == test2);
-	EXPECT_EQ(false, test1 == test3);
+	EXPECT_TRUE(test1 == test2);
+	EXPECT_FALSE(test1 == test3);
 }
 
 TEST(TVec2Test, AdditionCheck)
