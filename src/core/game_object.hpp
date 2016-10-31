@@ -149,14 +149,17 @@ namespace anjing
 		{
 			static_assert(std::is_base_of<Component, T>::value, "type is not a component");
 
+			std::vector<anjing::core::Component*>& v = *components;
+
 			// TODO : is it better to do reflection here ?
 			// is it better to store the component in a hash map or something if it exceeds certain size?
 
-			for (size_t i = 0; i < components->size(); i++)
-			{			
-				if (typeid(*(components->at(i))) == typeid(T))
+			for (size_t i = 0; i < v.size(); ++i)
+			{
+				Component* component = v[i];
+				if (typeid(*component) == typeid(T))
 				{
-					return dynamic_cast<T*>(components->at(i));
+					return dynamic_cast<T*>(v[i]); // TODO : need to replace this with type system that uses static_cast
 				}
 			}
 
