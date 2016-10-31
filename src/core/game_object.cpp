@@ -3,7 +3,7 @@
 
 using namespace anjing::core;
 
-GameObject::GameObject() : components(nullptr), mesh_renderer(nullptr)
+GameObject::GameObject() : mesh_renderer(nullptr), transform(nullptr), components(nullptr)
 {
 	components = Anew std::vector<Component*>();
 	components->reserve(2);
