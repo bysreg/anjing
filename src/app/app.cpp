@@ -72,7 +72,6 @@ int anjing::app::App::StopApplication(anjing::app::App* app)
 std::FILE* anjing::app::App::GetAssets(std::string filename, std::string mode)
 {	
 	static std::string assets_dir = "./assets";
-	static bool is_init = false;
 	
 	// try to open it first inside the assets folder in the same directory as the program
 	std::string path = (assets_dir + "/" + filename);
