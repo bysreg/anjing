@@ -25,7 +25,7 @@ protected:
 
 TEST_F(MemoryOperatorTest, NewFileLineCheck)
 {
-	int a_allocation_line = __LINE__ + 1;
+	unsigned int a_allocation_line = __LINE__ + 1;
 	int* a = Anew int;
 
 	AllocInfo* alloc_info = MemoryManager::GetAllocInfo(a);
@@ -35,7 +35,7 @@ TEST_F(MemoryOperatorTest, NewFileLineCheck)
 
 TEST_F(MemoryOperatorTest, NewArrFileLineCheck)
 {
-	int arr_allocation_line = __LINE__ + 1;
+	unsigned int arr_allocation_line = __LINE__ + 1;
 	int* arr = Anew int[10];
 
 	AllocInfo* alloc_info = MemoryManager::GetAllocInfo(arr);
