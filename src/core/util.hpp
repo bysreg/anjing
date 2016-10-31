@@ -1,5 +1,7 @@
 #pragma once
 
+#include "assert.hpp"
+
 #include <cstddef>
 
 #define ANJING_UNUSED(expr) (void)(expr)
@@ -24,8 +26,9 @@ namespace anjing
 		/// This function does not check anything (no bounds checking)
 		///
 		template<typename T>
-		T* AddOffsetToPointer(T* p, int32 offset)
+		T* AddOffsetToPointer(T* p, ptrdiff_t offset)
 		{
+			ANJING_ASSERT(p);
 			char* cp = reinterpret_cast<char*>(p);
 			cp += offset;
 			return reinterpret_cast<T*>(cp);
