@@ -18,7 +18,7 @@ class MemoryManagerTest : public ::testing::Test
 protected:
 
 	char* filename;
-	int line;
+	unsigned int line;
 
 	virtual void SetUp() override
 	{
@@ -58,13 +58,13 @@ TEST_F(MemoryManagerTest, DefinesCheck)
 {
 	MemoryManager& mm = MemoryManager::GetInstance();
 
-	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0);
-	
+	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0u);
+
 	int* a = new int;
 	ANJING_UNUSED(a);
 
 	// total allocation will still be zero, if the operator new is not overridden by MemoryManager
-	ASSERT_EQ(mm.GetTotalMemoryAllocations(), 0);
+	ASSERT_EQ(mm.GetTotalMemoryAllocations(), 0u);
 }
 
 // test two call to MemoryManager::GetInstance() will both return the same object
@@ -87,7 +87,7 @@ TEST_F(MemoryManagerTest, AllocNormal)
 // test MemoryManager::GetTotalMemoryAllocations
 TEST_F(MemoryManagerTest, GetTotalMemoryAllocations)
 {
-	EXPECT_EQ(MemoryManager::GetInstance().GetTotalMemoryAllocations(), 0);
+	EXPECT_EQ(MemoryManager::GetInstance().GetTotalMemoryAllocations(), 0u);
 
 	void* actual_mem = DoAllocation();
 	ANJING_UNUSED(actual_mem);
@@ -135,7 +135,7 @@ TEST_F(MemoryManagerTest, DeallocNormal)
 
 	int free_ret_code = DoFree(actual_mem);
 
-	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0);
+	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0u);
 
 	EXPECT_EQ(allocinfo->prev, nullptr);
 	EXPECT_EQ(allocinfo->next, nullptr);
@@ -271,7 +271,7 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc1)
 	DoFree(allocations[0]);
 	DoFree(allocations[3]);
 
-	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0);
+	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0u);
 
 	// used_list layout : --
 	// free_list layout : (2)<->(0)<->(1) 
@@ -328,7 +328,7 @@ TEST_F(MemoryManagerTest, MultipleAllocDealloc2)
 	EXPECT_EQ(allocinfos[1]->prev, allocinfos[0]);
 	EXPECT_EQ(allocinfos[1]->next, nullptr);	
 
-	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0);
+	EXPECT_EQ(mm.GetTotalMemoryAllocations(), 0u);
 
 	DoAllocation();
 	DoAllocation();

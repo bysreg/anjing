@@ -6,7 +6,7 @@ using namespace anjing::core;
 using namespace anjing::gfx;
 
 TEST(VertexTest, CheckVertexStructure)
-{	
+{
 	EXPECT_EQ(std::is_standard_layout<Vertex>::value, true);
 
 	anjing::gfx::Vertex v;

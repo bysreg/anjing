@@ -26,10 +26,10 @@ namespace anjing
 			Vertex(const anjing::math::Vec3f& pos, const anjing::math::Vec4f& color) : pos(pos), color(color)				
 			{}
 
-			inline int16_t GetPosOffset() const { return 0; }
-			inline int16_t GetColorOffset() const { return sizeof(anjing::math::Vec3f); }
-			inline int16_t GetTexCoordOffset() const { return sizeof(anjing::math::Vec4f) + sizeof(anjing::math::Vec3f); }
-			inline int16_t GetNormalOffset() const { return sizeof(anjing::math::Vec2f) + sizeof(anjing::math::Vec4f) + sizeof(anjing::math::Vec3f); }
+			inline uint16_t GetPosOffset() const { return 0; }
+			inline uint16_t GetColorOffset() const { return sizeof(anjing::math::Vec3f); }
+			inline uint16_t GetTexCoordOffset() const { return sizeof(anjing::math::Vec4f) + sizeof(anjing::math::Vec3f); }
+			inline uint16_t GetNormalOffset() const { return sizeof(anjing::math::Vec2f) + sizeof(anjing::math::Vec4f) + sizeof(anjing::math::Vec3f); }
 
 		};
 	}

@@ -17,6 +17,6 @@ TEST(MeshTest, SimpleColorTriangle)
 	mesh.AddIndex(1);
 	mesh.AddIndex(2);
 
-	EXPECT_EQ(mesh.GetVertexCount(), 3);
-	EXPECT_EQ(mesh.GetIndexCount(), 3);
+	EXPECT_EQ(mesh.GetVertexCount(), 3u);
+	EXPECT_EQ(mesh.GetIndexCount(), 3u);
 }

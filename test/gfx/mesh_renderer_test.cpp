@@ -49,7 +49,7 @@ public:
 };
 
 TEST_F(MeshRendererTest, Triangle)
-{	
+{
 	MeshRenderer* mesh_renderer = static_cast<MeshRenderer*>(go->AddComponent<MeshRenderer>());
 	EXPECT_NE(mesh_renderer, nullptr);
 
@@ -61,20 +61,20 @@ TEST_F(MeshRendererTest, Triangle)
 	mesh.AddVertex(Vertex(Vec3f(1, 0, 0), Vec4f(0, 1, 0, 1)));
 	mesh.AddVertex(Vertex(Vec3f(0, 1, 0), Vec4f(0, 0, 1, 1)));
 
-	EXPECT_EQ(mesh.GetVertexCount(), 3);
+	EXPECT_EQ(mesh.GetVertexCount(), 3u);
 
 	mesh.AddIndex(0);
 	mesh.AddIndex(1);
 	mesh.AddIndex(2);
 
-	EXPECT_EQ(mesh.GetIndexCount(), 3);
+	EXPECT_EQ(mesh.GetIndexCount(), 3u);
 	EXPECT_EQ(mesh.IsDirty(), true);
 
 	mesh.UpdateMesh();
 	EXPECT_EQ(mesh.IsDirty(), false);
 
 	anjing::gfx::Shader* shader = anjing::gfx::Shader::LoadShaderProgram("default/default.vs", "default/default.fs");
-	
+
 	anjing::gfx::Material* mat = Anew anjing::gfx::Material;
 	mat->SetShader(shader);
 
