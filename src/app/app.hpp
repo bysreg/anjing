@@ -29,6 +29,8 @@ namespace anjing
 			///
 			static int StopApplication(App* app);
 
+			virtual ~App() = default;
+
 		protected:
 
 			///
