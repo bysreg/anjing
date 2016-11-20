@@ -41,7 +41,7 @@ endif()
 
 #=====================================
 
-######## PROJECT DEPENDECIES #########
+######## PROJECT DEPENDENCIES #########
 if(WIN32)
 	set(CMAKE_PREFIX_PATH ${PROJECT_SOURCE_DIR}/windows)
 endif()
@@ -51,6 +51,27 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 find_package(SDL2 REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
+
+if(WIN32)
+	macro(USE_WIN_DEBUG_LIB DEBUG_VAR)
+		foreach(LIBRARY_PATH ${ARGN})
+			get_filename_component(LIBRARY_NAME ${LIBRARY_PATH} NAME_WE) 
+			get_filename_component(LIBRARY_DIR ${LIBRARY_PATH} DIRECTORY)
+			# message("iter test library path " ${LIBRARY_PATH})
+			set(${DEBUG_VAR} ${${DEBUG_VAR}} optimized ${LIBRARY_PATH} debug ${LIBRARY_DIR}/${LIBRARY_NAME}_d.lib)
+		endforeach()
+	endmacro()
+
+	USE_WIN_DEBUG_LIB(SDL2_WIN_LINK_LIBRARY ${SDL2_LIBRARY})
+	USE_WIN_DEBUG_LIB(SDL2_WIN_LINK_LIBRARY ${GLEW_LIBRARY})
+
+	set(SDL2_LIBRARY ${SDL2_WIN_LINK_LIBRARY})
+	set(GLEW_LIBRARY ${GLEW_WIN_LINK_LIBRARY})
+	
+	message("SDL2_LIBRARY var is replaced with : " ${SDL2_LIBRARY})
+	message("GLEW_LIBRARY var is replaced with : " ${GLEW_LIBRARY})
+
+endif()
 
 set(ANJING_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/src")
 #=====================================
