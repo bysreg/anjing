@@ -131,8 +131,17 @@ char* anjing::gfx::Shader::ReadSource(const std::string & filepath)
 	std::fseek(pf, 0, SEEK_SET);
 
 	char* shader_source = Anew char[size + 1];
-	std::fread(shader_source, sizeof(char), size, pf);
-	shader_source[size] = '\0';
+	size_t ret_code = std::fread(shader_source, sizeof(char), size, pf);
+	if (ret_code == size)
+	{
+		shader_source[size] = '\0';
+	}
+	else
+	{
+		AdeleteArr(shader_source);
+		shader_source = nullptr;
+	}
+
 	std::fclose(pf);
 
 	return shader_source;
