@@ -31,8 +31,8 @@ void MeshRenderer::Render()
 	glVertexAttribPointer(shader->GetLocalNormalId(), 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, normal)));
 
 	// set shader uniforms
-	GLint uni_world = glGetUniformLocation(shader->GetGLProgram(), "u_world");
-	ANJING_ASSERT(uni_world != -1);
+	//GLint uni_world = glGetUniformLocation(shader->GetGLProgram(), "u_world");
+	//ANJING_ASSERT(uni_world != -1);
 	//glUniformMatrix4fv(uni_world, 1, GL_FALSE, GetOwner()->GetTransform()->);
 }
 
