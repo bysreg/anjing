@@ -125,14 +125,14 @@ char* anjing::gfx::Shader::ReadSource(const std::string & filepath)
 	
 	if (pf == nullptr)
 		return nullptr;
-		
+	
 	std::fseek(pf, 0, SEEK_END);
 	long size = std::ftell(pf);
 	std::fseek(pf, 0, SEEK_SET);
 
 	char* shader_source = Anew char[size + 1];
 	size_t ret_code = std::fread(shader_source, sizeof(char), size, pf);
-	if (ret_code == size)
+	if (size>=0 && ret_code == static_cast<size_t>(size))
 	{
 		shader_source[size] = '\0';
 	}
