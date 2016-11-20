@@ -1,5 +1,13 @@
 clone_depth: 5
 
+environment:
+  matrix:
+    # this will use default compiler on windows, which is msvc
+    - COMPILER: ""
+
+    # this will use clang compiler
+    - COMPILER: "clang"
+
 init:
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
@@ -29,7 +37,11 @@ install:
 before_build:
   - cmd: cd C:\projects\anjing
   - cmd: cd build
-  - cmd: cmake -Dbuild_test=ON ..
+  - if [%COMPILER%]==[] (
+      cmake -Dbuild_test=ON ..)
+      else (
+        ..\scripts\gen_build_test_win_%COMPILER%.bat
+      )
 
 configuration:
   - Debug
