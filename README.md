@@ -10,7 +10,7 @@
 - Doxygen 1.8.10 (for docs)
 - CMake 3.1.0
 - Google Test 1.7.0 (included in source)
-- C++ 11 supported compiler (msvc for windows, and gcc & clang for linux/osx)
+- C++ 11 supported compiler (msvc & clang for windows, and gcc & clang for linux/osx)
 
 ##For windows :##
 - add folder /windows/bin to your path
