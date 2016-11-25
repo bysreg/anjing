@@ -36,7 +36,7 @@ endif()
 ######## WARNING CONFIGURATION ########
 ## turn on warning flags
 if(WIN32)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /WX ")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /WX /w14265 /w14296 /w14311 /w14619 /w14640 /w14928")
 
 	# suppress some harmless warning on clang-cl on windows
 	if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
