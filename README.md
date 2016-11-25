@@ -10,7 +10,7 @@
 - Doxygen 1.8.10 (for docs)
 - CMake 3.1.0
 - Google Test 1.7.0 (included in source)
-- C++ 11 supported compiler (msvc & clang for windows, and gcc & clang for linux/osx)
+- C++ 11 supported compiler (msvc & clang-cl for windows, and gcc & clang for linux/osx)
 
 ##For windows :##
 - add folder /windows/bin to your path
@@ -19,6 +19,7 @@
 ##How to build:##
 - go to folder build, and run this from terminal in linux/osx or cmd in windows: "cmake ..".
 - the previous step will make all necessary build files according to the platform.
+- or run one of .bat (if on windows) or .sh (if on linux) to generate the build files.
 - if you're on linux/osx, do "make install", and then the program will be build in the project's root folder. 
 - if you're on windows, 
   - open the visual studio .sln file, 
@@ -67,4 +68,4 @@ http://bysreg.github.io/anjing/index.html
 - Using to replace typedef
   
 ##Notes :##
-- Windows and iOS use OpenGL 3.3, while Linux uses OpenGL 3.0. OSX can only use OpenGL core profile 3.2 (3.3/4.1 in OS X 10.9), aside from that you'll get OpenGL 2.1 instead. Linux is set to use OpenGL 3.0 because currently Travis CI can only support up to OpenGL 3.0 (if you request more than that, we will fail on OpenGL context creation)
+- Windows and iOS use OpenGL 3.3, while Linux uses OpenGL 3.0. OSX can only use OpenGL core profile 3.2 (3.3/4.1 in OS X 10.9), aside from that you'll get OpenGL 2.1 instead. Linux is set to use OpenGL 3.0 because currently Travis CI can only support up to OpenGL 3.0 (if you request more than that, it will fail on OpenGL context creation)
