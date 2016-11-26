@@ -11,8 +11,8 @@ TEST(VertexTest, CheckVertexStructure)
 
 	anjing::gfx::Vertex v;
 
-	EXPECT_EQ(offsetof(Vertex, m_Pos), v.GetPosOffset());
-	EXPECT_EQ(offsetof(Vertex, m_Color), v.GetColorOffset());
-	EXPECT_EQ(offsetof(Vertex, m_TexCoord), v.GetTexCoordOffset());
-	EXPECT_EQ(offsetof(Vertex, m_Normal), v.GetNormalOffset());
+	EXPECT_EQ(offsetof(Vertex, pos), v.GetPosOffset());
+	EXPECT_EQ(offsetof(Vertex, color), v.GetColorOffset());
+	EXPECT_EQ(offsetof(Vertex, tex_coord), v.GetTexCoordOffset());
+	EXPECT_EQ(offsetof(Vertex, normal), v.GetNormalOffset());
 }

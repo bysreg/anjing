@@ -22,13 +22,13 @@ void MeshRenderer::Render()
 
 	// set shader attributes
 	glEnableVertexAttribArray(shader->GetLocalPositionId());
-	glVertexAttribPointer(shader->GetLocalPositionId(), 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, m_Pos)));
+	glVertexAttribPointer(shader->GetLocalPositionId(), 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, pos)));
 	glEnableVertexAttribArray(shader->GetColorId());
-	glVertexAttribPointer(shader->GetColorId(), 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, m_Color)));
+	glVertexAttribPointer(shader->GetColorId(), 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, color)));
 	glEnableVertexAttribArray(shader->GetUvId());
-	glVertexAttribPointer(shader->GetUvId(), 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, m_TexCoord)));
+	glVertexAttribPointer(shader->GetUvId(), 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, tex_coord)));
 	glEnableVertexAttribArray(shader->GetLocalNormalId());
-	glVertexAttribPointer(shader->GetLocalNormalId(), 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, m_Normal)));
+	glVertexAttribPointer(shader->GetLocalNormalId(), 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, normal)));
 
 	// set shader uniforms
 	//GLint uni_world = glGetUniformLocation(shader->GetGLProgram(), "u_world");
