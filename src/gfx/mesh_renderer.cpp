@@ -9,39 +9,34 @@
 
 #define ANJING_BUFFER_OFFSET(offset) (static_cast<char*>(nullptr) + (offset))
 
-using namespace anjing::gfx;
-
-void MeshRenderer::Render()
+namespace anjing
 {
-	Shader* shader = m_Material->GetShader();
+namespace gfx
+{
+	void MeshRenderer::Render()
+	{
+		Shader* shader = material->GetShader();
 
-	shader->SetActive();
+		shader->SetActive();
 
-	glBindBuffer(GL_ARRAY_BUFFER, m_Mesh->vertices_id);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Mesh->indices_id);
+		glBindBuffer(GL_ARRAY_BUFFER, mesh->vertices_id);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->indices_id);
 
-	// set shader attributes
-	glEnableVertexAttribArray(shader->GetLocalPositionId());
-	glVertexAttribPointer(shader->GetLocalPositionId(), 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, pos)));
-	glEnableVertexAttribArray(shader->GetColorId());
-	glVertexAttribPointer(shader->GetColorId(), 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, color)));
-	glEnableVertexAttribArray(shader->GetUvId());
-	glVertexAttribPointer(shader->GetUvId(), 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, tex_coord)));
-	glEnableVertexAttribArray(shader->GetLocalNormalId());
-	glVertexAttribPointer(shader->GetLocalNormalId(), 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, normal)));
+		// set shader attributes
+		glEnableVertexAttribArray(shader->GetLocalPositionId());
+		glVertexAttribPointer(shader->GetLocalPositionId(), 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, pos)));
+		glEnableVertexAttribArray(shader->GetColorId());
+		glVertexAttribPointer(shader->GetColorId(), 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, color)));
+		glEnableVertexAttribArray(shader->GetUvId());
+		glVertexAttribPointer(shader->GetUvId(), 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, tex_coord)));
+		glEnableVertexAttribArray(shader->GetLocalNormalId());
+		glVertexAttribPointer(shader->GetLocalNormalId(), 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, normal)));
 
-	// set shader uniforms
-	//GLint uni_world = glGetUniformLocation(shader->GetGLProgram(), "u_world");
-	//ANJING_ASSERT(uni_world != -1);
-	//glUniformMatrix4fv(uni_world, 1, GL_FALSE, GetOwner()->GetTransform()->);
+		// set shader uniforms
+		//GLint uni_world = glGetUniformLocation(shader->GetGLProgram(), "u_world");
+		//ANJING_ASSERT(uni_world != -1);
+		//glUniformMatrix4fv(uni_world, 1, GL_FALSE, GetOwner()->GetTransform()->);
+	}
+}
 }
 
-void anjing::gfx::MeshRenderer::SetMesh(Mesh const * const mesh)
-{
-	this->m_Mesh = mesh;
-}
-
-void anjing::gfx::MeshRenderer::SetMaterial(Material const * const material)
-{
-	this->m_Material = material;
-}

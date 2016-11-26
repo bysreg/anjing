@@ -17,13 +17,13 @@ void anjing::gfx::Camera::Init()
 	UpdateProj();
 	UpdateView();
 
-	glViewport(0, 0, anjing::core::Scene::GetInstance().m_Width, anjing::core::Scene::GetInstance().m_Height);
+	glViewport(0, 0, anjing::core::Scene::GetInstance().width, anjing::core::Scene::GetInstance().height);
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 }
 
 void anjing::gfx::Camera::Render()
 {
-	std::list<anjing::core::GameObject*>& game_objects = anjing::core::Scene::GetInstance().m_GameObjects;
+	std::list<anjing::core::GameObject*>& game_objects = anjing::core::Scene::GetInstance().gameobjects;
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

@@ -23,25 +23,25 @@ namespace anjing
 			///
 			/// \brief Assign mesh to be rendered
 			///
-			void SetMesh(Mesh const * const mesh);
+			void SetMesh(Mesh const * const new_mesh) { mesh = new_mesh; }
 
 			///
 			/// \brief Assign material to be renderer
 			///
-			void SetMaterial(Material const * const material);
+			void SetMaterial(Material const * const new_material) { material = new_material; }
 
 		protected:
 			///
 			/// \brief Default constructor for MeshRenderer
 			///
-			MeshRenderer() : m_Mesh(nullptr) {}
+			MeshRenderer() : mesh(nullptr) {}
 		
 			virtual ~MeshRenderer() {}
 
 		private:
 
-			Mesh const * m_Mesh;
-			Material const * m_Material;
+			Mesh const * mesh;
+			Material const * material;
 		};
 	}
 }

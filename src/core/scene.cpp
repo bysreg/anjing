@@ -7,15 +7,15 @@ anjing::core::Scene::Scene()
 
 void anjing::core::Scene::Render()
 {
-	m_Camera->Render();
+	camera->Render();
 }
 
 void anjing::core::Scene::AddGameObject(GameObject* go)
 {
-	m_GameObjects.push_back(go);
+	gameobjects.push_back(go);
 }
 
 void anjing::core::Scene::RemoveGameObject(GameObject * go)
 {
-	m_GameObjects.remove(go);
+	gameobjects.remove(go);
 }

@@ -18,18 +18,12 @@ namespace anjing
 			///
 			Material();
 
-			inline Shader* GetShader() const
-			{
-				return m_Shader;
-			}
+			Shader* GetShader() const { return shader; }
 
-			inline void SetShader(Shader* shader)
-			{
-				m_Shader = shader;
-			}
+			void SetShader(Shader* new_shader) { shader = new_shader; }
 
 		private:
-			Shader* m_Shader;
+			Shader* shader;
 
 		};
 
