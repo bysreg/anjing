@@ -23,7 +23,7 @@ namespace anjing
 			///
 			/// Constructor for Vertex that receives Vec3f position and Vec4f color as input
 			///
-			Vertex(const anjing::math::Vec3f& pos, const anjing::math::Vec4f& color) : pos(pos), color(color)				
+			Vertex(const anjing::math::Vec3f& new_pos, const anjing::math::Vec4f& new_color) : pos(new_pos), color(new_color)				
 			{}
 
 			inline uint16_t GetPosOffset() const { return 0; }

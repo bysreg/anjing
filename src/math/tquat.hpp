@@ -36,7 +36,7 @@ namespace anjing
 
 		template<typename T>
 		TQuat<T>::TQuat(T new_w, T new_x, T new_y, T new_z)
-			: w(w), x(x), y(y), z(z)
+			: w(new_w), x(new_x), y(new_y), z(new_z)
 		{}
 
 		template<typename T>
