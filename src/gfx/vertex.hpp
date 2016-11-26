@@ -10,10 +10,10 @@ namespace anjing
 	{
 		struct Vertex
 		{
-			anjing::math::Vec3f pos;
-			anjing::math::Vec4f color;
-			anjing::math::Vec2f tex_coord;
-			anjing::math::Vec3f normal;
+			anjing::math::Vec3f m_Pos;
+			anjing::math::Vec4f m_Color;
+			anjing::math::Vec2f m_TexCoord;
+			anjing::math::Vec3f m_Normal;
 
 			///
 			/// Default	constructor for Vertex
@@ -23,7 +23,7 @@ namespace anjing
 			///
 			/// Constructor for Vertex that receives Vec3f position and Vec4f color as input
 			///
-			Vertex(const anjing::math::Vec3f& pos, const anjing::math::Vec4f& color) : pos(pos), color(color)				
+			Vertex(const anjing::math::Vec3f& pos, const anjing::math::Vec4f& color) : m_Pos(pos), m_Color(color)				
 			{}
 
 			inline uint16_t GetPosOffset() const { return 0; }

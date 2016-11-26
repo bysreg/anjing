@@ -43,7 +43,7 @@ namespace anjing
 			/// 
 			/// Alternative constructor for TVec4
 			///			
-			TVec4(const T& a, const T& b, const T& c, const T& d) : x(a), y(b), z(c), w(d)
+			TVec4(const T& i, const T& j, const T& k, const T& l) : x(i), y(j), z(k), w(l)
 			{}
 
 			inline std::size_t Size() const { return 4; }
@@ -79,24 +79,24 @@ namespace anjing
 		}
 
 		template<typename T>
-		TVec4<T> operator+(const TVec4<T>& a, const TVec4<T>& b)
+		TVec4<T> operator+(const TVec4<T>& v1, const TVec4<T>& v2)
 		{
 			return TVec4<T>(
-				a.x + b.x,
-				a.y + b.y,
-				a.z + b.z,
-				a.w + b.w
+				v1.x + v2.x,
+				v1.y + v2.y,
+				v1.z + v2.z,
+				v1.w + v2.w
 				);
 		}
 
 		template<typename T>
-		TVec4<T> operator-(const TVec4<T>& a, const TVec4<T>& b)
+		TVec4<T> operator-(const TVec4<T>& v1, const TVec4<T>& v2)
 		{
 			return TVec4<T>(
-				a.x - b.x,
-				a.y - b.y,
-				a.z - b.z,
-				a.w - b.w
+				v1.x - v2.x,
+				v1.y - v2.y,
+				v1.z - v2.z,
+				v1.w - v2.w
 				);
 		}
 
@@ -112,9 +112,9 @@ namespace anjing
 		}
 
 		template<typename T>
-		bool operator== (const TVec4<T>& a, TVec4<T> b)
+		bool operator== (const TVec4<T>& v1, TVec4<T> v2)
 		{
-			return (a.x == b.x) && (a.y == b.y) && (a.z == b.z) && (a.w == b.w);
+			return (v1.x == v2.x) && (v1.y == v2.y) && (v1.z == v2.z) && (v1.w == v2.w);
 		}
 
 		using Vec4f = TVec4 <float>;
