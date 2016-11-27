@@ -66,7 +66,7 @@ TEST(TEST_TITLE, EqualityCheck)
 		}
 	}
 
-	EXPECT_EQ(true, a == b);
+	EXPECT_TRUE(a == b);
 
 	// for each element, we try to change b's current element to something else
 	for (size_t i = 0; i < a.Rows(); ++i)
@@ -74,12 +74,12 @@ TEST(TEST_TITLE, EqualityCheck)
 		for (size_t j = 0; j < a.Cols(); ++j)
 		{
 			b[i][j] = a[i][j] + 100;
-			EXPECT_EQ(false, a == b);
+			EXPECT_FALSE(a == b);
 			b[i][j] = a[i][j];
 		}
 	}
 
-	EXPECT_EQ(true, a == b);
+	EXPECT_TRUE(a == b);
 }
 
 TEST(TEST_TITLE, InequalityCheck)
@@ -96,7 +96,7 @@ TEST(TEST_TITLE, InequalityCheck)
 		}
 	}
 
-	EXPECT_EQ(false, a != b);
+	EXPECT_FALSE(a != b);
 
 	// for each element, we try to change b's current element to something else
 	for (size_t i = 0; i < a.Rows(); ++i)
@@ -104,12 +104,12 @@ TEST(TEST_TITLE, InequalityCheck)
 		for (size_t j = 0; j < a.Cols(); ++j)
 		{
 			b[i][j] = a[i][j] + 100;
-			EXPECT_EQ(true, a != b);
+			EXPECT_TRUE(a != b);
 			b[i][j] = a[i][j];
 		}
 	}
 
-	EXPECT_EQ(false, a != b);
+	EXPECT_FALSE(a != b);
 }
 
 TEST(TEST_TITLE, PrintCheck)
