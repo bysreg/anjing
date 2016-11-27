@@ -7,9 +7,7 @@ namespace anjing
 	namespace math
 	{
 
-		///
-		/// \brief TVec2 is a template class (header-only) to store 2 element vector
-		///
+		/// TVec2 is a template class (header-only) to store 2 element vector
 		template<typename T>
 		struct TVec2
 		{			
@@ -24,9 +22,7 @@ namespace anjing
 				T y, g, t;
 			};
 		
-			///
-			/// Default constructor for TVec2
-			///			
+			/// Default constructor for TVec2	
 			TVec2() : x(0), y(0)
 			{}			
 

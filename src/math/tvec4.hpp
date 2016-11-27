@@ -112,9 +112,15 @@ namespace anjing
 		}
 
 		template<typename T>
-		bool operator== (const TVec4<T>& v1, TVec4<T> v2)
+		bool operator==(const TVec4<T>& v1, const TVec4<T>& v2)
 		{
 			return (v1.x == v2.x) && (v1.y == v2.y) && (v1.z == v2.z) && (v1.w == v2.w);
+		}
+
+		template<typename T>
+		bool operator!=(const TVec4<T>& v1, const TVec4<T>& v2)
+		{
+			return (v1.x != v2.x) || (v1.y != v2.y) || (v1.z != v2.z) || (v1.w != v2.w);
 		}
 
 		using Vec4f = TVec4 <float>;

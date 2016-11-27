@@ -10,12 +10,17 @@ using namespace anjing::math;
 TEST(TVec4Test, ConstructionCheck)
 {
 	TVec4<float> test;
-	TVec4<int32> test2;
-	TVec4<double> test3(1, 2, 3, 4);
-
 	EXPECT_EQ(test.x, 0); EXPECT_EQ(test.y, 0); EXPECT_EQ(test.z, 0); EXPECT_EQ(test.w, 0);
+
+	TVec4<int32> test2;
 	EXPECT_EQ(test2.x, 0); EXPECT_EQ(test2.y, 0); EXPECT_EQ(test2.z, 0); EXPECT_EQ(test2.w, 0);
+
+	TVec4<double> test3(1, 2, 3, 4);
 	EXPECT_EQ(test3.x, 1); EXPECT_EQ(test3.y, 2); EXPECT_EQ(test3.z, 3); EXPECT_EQ(test3.w, 4);
+
+	Vec4f test4 = { 5, 6, 7, 8 };
+	EXPECT_EQ(test4.x, 5); EXPECT_EQ(test4.y, 6); EXPECT_EQ(test4.z, 7); EXPECT_EQ(test4.w, 8);
+
 }
 
 TEST(TVec4Test, xyzrgbstpCheck)
@@ -53,6 +58,23 @@ TEST(TVec4Test, EqualityCheck)
 
 	EXPECT_TRUE(test1 == test2);
 	EXPECT_FALSE(test1 == test3);
+}
+
+TEST(TVec4Test, InequalityCheck)
+{
+	Vec4f test1 = Vec4f(1, 2, 3, 4);
+	Vec4f test2 = test1;
+
+	EXPECT_FALSE(test1 != test2);
+
+	for (int i = 0; i < 4; i++)
+	{
+		test2[i] = test1[i] + 100;
+		EXPECT_TRUE(test1 != test2);
+		test2[i] = test1[i];
+	}
+
+	EXPECT_FALSE(test1 != test2);
 }
 
 TEST(TVec4Test, AdditionCheck)
