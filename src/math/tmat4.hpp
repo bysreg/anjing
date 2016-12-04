@@ -33,8 +33,8 @@ namespace anjing
 			typename TMat4<T>::Type& operator[](std::size_t i);
 			typename TMat4<T>::Type const & operator[](std::size_t i) const;
 
-			constexpr std::size_t Rows() const { return 4; }
-			constexpr std::size_t Cols() const { return 4; }
+			static constexpr std::size_t Rows() { return 4; }
+			static constexpr std::size_t Cols() { return 4; }
 
 		private:
 
@@ -92,8 +92,8 @@ namespace anjing
 		TMat4<T> operator*(const TMat4<T>& a, const TMat4<T>& b)
 		{
 			TMat4<T> ret;
-			constexpr const size_t rows = a.Rows();
-			constexpr const size_t cols = a.Cols();
+			constexpr const size_t rows = TMat4<T>::Rows();
+			constexpr const size_t cols = TMat4<T>::Cols();
 
 			// TODO: replace with faster algorithm
 			for (size_t i = 0; i < rows; ++i)

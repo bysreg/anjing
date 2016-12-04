@@ -131,13 +131,20 @@ TEST(TEST_TITLE, LookAtCheck)
 	// FIXME: not sure what the value exactly supposed to be
 }
 
-//TEST(TEST_TITLE, MultiplicationCheck)
-//{
-//	Mat4f a;
-//	Mat4f b;
-//	Mat4f i; // identity
-//
-//	i.SetAsIdentity();
-//	
-//	//b[0][0] = 
-//}
+TEST(TEST_TITLE, MultiplicationCheck)
+{
+	Mat4f a = { { 1, 2, 3, 4 },{ 5, 6, 7, 8 },{ 9, 10, 11, 12 },{ 13, 14, 15, 16 } };
+	Mat4f b = { { 1, 5, 9, 13 },{ 2, 6, 10, 14 },{ 3, 7, 11, 15 },{ 4, 8, 12, 16 } };
+	Mat4f i; // identity
+	i.SetAsIdentity();
+	
+	// check for identity rule
+	EXPECT_TRUE(b * i == b);
+	EXPECT_TRUE(i * b == b);
+	EXPECT_TRUE(a * i == a);
+	EXPECT_TRUE(i * a == a);
+	EXPECT_TRUE(i * i == i);
+
+	Mat4f result = { {30, 70, 110, 150}, {70, 174, 278, 382}, {110, 278, 446, 614}, {150, 382, 614, 846} };
+	EXPECT_TRUE((a * b) == result);
+}
