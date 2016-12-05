@@ -25,17 +25,25 @@ static bool ParseArgs(int argc, char* argv[])
 	return true;
 }
 
+static void GameLoop()
+{
+	// TODO: to be implemented 
+}
+
 int main(int argc, char* argv[])
 {
-	anjing::app::App app;
-	anjing::app::App::StartApplication(&app, 800, 600, 60, "My App");
-	
 	if (!ParseArgs(argc, argv))
 	{
 		return EXIT_FAILURE;
 	}
 
+	anjing::app::App app;
+	anjing::app::App::StartApplication(&app, 800, 600, 60, "My App");
+	anjing::app::App::RunMainLoop(&app, GameLoop);
+
 	anjing::core::MemoryManager::GetInstance().Dump();
+
+	anjing::app::App::StopApplication(&app);
 
 	if (!auto_close)
 	{
@@ -43,8 +51,6 @@ int main(int argc, char* argv[])
 		int _ = getchar();
 		ANJING_UNUSED(_);
 	}
-
-	anjing::app::App::StopApplication(&app);
 
 	return 0;
 }

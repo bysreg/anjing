@@ -11,6 +11,7 @@ namespace anjing
 		{
 		public:
 
+			using MainLoopFunc = void(*)();
 
 			///
 			/// \brief Create the applications' window, initialize the app, SDL, and OpenGL
@@ -25,16 +26,19 @@ namespace anjing
 			static std::FILE* GetAssets(std::string filename, std::string mode);
 
 			///
-			/// \brief Close the application, do necessary clean up
+			/// \brief Close the application, do necessary clean up. Returns 0 if everything is ok
 			///
 			static int StopApplication(App* app);
+
+			/// Run main loop of the \a app. 
+			static void RunMainLoop(App* app, MainLoopFunc func);
 
 			virtual ~App() = default;
 
 		protected:
 
 			///
-			/// \brief Init will get called after app is ready to be used (at the end of StartApplication function call)
+			/// \brief Init will be called after app is ready to be used (at the end of StartApplication function call)
 			///
 			virtual int Init();
 
@@ -47,10 +51,16 @@ namespace anjing
 
 			int width;
 			int height;
+			bool shutting_down = false;
 
 			SDL_Window* window = nullptr;
 			SDL_GLContext gl_context = nullptr;
 
+			/// \brief Update input events such as keypresses
+			void UpdateEvents();
+
+			/// \brief Safely shutdown the application. This will finish up the current frame and quit the main loop in the next frame
+			void Shutdown() { shutting_down = true; }
 		};
 	}
 }

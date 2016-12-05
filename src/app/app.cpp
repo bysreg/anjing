@@ -1,15 +1,15 @@
 #include "app/app.hpp"
 #include "core/log.hpp"
 #include "core/scene.hpp"
+#include "core/assert.hpp"
 
 #include <GL/glew.h>
 
-#include <cassert>
 #include <cstdio>
 
 int anjing::app::App::StartApplication(anjing::app::App* app, int width, int height, int fps, const std::string& title)
 {
-	assert(app);
+	ANJING_ASSERT(app);
 
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) != 0){
 		std::cerr << "SDL_Init error: " << SDL_GetError() << std::endl;
@@ -20,6 +20,7 @@ int anjing::app::App::StartApplication(anjing::app::App* app, int width, int hei
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, ANJING_OPENGL_MAJOR_VERSION);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, ANJING_OPENGL_MINOR_VERSION);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 	std::string win_title = title + " (" + std::to_string(fps) + " fps) ";
 	SDL_Window *window = SDL_CreateWindow(win_title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
@@ -58,7 +59,7 @@ int anjing::app::App::StartApplication(anjing::app::App* app, int width, int hei
 
 int anjing::app::App::StopApplication(anjing::app::App* app)
 {
-	assert(app);
+	ANJING_ASSERT(app);
 
 	if(app->gl_context != nullptr)
 		SDL_GL_DeleteContext(app->gl_context);
@@ -67,6 +68,36 @@ int anjing::app::App::StopApplication(anjing::app::App* app)
 		SDL_DestroyWindow(app->window);
 
 	return 0;
+}
+
+void anjing::app::App::UpdateEvents()
+{
+	SDL_Event e;
+	while (SDL_PollEvent(&e) != 0)
+	{
+		switch (e.type)
+		{
+		case SDL_QUIT:
+			Shutdown();
+			break;
+		}
+	}
+
+}
+
+void anjing::app::App::RunMainLoop(anjing::app::App* app, MainLoopFunc func)
+{
+	ANJING_ASSERT(app);
+
+	while (!app->shutting_down)
+	{
+		app->UpdateEvents();
+		
+		func(); // call the user provided function
+
+		glFlush();
+		SDL_GL_SwapWindow(app->window);
+	}
 }
 
 std::FILE* anjing::app::App::GetAssets(std::string filename, std::string mode)
