@@ -1,6 +1,7 @@
 #include "app/app.hpp"
 #include "core/memory_manager.hpp"
 #include "core/util.hpp"
+#include "core/scene.hpp"
 
 #include <cstdio>
 #include <cstdlib>
@@ -27,7 +28,7 @@ static bool ParseArgs(int argc, char* argv[])
 
 static void GameLoop()
 {
-	// TODO: to be implemented 
+	anjing::core::Scene::GetInstance().Render();
 }
 
 int main(int argc, char* argv[])
@@ -39,6 +40,7 @@ int main(int argc, char* argv[])
 
 	anjing::app::App app;
 	anjing::app::App::StartApplication(&app, 800, 600, 60, "My App");
+
 	anjing::app::App::RunMainLoop(&app, GameLoop);
 
 	anjing::core::MemoryManager::GetInstance().Dump();
@@ -47,7 +49,7 @@ int main(int argc, char* argv[])
 
 	if (!auto_close)
 	{
-		printf("Press any key to close...\n");
+		printf("Press any key to close ...\n");
 		int _ = getchar();
 		ANJING_UNUSED(_);
 	}

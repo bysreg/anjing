@@ -67,6 +67,8 @@ int anjing::app::App::StopApplication(anjing::app::App* app)
 	if(app->window != nullptr)
 		SDL_DestroyWindow(app->window);
 
+	ANJING_LOGS("application is closed\n");
+
 	return 0;
 }
 
