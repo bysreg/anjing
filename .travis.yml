@@ -66,8 +66,6 @@ script:
   - if [ "$MAKE_TARGET" == "install" ]; then
       cd ..;
       ./myapp -y & ;
-      MYAPP_PID=$!;
-      wait $MYAPP_PID;
     fi
 
 after_success:
