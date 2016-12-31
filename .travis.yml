@@ -66,6 +66,9 @@ script:
   - if [ "$MAKE_TARGET" == "install" ]; then
       cd ..
       ./myapp -y &
+      MYAPP_PID=$!
+      sleep 5
+      kill $MYAPP_PID
     fi
 
 after_success:
