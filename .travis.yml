@@ -64,8 +64,8 @@ script:
   - make
   - CTEST_OUTPUT_ON_FAILURE=1 make $MAKE_TARGET
   - if [ "$MAKE_TARGET" == "install" ]; then
-      cd ..;
-      ./myapp -y & ;
+      cd ..
+      ./myapp -y &
     fi
 
 after_success:
