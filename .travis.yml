@@ -65,7 +65,11 @@ script:
   - CTEST_OUTPUT_ON_FAILURE=1 make $MAKE_TARGET
   - if [ "$MAKE_TARGET" == "install" ]; then
       cd ..; 
-      ./myapp -y & ; 
+    fi
+  - if [ "$MAKE_TARGET" == "install" ]; then
+      ./myapp -y & ;
+    fi
+  - if [ "$MAKE_TARGET" == "install" ]; then
       MYAPP_PID=$!;
       sleep 5; 
       kill $MYAPP_PID; 
