@@ -43,7 +43,7 @@ if(WIN32)
 
 	# suppress some harmless warning on clang-cl on windows
 	if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Qunused-arguments -Wno-unknown-pragmas -Wno-macro-redefined -Wno-deprecated-declarations")
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Qunused-arguments -Wno-unknown-pragmas -Wno-macro-redefined -Wno-deprecated-declarations -Wno-unknown-argument")
 	endif()
 
 else()
