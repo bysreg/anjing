@@ -67,7 +67,7 @@ script:
       cd ..; 
     fi
   - if [ "$MAKE_TARGET" == "install" ]; then
-      ./myapp -y & ;
+      ./myapp -y &
     fi
   - if [ "$MAKE_TARGET" == "install" ]; then
       MYAPP_PID=$!;
