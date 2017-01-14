@@ -53,25 +53,25 @@ TEST_F(MeshRendererTest, Triangle)
 	MeshRenderer* mesh_renderer = static_cast<MeshRenderer*>(go->AddComponent<MeshRenderer>());
 	EXPECT_NE(mesh_renderer, nullptr);
 
-	Mesh mesh;
+	Mesh* mesh = Anew Mesh;
 
-	EXPECT_EQ(mesh.IsDirty(), true);
+	EXPECT_EQ(mesh->IsDirty(), true);
 
-	mesh.AddVertex(Vertex(Vec3f(0, 0, 0), Vec4f(1, 0, 0, 1)));
-	mesh.AddVertex(Vertex(Vec3f(1, 0, 0), Vec4f(0, 1, 0, 1)));
-	mesh.AddVertex(Vertex(Vec3f(0, 1, 0), Vec4f(0, 0, 1, 1)));
+	mesh->AddVertex(Vertex(Vec3f(0, 0, 0), Vec4f(1, 0, 0, 1)));
+	mesh->AddVertex(Vertex(Vec3f(1, 0, 0), Vec4f(0, 1, 0, 1)));
+	mesh->AddVertex(Vertex(Vec3f(0, 1, 0), Vec4f(0, 0, 1, 1)));
 
-	EXPECT_EQ(mesh.GetVertexCount(), 3u);
+	EXPECT_EQ(mesh->GetVertexCount(), 3u);
 
-	mesh.AddIndex(0);
-	mesh.AddIndex(1);
-	mesh.AddIndex(2);
+	mesh->AddIndex(0);
+	mesh->AddIndex(1);
+	mesh->AddIndex(2);
 
-	EXPECT_EQ(mesh.GetIndexCount(), 3u);
-	EXPECT_EQ(mesh.IsDirty(), true);
+	EXPECT_EQ(mesh->GetIndexCount(), 3u);
+	EXPECT_EQ(mesh->IsDirty(), true);
 
-	mesh.UpdateMesh();
-	EXPECT_EQ(mesh.IsDirty(), false);
+	mesh->UpdateMesh();
+	EXPECT_EQ(mesh->IsDirty(), false);
 
 	anjing::gfx::Shader* shader = anjing::gfx::Shader::LoadShaderProgram("default/default.vs", "default/default.fs");
 
@@ -79,7 +79,7 @@ TEST_F(MeshRendererTest, Triangle)
 	mat->SetShader(shader);
 
 	mesh_renderer->SetMaterial(mat);
-	mesh_renderer->SetMesh(&mesh);
+	mesh_renderer->SetMesh(mesh);
 
 	anjing::core::Scene::GetInstance().Render();
 }
