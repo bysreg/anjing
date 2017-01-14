@@ -13,12 +13,12 @@ anjing::gfx::Camera::Camera() : fovy(3.14f / 4),
 {}
 
 void anjing::gfx::Camera::Init()
-{	
+{
 	UpdateProj();
 	UpdateView();
 
 	glViewport(0, 0, anjing::core::Scene::GetInstance().width, anjing::core::Scene::GetInstance().height);
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
 }
 
 void anjing::gfx::Camera::Render()
