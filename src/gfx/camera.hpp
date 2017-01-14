@@ -63,6 +63,12 @@ namespace anjing
 			///
 			void UpdateView();
 
+			/// \brief Returns the camera's projection matrix
+			anjing::math::Mat4f GetProjMat() const { return proj_mat; }
+
+			/// \brief Returns the camera's view matrix
+			anjing::math::Mat4f GetViewMat() const { return view_mat; }
+
 		protected:
 
 			virtual void OnAdded() override;
