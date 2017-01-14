@@ -37,6 +37,7 @@ int anjing::app::App::StartApplication(anjing::app::App* app, int width, int hei
 		return -3;
 	}
 
+	glewExperimental = GL_TRUE;
 	GLenum glewErr = glewInit();
 	if (glewErr != GLEW_OK)
 	{
@@ -84,7 +85,6 @@ void anjing::app::App::UpdateEvents()
 			break;
 		}
 	}
-
 }
 
 void anjing::app::App::RunMainLoop(anjing::app::App* app, MainLoopFunc func)
@@ -141,6 +141,12 @@ int anjing::app::App::Init()
 {
 	// initialize Anjing Scene
 	anjing::core::Scene::GetInstance().SetScreenSize(width, height);
+
+	// this is needed since OpenGL 3.2+ Core profile
+	GLuint vertex_array_id;
+	glGenVertexArrays(1, &vertex_array_id);
+	glBindVertexArray(vertex_array_id);
+
 
 	return 0;
 }
