@@ -1,5 +1,6 @@
 include_directories(
 	${ANJING_INCLUDE_DIR}
+	${GLEW_INCLUDE_DIR}
 	${GTEST_INCLUDE_DIR}
 )
 
