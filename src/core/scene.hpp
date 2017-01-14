@@ -43,6 +43,8 @@ namespace anjing
 			///
 			void Render();
 
+			anjing::gfx::Camera* GetCamera() { return camera; }
+
 		private:
 
 			std::list<anjing::core::GameObject*> gameobjects;

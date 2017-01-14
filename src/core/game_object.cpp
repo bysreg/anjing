@@ -42,7 +42,7 @@ bool anjing::core::GameObject::RemoveComponent(anjing::core::Component* componen
 
 void GameObject::RemoveAllComponents()
 {
-	for (size_t i = 0; i < components->size(); i++)
+	for (size_t i = 0; i < components->size(); ++i)
 	{
 		Component* component = components->at(i);
 		component->OnRemoved();
