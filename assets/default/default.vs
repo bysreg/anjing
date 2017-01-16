@@ -24,5 +24,6 @@ void main()
 	v_normalW = (u_world * vec4(a_normalL, 0.0)).xyz;
 	v_posW = (u_world * vec4(a_posL, 1.0)).xyz;
 	gl_Position = (u_proj_view * vec4(v_posW, 1.0));
+	gl_Position = vec4(a_posL, 1.0);
 	v_posP = gl_Position.xyz;	
 }
