@@ -19,7 +19,7 @@ class CameraTest : public ::testing::Test
 
 public:
 
-	std::unique_ptr<App> app;
+	App* app;
 	
 	GameObject* cam_go;
 	Camera* cam;
@@ -27,10 +27,10 @@ public:
 	void SetUp() override
 	{
 		::testing::Test::SetUp();
-		app.reset(Anew App);
-		App::StartApplication(app.get(), 800, 600, 60, "TestMeshRenderer");
+		app = new App;
+		App::StartApplication(app, 800, 600, 60, "TestMeshRenderer");
 
-		cam_go = Anew GameObject;
+		cam_go = new GameObject;
 		cam_go->AddComponent<Camera>();
 		cam = cam_go->GetComponent<Camera>();
 	}
@@ -39,9 +39,10 @@ public:
 	{
 		::testing::Test::TearDown();
 		
-		Adelete(cam_go);
+		delete cam_go;
 
-		App::StopApplication(app.get());
+		App::StopApplication(app);
+		delete app;
 	}
 
 };
