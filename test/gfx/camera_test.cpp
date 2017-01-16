@@ -46,14 +46,16 @@ public:
 	}
 
 };
-//
-//TEST_F(TEST_TITLE, DefaultInit)
-//{
-//	// check default camera's projection
-//	Mat4f proj = cam->GetProjMat();
-//	std::cout << proj << std::endl;
-//
-//	// check default camera's view
-//	Mat4f view = cam->GetViewMat();
-//	std::cout << proj << std::endl;
-//}
+
+TEST_F(TEST_TITLE, DefaultInit)
+{
+	// check default camera's projection
+	Mat4f proj = cam->GetProjMat();
+	std::cout << proj << std::endl;
+
+	// check default camera's view
+	Mat4f view = cam->GetViewMat();
+	std::cout << proj << std::endl;
+
+	EXPECT_TRUE(cam_go != nullptr);
+}
